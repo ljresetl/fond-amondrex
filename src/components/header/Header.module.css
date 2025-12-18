@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #c5d3ff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* кнопки з іконками */
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.iconBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.iconBtn img {
+  width: 24px;
+  height: 24px;
+}

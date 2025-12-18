@@ -1,0 +1,23 @@
+.supportBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 100px;
+  padding: 24px;
+  width: 144px;
+  height: 36px;
+  background: #f9dd5a;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  color: #090e0f;
+}
+
+.supportBtn:hover {
+  background: #ffca28;
+}

@@ -1,0 +1,110 @@
+.hero {
+  width: 100%;
+  background-color: #090e0f;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+/* Фото */
+.heroImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 343 / 241;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  padding-left: 16px;   /* відступ зліва */
+  padding-right: 16px;  /* відступ справа */
+}
+
+
+/* Текст */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 16px;
+  text-align: left;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: #f9dd5a;
+}
+
+.subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #f9dd5a;
+}
+
+/* Кнопки */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding: 0 16px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  color: #090e0f !important;
+}
+
+.primaryBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  border-radius: 100px;
+  padding: 24px;
+  width: 343px;
+  height: 56px;
+  background-color: #bff4ff;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  color: #090e0f;
+  font-family: "Montserrat", sans-serif;
+}
+
+.secondaryBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 100px;
+  padding: 24px;
+  width: 343px;
+  height: 56px;
+  background-color: #f9dd5a;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  color: #090e0f;
+}

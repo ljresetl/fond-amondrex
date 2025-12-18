@@ -1,0 +1,25 @@
+.translateBtn {
+  width: 31px;
+  height: 31px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+/* ефект при наведенні */
+.translateBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* стилізація самої іконки */
+.translateBtn img,
+.translateBtn svg {
+  width: 26px;
+  height: 26px;
+  fill: #838281; /* для SVG-компонента */
+}

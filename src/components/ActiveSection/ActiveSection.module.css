@@ -1,0 +1,62 @@
+.ActiveSection {
+  background: #c4d3ff;
+  padding: 24px 0px;
+}
+
+.container {
+  width: 100%;
+  max-width: 343px;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: #15004c;
+  margin-bottom: 24px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.statValue {
+  font-weight: 600;
+  font-size: 30px;
+  text-align: center;
+  color: #090e0f;
+  margin-bottom: 9px;
+}
+
+.statLabel {
+  font-weight: 400;
+  font-size: 11px;
+  text-align: center;
+  color: #090e0f;
+  font-family: "Open Sans", sans-serif;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.photo {
+  border-radius: 7px;
+  object-fit: cover; /* щоб картинка не спотворювалась */
+}

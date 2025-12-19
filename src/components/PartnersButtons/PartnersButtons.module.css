@@ -1,5 +1,6 @@
 .PartnersButtons {
   background-color: #c4d3ff;
+  padding: 24px 0px;
 }
 
 .container {
@@ -20,7 +21,6 @@
   line-height: 1.5;
   letter-spacing: 0.03em;
   color: #15004c;
-  margin-top: 24px;
 }
 
 .becomePartner {

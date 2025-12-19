@@ -12,3 +12,5 @@ export const PartnersButtons: React.FC = () => {
     </div>
   );
 };
+
+export default PartnersButtons;

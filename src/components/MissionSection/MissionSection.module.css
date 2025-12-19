@@ -1,0 +1,43 @@
+.MissionSection {
+  font-family: "Montserrat", sans-serif;
+  background-color: #beceff;
+  padding: 24px 0px;
+}
+
+.container {
+  width: 100%;
+  max-width: 343px;
+  margin: 0 auto;
+  padding: 0 16px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: #15004c;
+}
+
+.text {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #090e0f;
+}
+
+.list {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #090e0f;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 15px;
+}

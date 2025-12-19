@@ -53,3 +53,5 @@ export const ActiveSection: React.FC = () => {
     </div>
   );
 };
+
+export default ActiveSection;

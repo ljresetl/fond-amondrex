@@ -4,7 +4,7 @@
   padding: 20px 0px;
   display: flex;
   justify-content: center;
-  padding: 0;
+  padding: 24px 0px;
 }
 
 .container {
@@ -15,6 +15,8 @@
   align-items: center;
   gap: 32px;
   text-align: center;
+  max-width: 343px;
+  padding: 0 16px;
 }
 
 /* Фото */
@@ -25,12 +27,7 @@
   aspect-ratio: 343 / 241;
   object-fit: cover;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
-  padding-left: 16px;   /* відступ зліва */
-  padding-right: 16px;  /* відступ справа */
 }
-
 
 /* Текст */
 .text {
@@ -48,6 +45,7 @@
   line-height: 1.5;
   letter-spacing: 0.03em;
   color: #f9dd5a;
+  margin-bottom: 24px;
 }
 
 .subtitle {
@@ -63,7 +61,6 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  padding: 0 16px;
   font-weight: 600;
   font-size: 15px;
   line-height: 1.2;
@@ -73,10 +70,10 @@
 }
 
 .primaryBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   border-radius: 100px;
   padding: 24px;
   width: 343px;

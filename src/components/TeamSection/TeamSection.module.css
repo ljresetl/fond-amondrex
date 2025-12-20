@@ -1,0 +1,38 @@
+.TeamSection {
+  font-family: "Montserrat", sans-serif;
+  background-color: #beceff;
+  padding: 24px 0px;
+}
+
+.container {
+  width: 100%;
+  max-width: 343px;
+  margin: 0 auto;
+  padding: 0 16px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: #15004c;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.caption {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #15104f;
+  font-family: "Open Sans", sans-serif;
+}

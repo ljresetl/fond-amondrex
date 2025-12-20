@@ -7,6 +7,8 @@ import './App.css'
 import MissionSection  from './components/MissionSection/MissionSection'
 import VisionSection from './components/VisionSection/VisionSection'
 import ValuesSection from './components/ValuesSection/ValuesSection'
+import HowWeWorkSection from './components/HowWeWorkSection/HowWeWorkSection'
+import TeamSection from './components/TeamSection/TeamSection'
 
 const App: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ const App: React.FC = () => {
       <MissionSection />
       <VisionSection />
       <ValuesSection />
+      <HowWeWorkSection />
+      <TeamSection />
     </>
   )
 }

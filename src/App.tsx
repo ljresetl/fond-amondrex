@@ -6,6 +6,7 @@ import  ActiveSection  from './components/ActiveSection/ActiveSection'
 import './App.css'
 import MissionSection  from './components/MissionSection/MissionSection'
 import VisionSection from './components/VisionSection/VisionSection'
+import ValuesSection from './components/ValuesSection/ValuesSection'
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
       <ActiveSection />
       <MissionSection />
       <VisionSection />
+      <ValuesSection />
     </>
   )
 }

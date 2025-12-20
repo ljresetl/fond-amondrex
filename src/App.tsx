@@ -9,6 +9,8 @@ import VisionSection from './components/VisionSection/VisionSection'
 import ValuesSection from './components/ValuesSection/ValuesSection'
 import HowWeWorkSection from './components/HowWeWorkSection/HowWeWorkSection'
 import TeamSection from './components/TeamSection/TeamSection'
+import SupportCallSection from './components/SupportCallSection/SupportCallSection'
+import Footer from './components/Footer/Footer'
 
 const App: React.FC = () => {
   return (
@@ -22,6 +24,8 @@ const App: React.FC = () => {
       <ValuesSection />
       <HowWeWorkSection />
       <TeamSection />
+      <SupportCallSection />
+      <Footer />
     </>
   )
 }

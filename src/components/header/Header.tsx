@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Header.module.css'
 import Logo from './Logo/Logo'
 import SupportButton from './SupportButton/SupportButton'
-import TranslateButton from './TranslateButton/TranslateButton'
+import TranslateButton from './LanguageSwitcher/LanguageSwitcher'
 import menuIcon from '../../../public/MobilneMenu.svg'
 
 const Header: React.FC = () => {

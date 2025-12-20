@@ -5,6 +5,7 @@ import  PartnersButtons  from './components/PartnersButtons/PartnersButtons'
 import  ActiveSection  from './components/ActiveSection/ActiveSection'
 import './App.css'
 import MissionSection  from './components/MissionSection/MissionSection'
+import VisionSection from './components/VisionSection/VisionSection'
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
       <PartnersButtons />
       <ActiveSection />
       <MissionSection />
+      <VisionSection />
     </>
   )
 }

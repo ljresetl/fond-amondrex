@@ -87,11 +87,6 @@
   padding-top: 18px;
 }
 
-.socials img {
-  width: 24px;
-  height: 24px;
-}
-
 .right {
   display: flex;
   flex-direction: column;

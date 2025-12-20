@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import { SiTiktok, SiInstagram, SiFacebook, SiThreads } from "react-icons/si";
+
 
 const Footer: React.FC = () => {
   return (
@@ -31,13 +33,14 @@ const Footer: React.FC = () => {
        </div>
               <div className={styles.right_all}>
                   <div>
-                      <ul className={styles.socials}>
-                <li><a href="#"><img src="/icon-tiktok.svg" alt="TikTok" /></a></li>
-                <li><a href="#"><img src="/icon-instagram.svg" alt="Instagram" /></a></li>
-                <li><a href="#"><img src="/icon-facebook.svg" alt="Facebook" className={styles.iconFacebook} /></a></li>
-                <li><a href="#"><img src="/icon-threads.svg" alt="Threads" /></a></li>
-              </ul>
-                  </div>
+  <ul className={styles.socials}>
+    <li><a href="#"><SiTiktok size={24} color="#e5f9ff" /></a></li>
+    <li><a href="#"><SiInstagram size={24} color="#e5f9ff" /></a></li>
+    <li><a href="#"><SiFacebook size={24} color="#e5f9ff" /></a></li>
+    <li><a href="#"><SiThreads size={24} color="#e5f9ff" /></a></li>
+  </ul>
+</div>
+
             <div className={styles.right}>
               <a href="#">Terms & Conditions</a>
                       <a href="#">Privacy Policy</a>

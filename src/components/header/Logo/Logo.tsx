@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Logo.module.css'
-import avatar from '../../../../public/logo.png'
+import avatar from '../../../../public/logo2.png'
 
 type LogoProps = {
   href?: string

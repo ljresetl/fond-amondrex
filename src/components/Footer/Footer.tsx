@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
        <div className={styles.left_all}>
             <div className={styles.left}>
               <img
-                src="/logo.png"
+                src="/logo2.png"
                 alt="Логотип"
                 className={styles.logo}
                       />

@@ -1,5 +1,5 @@
 .footer {
-  background-color: #534f5b;
+  background-color: #15004c;
   padding: 24px 0px;
 }
 
@@ -52,11 +52,10 @@
 /* права частина */
 .right_all {
   display: flex;
-  flex-direction: column; /* або row — залежно від макета */
-  align-items: flex-end; /* ← вирівнює ВСЕ по правому краю */
-  text-align: right; /* ← вирівнює текст */
-  gap: 16px; /* опційно */
-  /* flex: 1; */
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 16px;
 }
 
 .right {

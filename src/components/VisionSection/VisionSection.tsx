@@ -3,9 +3,9 @@ import styles from './VisionSection.module.css';
 
 const VisionSection: React.FC = () => {
   return (
-    <section id="vision" className={styles.VisionSection}>
+    <section className={styles.VisionSection}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Наше бачення</h2>
+        <h2 id="vision" className={styles.heading}>Наше бачення</h2>
 
         <img
           src="/vision-one.png"

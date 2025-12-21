@@ -3,9 +3,9 @@ import styles from './ActiveSection.module.css';
 
 export const ActiveSection: React.FC = () => {
   return (
-    <div id="collections" className={styles.ActiveSection}>
+    <div className={styles.ActiveSection}>
      <div className={styles.container}>
-          <h2 className={styles.heading}>Активні</h2>
+          <h2 id="collections" className={styles.heading}>Активні</h2>
     
           <div className={styles.stats}>
             <div className={styles.statCard}>

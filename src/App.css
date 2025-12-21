@@ -5,6 +5,15 @@ body {
   scroll-behavior: smooth;
 }
 
+#partners,
+#collections,
+#mission,
+#vision,
+#values,
+#how-we-work {
+  scroll-margin-top: 100px;
+}
+
 button {
   cursor: pointer;
   border: none;

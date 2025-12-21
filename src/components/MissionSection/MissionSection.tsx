@@ -3,9 +3,9 @@ import styles from './MissionSection.module.css';
 
 export const MissionSection: React.FC = () => {
   return (
-    <div id="mission" className={styles.MissionSection}>
+    <div className={styles.MissionSection}>
      <div className={styles.container}  >
-          <h2 className={styles.heading}>Наша місія</h2>
+          <h2 id="mission" className={styles.heading}>Наша місія</h2>
     
           <p className={styles.text}>
             Надійно та системно підтримувати ЗСУ та захисників. Ефективна оборона неможлива без постійної допомоги.

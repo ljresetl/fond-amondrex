@@ -1,19 +1,30 @@
 import React from 'react';
 import styles from './Footer.module.css';
+
+// Іконки соцмереж з бібліотеки react-icons
 import { SiTiktok, SiInstagram, SiThreads } from "react-icons/si";
+
+// Переклади для футера (UA / EN)
 import translations from '../../translations/footer.json';
 
+// Тип пропсів — футер отримує лише поточну мову
 type Props = {
   lang: 'UA' | 'EN';
 };
 
 const Footer: React.FC<Props> = ({ lang }) => {
+  // Отримуємо перекладений текст для поточної мови
   const t = translations[lang];
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
 
+        {/* 
+          Ліва частина футера:
+          - логотип
+          - назва фонду (перекладена)
+        */}
         <div className={styles.left_all}>
           <div className={styles.left}>
             <img
@@ -21,9 +32,16 @@ const Footer: React.FC<Props> = ({ lang }) => {
               alt="Логотип"
               className={styles.logo}
             />
+
+            {/* Перекладена назва фонду */}
             <p className={styles.description}>{t.foundation}</p>
           </div>
 
+          {/* 
+            Центральна частина футера:
+            - навігаційні посилання
+            - усі тексти беруться з JSON
+          */}
           <div className={styles.center}>
             <ul className={styles.nav}>
               <li className={styles.navItem}><a href="#partners">{t.partners}</a></li>
@@ -36,7 +54,14 @@ const Footer: React.FC<Props> = ({ lang }) => {
           </div>
         </div>
 
+        {/* 
+          Права частина футера:
+          - соцмережі
+          - юридичні посилання (перекладені)
+        */}
         <div className={styles.right_all}>
+
+          {/* Соцмережі */}
           <div>
             <ul className={styles.socials}>
               <li>
@@ -71,6 +96,7 @@ const Footer: React.FC<Props> = ({ lang }) => {
             </ul>
           </div>
 
+          {/* Юридичні посилання */}
           <div className={styles.right}>
             <a href="#">{t.terms}</a>
             <a href="#">{t.privacy}</a>

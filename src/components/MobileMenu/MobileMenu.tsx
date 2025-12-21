@@ -33,12 +33,12 @@ const MobileMenu: React.FC<Props> = ({ onClose }) => {
         </div>
 
         <ul className={styles.list}>
-          <li><a href="#" onClick={onClose}>Допомога військовим</a></li>
-          <li><a href="#" onClick={onClose}>Гуманітарна допомога</a></li>
-          <li><a href="#" onClick={onClose}>Збори</a></li>
-          <li><a href="#" onClick={onClose}>Про Фонд</a></li>
-          <li><a href="#" onClick={onClose}>Звіти</a></li>
-          <li><a href="#" onClick={onClose}>Партнери</a></li>
+          <li><a href="#partners" onClick={onClose}>Стати партнером</a></li>
+          <li><a href="#collections" onClick={onClose}>Активні збори</a></li>
+          <li><a href="#mission" onClick={onClose}>Наша місія</a></li>
+          <li><a href="#vision" onClick={onClose}>Наше бачення</a></li>
+          <li><a href="#values" onClick={onClose}>Цінності Фонду «Амондрекс»</a></li>
+          <li><a href="#how-we-work" onClick={onClose}>Як ми працюємо?</a></li>
         </ul>
 
         <SupportButton 

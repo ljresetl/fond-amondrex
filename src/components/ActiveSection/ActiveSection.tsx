@@ -3,7 +3,7 @@ import styles from './ActiveSection.module.css';
 
 export const ActiveSection: React.FC = () => {
   return (
-    <div className={styles.ActiveSection}>
+    <div id="collections" className={styles.ActiveSection}>
      <div className={styles.container}>
           <h2 className={styles.heading}>Активні</h2>
     

@@ -6,7 +6,7 @@ const ValuesSection: React.FC = () => {
     <section className={styles.ValuesSection}>
           <div className={styles.container}>
               
-              <h2 className={styles.heading}>Цінності Фонду</h2>
+              <h2 id="values" className={styles.heading}>Цінності Фонду</h2>
         <img
           src="/values1.png"
           srcSet="/values1.png 1x, /values1@2x.png 2x"

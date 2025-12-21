@@ -21,12 +21,12 @@ const Footer: React.FC = () => {
     
             <div className={styles.center}>
               <ul className={styles.nav}>
-                <li className={styles.navItem}><a href="#">Допомога армії</a></li>
-                <li className={styles.navItem}><a href="#">Допомога</a></li>
-                <li className={styles.navItem}><a href="#">Про Фонд</a></li>
-                <li className={styles.navItem}><a href="#">Питання-відповіді</a></li>
-                <li className={styles.navItem}><a href="#">Стати партнером</a></li>
-                <li className={styles.navItem}><a href="#">Звітність</a></li>
+                <li className={styles.navItem}><a href="#partners">Стати партнером</a></li>
+                <li className={styles.navItem}><a href="#collections">Активні збори</a></li>
+                <li className={styles.navItem}><a href="#mission">Наша місія</a></li>
+                <li className={styles.navItem}><a href="#vision">Наше бачення</a></li>
+                <li className={styles.navItem}><a href="#values">Цінності Фонду «Амондрекс»</a></li>
+                <li className={styles.navItem}><a href="#how-we-work">Як ми працюємо?</a></li>
               </ul>
             </div>
     

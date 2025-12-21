@@ -5,7 +5,7 @@ const HowWeWorkSection: React.FC = () => {
   return (
     <section className={styles.HowWeWorkSection}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Як ми працюємо</h2>
+        <h2 id="how-we-work" className={styles.heading}>Як ми працюємо</h2>
 
         <img
           src="/how1.png"

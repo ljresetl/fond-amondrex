@@ -3,7 +3,7 @@ import styles from './VisionSection.module.css';
 
 const VisionSection: React.FC = () => {
   return (
-    <section className={styles.VisionSection}>
+    <section id="vision" className={styles.VisionSection}>
       <div className={styles.container}>
         <h2 className={styles.heading}>Наше бачення</h2>
 

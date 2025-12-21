@@ -3,7 +3,7 @@ import styles from './MissionSection.module.css';
 
 export const MissionSection: React.FC = () => {
   return (
-    <div className={styles.MissionSection}>
+    <div id="mission" className={styles.MissionSection}>
      <div className={styles.container}  >
           <h2 className={styles.heading}>Наша місія</h2>
     

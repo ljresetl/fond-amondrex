@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import { SiTiktok, SiInstagram, SiFacebook, SiThreads } from "react-icons/si";
+import { SiTiktok, SiInstagram, SiThreads } from "react-icons/si";
 
 
 const Footer: React.FC = () => {
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
   <ul className={styles.socials}>
     <li><a href="#"><SiTiktok size={24} color="#e5f9ff" /></a></li>
     <li><a href="#"><SiInstagram size={24} color="#e5f9ff" /></a></li>
-    <li><a href="#"><SiFacebook size={24} color="#e5f9ff" /></a></li>
+    {/* <li><a href="#"><SiFacebook size={24} color="#e5f9ff" /></a></li> */}
     <li><a href="#"><SiThreads size={24} color="#e5f9ff" /></a></li>
   </ul>
 </div>

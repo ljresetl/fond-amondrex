@@ -12,8 +12,9 @@ const HeroBlock: React.FC = () => {
           className={styles.heroImage}
         />
         <div className={styles.text}>
-          <h1 className={styles.title}>Переможемо бо єдині</h1>
           <p className={styles.subtitle}>Благодійний Фонд «Амондрекс»</p>
+          <h1 className={styles.title}>Переможемо бо єдині</h1>
+          
         </div>
         <div className={styles.buttons}>
           <button className={styles.primaryBtn}>ОТРИМАТИ ДОПОМОГУ</button>

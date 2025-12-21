@@ -8,7 +8,7 @@ import MissionSection  from './components/MissionSection/MissionSection'
 import VisionSection from './components/VisionSection/VisionSection'
 import ValuesSection from './components/ValuesSection/ValuesSection'
 import HowWeWorkSection from './components/HowWeWorkSection/HowWeWorkSection'
-import TeamSection from './components/TeamSection/TeamSection'
+// import TeamSection from './components/TeamSection/TeamSection'
 import SupportCallSection from './components/SupportCallSection/SupportCallSection'
 import Footer from './components/Footer/Footer'
 
@@ -23,7 +23,7 @@ const App: React.FC = () => {
       <VisionSection />
       <ValuesSection />
       <HowWeWorkSection />
-      <TeamSection />
+      {/* <TeamSection /> */}
       <SupportCallSection />
       <Footer />
     </>

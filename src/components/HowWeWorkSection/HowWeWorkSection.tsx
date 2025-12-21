@@ -36,7 +36,7 @@ const HowWeWorkSection: React.FC = () => {
         </ul>
 
         <p className={styles.text_bold}>
-          Переможемо бо єдині!
+          Переможемо бо єдині
         </p>
       </div>
     </section>

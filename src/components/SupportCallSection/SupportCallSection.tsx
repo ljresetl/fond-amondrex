@@ -19,12 +19,12 @@ const SupportCallSection: React.FC = () => {
   className={styles.bigButton}
 />
 
-        <img
+        {/* <img
           src="/support-call.png"
           srcSet="/support-call.png 1x, /support-call@2x.png 2x"
           alt="Військовий із табличкою 'Хочеш допомогти?'"
           className={styles.photo}
-        />
+        /> */}
       </div>
     </section>
   );

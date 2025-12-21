@@ -1,26 +1,29 @@
-import React from 'react'
-import styles from './SupportButton.module.css'
+import React from 'react';
+import styles from './SupportButton.module.css';
+import translations from '../../../translations/header.json';
 
 type SupportButtonProps = {
-  text?: string
-  onClick?: () => void
-  className?: string   // ← додаємо
-}
+  lang: 'UA' | 'EN';
+  onClick?: () => void;
+  className?: string;
+};
 
-const SupportButton: React.FC<SupportButtonProps> = ({ 
-  text = 'ПІДТРИМАТИ', 
+const SupportButton: React.FC<SupportButtonProps> = ({
+  lang,
   onClick,
   className
 }) => {
+  const t = translations[lang].buttons.support;
+
   return (
-    <button 
-      className={`${styles.supportBtn} ${className || ''}`} 
-      type="button" 
+    <button
+      className={`${styles.supportBtn} ${className || ''}`}
+      type="button"
       onClick={onClick}
     >
-      {text}
+      {t}
     </button>
-  )
-}
+  );
+};
 
-export default SupportButton
+export default SupportButton;

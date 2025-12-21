@@ -1,7 +1,14 @@
 import React from 'react'
 import styles from './HeroBlock.module.css'
+import translations from '../../translations/hero.json'
 
-const HeroBlock: React.FC = () => {
+type Props = {
+  lang: 'UA' | 'EN';
+}
+
+const HeroBlock: React.FC<Props> = ({ lang }) => {
+  const t = translations[lang]
+
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -11,14 +18,15 @@ const HeroBlock: React.FC = () => {
           alt="Hero"
           className={styles.heroImage}
         />
+
         <div className={styles.text}>
-          <p className={styles.subtitle}>Благодійний Фонд «Амондрекс»</p>
-          <h1 className={styles.title}>Переможемо бо єдині</h1>
-          
+          <p className={styles.subtitle}>{t.subtitle}</p>
+          <h1 className={styles.title}>{t.title}</h1>
         </div>
+
         <div className={styles.buttons}>
-          <button className={styles.primaryBtn}>ОТРИМАТИ ДОПОМОГУ</button>
-          <button className={styles.secondaryBtn}>СТАТИ ВОЛОНТЕРОМ</button>
+          <button className={styles.primaryBtn}>{t.helpBtn}</button>
+          <button className={styles.secondaryBtn}>{t.volunteerBtn}</button>
         </div>
       </div>
     </section>

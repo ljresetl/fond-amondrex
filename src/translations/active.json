@@ -1,0 +1,15 @@
+{
+  "UA": {
+    "title": "Активні",
+    "collected": "Зібрано",
+    "volunteers": "Волонтерів",
+    "collections": "Зборів"
+  },
+
+  "EN": {
+    "title": "Active",
+    "collected": "Collected",
+    "volunteers": "Volunteers",
+    "collections": "Fundraisers"
+  }
+}

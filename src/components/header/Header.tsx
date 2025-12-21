@@ -1,33 +1,50 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Header.module.css';
 import Logo from './Logo/Logo';
 import SupportButton from './SupportButton/SupportButton';
-import TranslateButton from './LanguageSwitcher/LanguageSwitcher';
+import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher';
 import menuIcon from '/MobilneMenu.svg';
 import MobileMenu from '../MobileMenu/MobileMenu';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+type Props = {
+  lang: 'UA' | 'EN';
+  setLang: (lang: 'UA' | 'EN') => void;
+};
+
+const Header: React.FC<Props> = ({ lang, setLang }) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
+
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <Logo />
-        <SupportButton />
-        <TranslateButton />
 
-        <button
-          className={styles.iconBtn}
-          type="button"
-          aria-label="Відкрити меню"
-          onClick={toggleMenu}
-        >
-          <img src={menuIcon} alt="" aria-hidden="true" className={styles.icon} />
-        </button>
+        {/* Кнопка підтримки */}
+        <SupportButton lang={lang} />
+
+        {/* Перемикач мови */}
+        <LanguageSwitcher onChange={setLang} />
+
+<button
+  className={styles.iconBtn}
+  type="button"
+  aria-label="Open menu"
+  onClick={toggleMenu}
+>
+  <img src={menuIcon} alt="" aria-hidden="true" className={styles.icon} />
+</button>
       </div>
 
-      {isMenuOpen && <MobileMenu onClose={() => setIsMenuOpen(false)} />}
+      {isMenuOpen && (
+        <MobileMenu 
+          onClose={() => setIsMenuOpen(false)}
+          lang={lang}
+          setLang={setLang}
+        />
+      )}
     </header>
   );
 };

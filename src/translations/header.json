@@ -1,0 +1,49 @@
+{
+  "UA": {
+    "menu": {
+      "militaryHelp": "Допомога військовим",
+      "humanitarianHelp": "Гуманітарна допомога",
+      "collections": "Збори",
+      "aboutFund": "Про Фонд",
+      "reports": "Звіти",
+      "partners": "Партнери",
+
+      "becomePartner": "Стати партнером",
+      "activeCollections": "Активні збори",
+      "mission": "Наша місія",
+      "vision": "Наше бачення",
+      "values": "Цінності Фонду «Амондрекс»",
+      "howWeWork": "Як ми працюємо?"
+    },
+
+    "buttons": {
+      "support": "ПІДТРИМАТИ"
+    },
+
+    "language": "UA"
+  },
+
+  "EN": {
+    "menu": {
+      "militaryHelp": "Military Support",
+      "humanitarianHelp": "Humanitarian Aid",
+      "collections": "Collections",
+      "aboutFund": "About the Foundation",
+      "reports": "Reports",
+      "partners": "Partners",
+
+      "becomePartner": "Become a Partner",
+      "activeCollections": "Active Collections",
+      "mission": "Our Mission",
+      "vision": "Our Vision",
+      "values": "Amondrex Foundation Values",
+      "howWeWork": "How We Work"
+    },
+
+    "buttons": {
+      "support": "SUPPORT"
+    },
+
+    "language": "EN"
+  }
+}

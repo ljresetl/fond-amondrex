@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import styles from './LanguageSwitcher.module.css';
 
-const LanguageSwitcher: React.FC = () => {
-  const [language, setLanguage] = useState<'UA' | 'EN'>('UA');
+type Props = {
+  onChange: (lang: 'UA' | 'EN') => void;
+};
+
+const LanguageSwitcher: React.FC<Props> = ({ onChange }) => {
+  const [language, setLanguage] = useState<'UA' | 'EN'>(
+    (localStorage.getItem('lang') as 'UA' | 'EN') || 'UA'
+  );
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const switchLanguage = () => {
-    setLanguage(prev => (prev === 'UA' ? 'EN' : 'UA'));
+    const newLang = language === 'UA' ? 'EN' : 'UA';
+    setLanguage(newLang);
+    localStorage.setItem('lang', newLang);
+    onChange(newLang); // ← повідомляємо Header
     setIsOpen(false);
   };
 

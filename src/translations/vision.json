@@ -1,0 +1,19 @@
+{
+  "UA": {
+    "title": "Наше бачення",
+    "p1": "Ми віримо в сильну, незалежну, вільну Україну — країну, де кожен живе у безпеці, гідності й надії.",
+    "p2": "Ми бачимо, як днями та ночами народжується нова реальність:",
+    "li1": "де наші захисники мають усе необхідне спорядження і підтримку, щоб стояти на передовій;",
+    "li2": "де громадяни, волонтери, бізнес і держава працюють як єдиний механізм захисту й відбудови;",
+    "li3": "де тил — це не просто слово, а мовчазна, але потужна сила, яка підсилює фронт."
+  },
+
+  "EN": {
+    "title": "Our Vision",
+    "p1": "We believe in a strong, independent, free Ukraine — a country where everyone lives in safety, dignity, and hope.",
+    "p2": "We see a new reality being born day and night:",
+    "li1": "where our defenders have all the necessary equipment and support to stand on the front line;",
+    "li2": "where citizens, volunteers, businesses, and the state work as a single mechanism of defense and rebuilding;",
+    "li3": "where the home front is not just a word, but a quiet yet powerful force that strengthens the frontline."
+  }
+}

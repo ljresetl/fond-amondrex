@@ -1,11 +1,19 @@
 import React from 'react';
 import styles from './VisionSection.module.css';
+import translations from '../../translations/vision.json';
 
-const VisionSection: React.FC = () => {
+type Props = {
+  lang: 'UA' | 'EN';
+};
+
+const VisionSection: React.FC<Props> = ({ lang }) => {
+  const t = translations[lang];
+
   return (
     <section className={styles.VisionSection}>
       <div className={styles.container}>
-        <h2 id="vision" className={styles.heading}>Наше бачення</h2>
+        
+        <h2 id="vision" className={styles.heading}>{t.title}</h2>
 
         <img
           src="/vision-one.png"
@@ -14,17 +22,13 @@ const VisionSection: React.FC = () => {
           className={styles.photo}
         />
 
-        <p className={styles.text}>
-          Ми віримо в сильну, незалежну, вільну Україну — країну, де кожен живе у безпеці, гідності й надії.
-              </p>
-              
-              <p className={styles.text}>
-          Ми бачимо, як днями та ночами народжується нова реальність:</p>
+        <p className={styles.text}>{t.p1}</p>
+        <p className={styles.text}>{t.p2}</p>
 
         <ul className={styles.list}>
-          <li>де наші захисники мають усе необхідне спорядження і підтримку, щоб стояти на передовій;</li>
-          <li>де громадяни, волонтери, бізнес і держава працюють як єдиний механізм захисту й відбудови;</li>
-          <li>де тил — це не просто слово, а мовчазна, але потужна сила, яка підсилює фронт.</li>
+          <li>{t.li1}</li>
+          <li>{t.li2}</li>
+          <li>{t.li3}</li>
         </ul>
 
         <img

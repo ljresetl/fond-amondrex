@@ -1,30 +1,31 @@
 import React from 'react';
 import styles from './SupportCallSection.module.css';
 import SupportButton from '../header/SupportButton/SupportButton';
+import translations from '../../translations/supportCall.json';
 
-const SupportCallSection: React.FC = () => {
+type Props = {
+  lang: 'UA' | 'EN';
+};
+
+const SupportCallSection: React.FC<Props> = ({ lang }) => {
+  const t = translations[lang];
+
   return (
     <section className={styles.SupportCallSection}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Підтримай тих, хто захищає нас</h2>
+        
+        <h2 className={styles.heading}>{t.title}</h2>
 
         <p className={styles.text}>
-          Волонтери щодня доставляють на фронт необхідне спорядження, техніку та гуманітарну допомогу. <br />
-          Кожна гривня, кожен внесок чи кілька годин твого часу — це реальна підтримка Збройних Сил України. <br />
-          Разом ми сильніші, бо допомагаємо тим, хто боронить нашу свободу.
+          {t.p1} <br />
+          {t.p2} <br />
+          {t.p3}
         </p>
 
         <SupportButton 
-  text="ПІДТРИМАТИ"
-  className={styles.bigButton}
-/>
-
-        {/* <img
-          src="/support-call.png"
-          srcSet="/support-call.png 1x, /support-call@2x.png 2x"
-          alt="Військовий із табличкою 'Хочеш допомогти?'"
-          className={styles.photo}
-        /> */}
+          lang={lang}
+          className={styles.bigButton}
+        />
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-
 import styles from './PartnersModal.module.css';
 import emailjs from '@emailjs/browser';
 import React, { useState, useRef, useEffect } from 'react';
@@ -55,12 +54,23 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
     return inputRefs[field as keyof typeof inputRefs];
   };
 
+  // 🔥 Auto-resize textarea
+  const autoResize = (el: HTMLTextAreaElement) => {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+
     setFormData(prev => ({ ...prev, [name]: value }));
     setErrors(prev => ({ ...prev, [name]: false }));
+
+    if (name === 'proposal') {
+      autoResize(e.target as HTMLTextAreaElement);
+    }
   };
 
   const validate = (): boolean => {
@@ -93,8 +103,8 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
 
     try {
       await emailjs.send(
-        'service_vh68qm5', // ← твій service_id
-        'template_cqhiyc4', // ← твій template_id
+        'service_vh68qm5',
+        'template_cqhiyc4',
         {
           fullName: formData.fullName,
           company: formData.company,
@@ -103,7 +113,7 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
           fundDirection: formData.fundDirection,
           proposal: formData.proposal,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // ← твій public_key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       setSuccessMessage('Форму успішно надіслано! Ми зв’яжемося з вами найближчим часом.');
@@ -136,27 +146,27 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
       proposal: '',
     });
     setErrors({});
-    };
-    
-    useEffect(() => {
-  document.body.classList.add('modal-open');
-  return () => {
-    document.body.classList.remove('modal-open');
   };
-}, []);
 
+  // 🔒 Заборона прокрутки сторінки під модалкою
+  useEffect(() => {
+    document.body.classList.add('modal-open');
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, []);
 
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.header}>
-            <button className={styles.close} onClick={onClose}>×</button>
-    
-            <h2 className={styles.title}>Запропонувати співпрацю</h2>
-            <p className={styles.description}>
-              Щоб запропонувати партнерство, будь ласка, заповніть форму нижче.<br />
-              Ми сконтактуємо протягом кількох робочих днів.
-            </p>
+          <button className={styles.close} onClick={onClose}>×</button>
+
+          <h2 className={styles.title}>Запропонувати співпрацю</h2>
+          <p className={styles.description}>
+            Щоб запропонувати партнерство, будь ласка, заповніть форму нижче.<br />
+            Ми сконтактуємо протягом кількох робочих днів.
+          </p>
         </div>
 
         {successMessage && (

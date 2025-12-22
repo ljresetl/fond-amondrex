@@ -5,6 +5,10 @@ body {
   scroll-behavior: smooth;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 #partners,
 #collections,
 #mission,

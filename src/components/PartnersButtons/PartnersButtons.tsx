@@ -1,43 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './PartnersButtons.module.css';
 
-// Імпортуємо переклади для секції кнопок партнерів.
-// JSON містить тексти для UA та EN.
+// Переклади текстів для кнопок (UA / EN)
 import translations from '../../translations/partnersButtons.json';
 
-// Тип пропсів — компонент отримує лише поточну мову
+// Модальне вікно, яке відкривається при натисканні "Стати партнером"
+import PartnersModal from '../PartnersModal/PartnersModal';
+
 type Props = {
-  lang: 'UA' | 'EN';
+  lang: 'UA' | 'EN'; // Поточна мова інтерфейсу
 };
 
 export const PartnersButtons: React.FC<Props> = ({ lang }) => {
-  // Отримуємо перекладені тексти для поточної мови
+  // Отримуємо перекладені тексти для вибраної мови
   const t = translations[lang];
+
+  // Стан, який керує показом/приховуванням модального вікна
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={styles.PartnersButtons}>
       <div className={styles.container}>
 
-        {/* Заголовок секції — перекладений */}
-        <h2 id="partners" className={styles.heading}>{t.title}</h2>
+        {/* Заголовок секції партнерів */}
+        <h2 id="partners" className={styles.heading}>
+          {t.title}
+        </h2>
 
         {/* 
           Кнопка "Стати партнером".
-          Текст береться з JSON.
+          При натисканні відкриває модальне вікно.
         */}
-        <button className={styles.becomePartner}>
+        <button
+          className={styles.becomePartner}
+          onClick={() => setShowModal(true)} // відкриваємо модалку
+        >
           {t.becomePartner}
         </button>
 
-        {/* 
-          Кнопка "Всі партнери".
-          Також перекладена.
-        */}
+        {/* Кнопка "Всі партнери" (поки без логіки) */}
         <button className={styles.allPartners}>
           {t.allPartners}
         </button>
-
       </div>
+
+      {/* 
+        Якщо showModal === true → показуємо модальне вікно.
+        Передаємо в нього onClose, щоб модалка могла себе закрити.
+      */}
+      {showModal && (
+        <PartnersModal onClose={() => setShowModal(false)} />
+      )}
     </div>
   );
 };

@@ -103,7 +103,7 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
           fundDirection: formData.fundDirection,
           proposal: formData.proposal,
         },
-        'KGeilC1yaVW-Z__2Y' // ← твій public_key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // ← твій public_key
       );
 
       setSuccessMessage('Форму успішно надіслано! Ми зв’яжемося з вами найближчим часом.');

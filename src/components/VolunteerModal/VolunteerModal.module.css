@@ -120,6 +120,19 @@
   color: #090e0f;
 }
 
+.labelText {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: "Roboto Condensed", sans-serif;
+  color: #090e0f;
+}
+.asterisk {
+  color: #ff0404;
+  margin-left: 4px;
+}
+
 /* Інпути */
 .input {
   width: 100%;

@@ -3,13 +3,21 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
-import type { ChangeEvent, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from "react";
 
 import styles from './VolunteerModal.module.css';
+import RegionInput from './RegionInput/RegionInput';
+import CityInput from "./CityInput/CityInput";
+import PhoneInput from "./PhoneInput/PhoneInput";
+import emailjs from '@emailjs/browser';
 
 type Props = {
   onClose: () => void;
+  onSuccess: () => void; // ← додано
 };
+
+
+
 
 type FormData = {
   type: 'Постійне волонтерство' | 'Резерв' | '';
@@ -26,12 +34,12 @@ type FormData = {
   publicSpeaking: string;
   seminarExperience: string;
   interestAreas: string[];
-    interestComment: string;
-    monthlyHours: string;
-    availableDays: string;
-    principlesAgreement: 'Так' | 'Ні' | 'Не знайомий(а)' | '';
-    comments: string;
-    consent: boolean;
+  interestComment: string;
+  monthlyHours: string;
+  availableDays: string;
+  principlesAgreement: 'Так' | 'Ні' | 'Не знайомий(а)' | '';
+  comments: string;
+  consent: boolean;
 };
 
 type FormErrors = Partial<Record<keyof FormData, boolean>>;
@@ -50,19 +58,57 @@ const REQUIRED_FIELDS: (keyof FormData)[] = [
   'experience',
   'publicSpeaking',
   'seminarExperience',
-    'interestComment',
+  'interestComment',
   'monthlyHours',
-'availableDays',
-'principlesAgreement',
-'consent',
-
+  'availableDays',
+  'principlesAgreement',
+  'consent',
 ];
 
-const VolunteerModal: React.FC<Props> = ({ onClose }) => {
-const [formData, setFormData] = useState<FormData>({ type: '', fullName: '', birthDate: '', region: '', city: '', phone: '', email: '', workplace: '', languages: '', transport: '', experience: '', publicSpeaking: '', seminarExperience: '', interestAreas: [], interestComment: '', monthlyHours: '', availableDays: '', principlesAgreement: '', comments: '', consent: false, });
+const bannedEmailDomains = [
+  "mail.ru",
+  "bk.ru",
+  "list.ru",
+  "inbox.ru",
+  "yandex.ru",
+  "ya.ru",
+  "rambler.ru",
+  "ro.ru",
+  "pochta.ru",
+  "myrambler.ru",
+  "internet.ru",
+  "hotmail.ru",
+  "outlook.ru",
+  "live.ru"
+];
+
+const VolunteerModal: React.FC<Props> = ({ onClose, onSuccess }) => {
+
+
+  const [formData, setFormData] = useState<FormData>({
+    type: '',
+    fullName: '',
+    birthDate: '',
+    region: '',
+    city: '',
+    phone: '',
+    email: '',
+    workplace: '',
+    languages: '',
+    transport: '',
+    experience: '',
+    publicSpeaking: '',
+    seminarExperience: '',
+    interestAreas: [],
+    interestComment: '',
+    monthlyHours: '',
+    availableDays: '',
+    principlesAgreement: '',
+    comments: '',
+    consent: false,
+  });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [successMessage, setSuccessMessage] = useState<string>('');
 
   // Strict refs
   const typeRef = useRef<HTMLSelectElement>(null);
@@ -78,13 +124,12 @@ const [formData, setFormData] = useState<FormData>({ type: '', fullName: '', bir
   const experienceRef = useRef<HTMLInputElement>(null);
   const publicSpeakingRef = useRef<HTMLInputElement>(null);
   const seminarRef = useRef<HTMLInputElement>(null);
-    const interestCommentRef = useRef<HTMLInputElement>(null);
-    const monthlyHoursRef = useRef<HTMLInputElement>(null);
-const availableDaysRef = useRef<HTMLInputElement>(null);
-const principlesRef = useRef<HTMLInputElement>(null);
-const commentsRef = useRef<HTMLInputElement>(null);
-const consentRef = useRef<HTMLInputElement>(null);
-
+  const interestCommentRef = useRef<HTMLInputElement>(null);
+  const monthlyHoursRef = useRef<HTMLInputElement>(null);
+  const availableDaysRef = useRef<HTMLInputElement>(null);
+  const principlesRef = useRef<HTMLInputElement>(null);
+  const commentsRef = useRef<HTMLInputElement>(null);
+  const consentRef = useRef<HTMLInputElement>(null);
 
   const getRefByField = (field: keyof FormData) => {
     switch (field) {
@@ -102,12 +147,12 @@ const consentRef = useRef<HTMLInputElement>(null);
       case 'publicSpeaking': return publicSpeakingRef;
       case 'seminarExperience': return seminarRef;
       case 'interestComment': return interestCommentRef;
-        default: return null;
-        case 'principlesAgreement': return principlesRef;
-        case 'monthlyHours': return monthlyHoursRef;
-        case 'availableDays': return availableDaysRef;
-        case 'comments': return commentsRef;
-        case 'consent': return consentRef;
+      case 'monthlyHours': return monthlyHoursRef;
+      case 'availableDays': return availableDaysRef;
+      case 'principlesAgreement': return principlesRef;
+      case 'comments': return commentsRef;
+      case 'consent': return consentRef;
+      default: return null;
     }
   };
 
@@ -119,62 +164,182 @@ const consentRef = useRef<HTMLInputElement>(null);
     setErrors(prev => ({ ...prev, [name]: false }));
   };
 
-  const validate = (): boolean => {
-    const newErrors: FormErrors = {};
+  const handleBirthDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
 
-    REQUIRED_FIELDS.forEach(field => {
-      if (!formData[field].toString().trim()) {
-        newErrors[field] = true;
-      }
-    });
+    value = value.replace(/\D/g, "");
 
-    setErrors(newErrors);
-
-    const firstError = Object.keys(newErrors)[0] as keyof FormData | undefined;
-
-    if (firstError) {
-      const ref = getRefByField(firstError);
-      ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      ref?.current?.focus();
-      return false;
+    if (value.length > 2) {
+      value = value.slice(0, 2) + "." + value.slice(2);
     }
 
-    return true;
+    if (value.length > 5) {
+      value = value.slice(0, 5) + "." + value.slice(5);
+    }
+
+    if (value.length > 10) {
+      value = value.slice(0, 10);
+    }
+
+    setFormData(prev => ({ ...prev, birthDate: value }));
+    setErrors(prev => ({ ...prev, birthDate: false }));
   };
 
-  const handleSubmit = () => {
-    if (!validate()) return;
+const validate = (): boolean => {
+  const newErrors: FormErrors = {};
+  let valid = true;
 
-    setSuccessMessage('Дякуємо! Ваша заявка волонтера надіслана.');
+  // Required fields
+  REQUIRED_FIELDS.forEach(field => {
+    if (!formData[field].toString().trim()) {
+      newErrors[field] = true;
+      valid = false;
+    }
+  });
 
-setFormData({ type: '', fullName: '', birthDate: '', region: '', city: '', phone: '', email: '', workplace: '', languages: '', transport: '', experience: '', publicSpeaking: '', seminarExperience: '', interestAreas: [], interestComment: '', monthlyHours: '', availableDays: '', principlesAgreement: '', comments: '', consent: false, });
+  // Email format
+  const email = formData.email.trim();
+  const domain = email.split("@")[1]?.toLowerCase();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    setErrors({});
-  };
+  if (!emailRegex.test(email)) {
+    newErrors.email = true;
+    valid = false;
+  }
+
+  // Russian domains
+  if (domain && bannedEmailDomains.includes(domain)) {
+    newErrors.email = true;
+    valid = false;
+  }
+
+  // Phone +380XXXXXXXXX
+  const phoneRegex = /^\+380\d{9}$/;
+  if (!phoneRegex.test(formData.phone)) {
+    newErrors.phone = true;
+    valid = false;
+  }
+
+  // Birthdate DD.MM.YYYY
+  const birthDateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
+  if (!birthDateRegex.test(formData.birthDate)) {
+    newErrors.birthDate = true;
+    valid = false;
+  }
+
+  setErrors(newErrors);
+
+  const firstError = Object.keys(newErrors)[0] as keyof FormData | undefined;
+
+  if (firstError) {
+    const ref = getRefByField(firstError);
+    ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    ref?.current?.focus();
+    return false;
+  }
+
+  return valid;
+};
+
+
+
+const handleSubmit = () => {
+  if (!validate()) return;
+
+  // Відправка email через EmailJS
+  emailjs.send(
+    'service_u7frcyg',
+    'template_a0erbo2',
+    {
+      type: formData.type,
+      fullName: formData.fullName,
+      birthDate: formData.birthDate,
+      region: formData.region,
+      city: formData.city,
+      phone: formData.phone,
+      email: formData.email,
+      workplace: formData.workplace,
+      languages: formData.languages,
+      transport: formData.transport,
+      experience: formData.experience,
+      publicSpeaking: formData.publicSpeaking,
+      seminarExperience: formData.seminarExperience,
+      interestAreas: formData.interestAreas.join(', '),
+      interestComment: formData.interestComment,
+      monthlyHours: formData.monthlyHours,
+      availableDays: formData.availableDays,
+      principlesAgreement: formData.principlesAgreement,
+      comments: formData.comments,
+      consent: formData.consent ? 'Так' : 'Ні'
+    },
+    'KGeilC1yaVW-Z__2Y'
+  )
+  .then(() => {
+    console.log("Email sent successfully");
+  })
+  .catch((error) => {
+    console.error("Email sending error:", error);
+  });
+
+  // Закриваємо модалку
+  onClose();
+
+  // Показуємо повідомлення
+  setTimeout(() => {
+    onSuccess();
+  }, 300);
+
+  // Очищаємо форму
+  setFormData({
+    type: '',
+    fullName: '',
+    birthDate: '',
+    region: '',
+    city: '',
+    phone: '',
+    email: '',
+    workplace: '',
+    languages: '',
+    transport: '',
+    experience: '',
+    publicSpeaking: '',
+    seminarExperience: '',
+    interestAreas: [],
+    interestComment: '',
+    monthlyHours: '',
+    availableDays: '',
+    principlesAgreement: '',
+    comments: '',
+    consent: false,
+  });
+
+  setErrors({});
+};
+
 
   const handleClear = () => {
-setFormData({
-  type: '',
-  fullName: '',
-  birthDate: '',
-  region: '',
-  city: '',
-  phone: '',
-  email: '',
-  workplace: '',
-  languages: '',
-  transport: '',
-  experience: '',
-  publicSpeaking: '',
-  seminarExperience: '',
-  interestAreas: [],
-  interestComment: '',
-  monthlyHours: '',
-  availableDays: '',
-  principlesAgreement: '',
-  comments: '',
-  consent: false,
-});
+    setFormData({
+      type: '',
+      fullName: '',
+      birthDate: '',
+      region: '',
+      city: '',
+      phone: '',
+      email: '',
+      workplace: '',
+      languages: '',
+      transport: '',
+      experience: '',
+      publicSpeaking: '',
+      seminarExperience: '',
+      interestAreas: [],
+      interestComment: '',
+      monthlyHours: '',
+      availableDays: '',
+      principlesAgreement: '',
+      comments: '',
+      consent: false,
+    });
 
     setErrors({});
   };
@@ -185,6 +350,10 @@ setFormData({
       document.body.classList.remove('modal-open');
     };
   }, []);
+
+  // (Тут далі йде JSX форми — ти вже маєш його)
+
+
     
 
   return (
@@ -202,11 +371,6 @@ setFormData({
           </span>
         </p>
       </div>
-
-      {successMessage && (
-        <div className={styles.successMessage}>{successMessage}</div>
-      )}
-
       <form
         className={styles.form}
         onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}
@@ -257,7 +421,7 @@ setFormData({
             ref={birthDateRef}
             name="birthDate"
             value={formData.birthDate}
-            onChange={handleChange}
+            onChange={handleBirthDateChange}
             className={errors.birthDate ? styles.errorInput : styles.input}
             placeholder="ДД.ММ.РРРР"
           />
@@ -269,47 +433,35 @@ setFormData({
             4. Область <span className={styles.asterisk}>*</span>
           </span>
 
-          <input
-            ref={regionRef}
-            name="region"
-            value={formData.region}
-            onChange={handleChange}
-            className={errors.region ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
+            <RegionInput value={formData.region}
+              onChange={(value) => setFormData(prev =>
+                ({ ...prev, region: value }))}
+              error={errors.region} />
         </label>
 
         {/* 5 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            5. Місто <span className={styles.asterisk}>*</span>
-          </span>
-
-          <input
-            ref={cityRef}
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            className={errors.city ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+          <label className={styles.label}>
+            <span className={styles.labelText}>
+              5. Місто <span className={styles.asterisk}>*</span> </span>
+            <CityInput value={formData.city}
+              onChange={(value: string)  => setFormData(prev => ({ ...prev, city: value }))} error={errors.city} />
+          </label>
 
         {/* 6 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            6. Телефон <span className={styles.asterisk}>*</span>
-          </span>
+      <label className={styles.label}>
+  <span className={styles.labelText}>
+    6. Телефон <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={phoneRef}
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={errors.phone ? styles.errorInput : styles.input}
-            placeholder="+380..."
-          />
-        </label>
+  <PhoneInput
+    value={formData.phone}
+    onChange={(value) =>
+      setFormData(prev => ({ ...prev, phone: value }))
+    }
+    error={errors.phone}
+  />
+</label>
+
 
         {/* 7 */}
         <label className={styles.label}>

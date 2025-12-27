@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './HeroBlock.module.css';
 
 import translations from '../../translations/hero.json';
-import VolunteerModal from '../VolunteerModal/VolunteerModal';
 
 type Props = {
   lang: 'UA' | 'EN';
+  openVolunteerModal: () => void; // ← отримуємо з App.tsx
 };
 
-const HeroBlock: React.FC<Props> = ({ lang }) => {
-  const [showVolunteerModal, setShowVolunteerModal] = useState(false);
-
+const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
   const t = translations[lang];
 
   return (
@@ -36,18 +34,13 @@ const HeroBlock: React.FC<Props> = ({ lang }) => {
 
           <button
             className={styles.secondaryBtn}
-            onClick={() => setShowVolunteerModal(true)}
+            onClick={openVolunteerModal} // ← відкриваємо модалку з App.tsx
           >
             {t.volunteerBtn}
           </button>
         </div>
 
       </div>
-
-      {/* Модалка */}
-      {showVolunteerModal && (
-        <VolunteerModal onClose={() => setShowVolunteerModal(false)} />
-      )}
     </section>
   );
 };

@@ -11,13 +11,16 @@ import HowWeWorkSection from './components/HowWeWorkSection/HowWeWorkSection'
 import SupportCallSection from './components/SupportCallSection/SupportCallSection'
 import Footer from './components/Footer/Footer'
 import VolunteerModal from './components/VolunteerModal/VolunteerModal'
+import PartnersModal from './components/PartnersModal/PartnersModal'
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<'UA' | 'EN'>(
     (localStorage.getItem('lang') as 'UA' | 'EN') || 'UA'
   )
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isVolunteerModalOpen, setIsVolunteerModalOpen] = useState(false)
+  const [isPartnersModalOpen, setIsPartnersModalOpen] = useState(false)
+
   const [successMessage, setSuccessMessage] = useState('')
 
   const handleSuccess = () => {
@@ -32,8 +35,14 @@ const App: React.FC = () => {
     <>
       <Header lang={lang} setLang={setLang} />
 
-      <HeroBlock lang={lang} openVolunteerModal={() => setIsModalOpen(true)} />
-      <PartnersButtons lang={lang} />
+      <HeroBlock lang={lang} openVolunteerModal={() => setIsVolunteerModalOpen(true)} />
+
+      <PartnersButtons
+  lang={lang}
+  onSuccess={handleSuccess}
+/>
+
+
       <ActiveSection lang={lang} />
       <MissionSection lang={lang} />
       <VisionSection lang={lang} />
@@ -42,9 +51,16 @@ const App: React.FC = () => {
       <SupportCallSection lang={lang} />
       <Footer lang={lang} />
 
-      {isModalOpen && (
+      {isVolunteerModalOpen && (
         <VolunteerModal
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => setIsVolunteerModalOpen(false)}
+          onSuccess={handleSuccess}
+        />
+      )}
+
+      {isPartnersModalOpen && (
+        <PartnersModal
+          onClose={() => setIsPartnersModalOpen(false)}
           onSuccess={handleSuccess}
         />
       )}

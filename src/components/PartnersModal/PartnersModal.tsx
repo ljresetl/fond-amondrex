@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 type Props = {
   onClose: () => void;
-  onSuccess: () => void; // 🔥 ДОДАНО
+  onSuccess: () => void;
 };
 
 type FormData = {
@@ -113,13 +113,9 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      // 🔥 1. Закриваємо модалку
       onClose();
-
-      // 🔥 2. Показуємо success‑повідомлення на головній
       onSuccess();
 
-      // 🔥 3. Очищаємо форму
       setFormData({
         fullName: '',
         company: '',
@@ -158,7 +154,14 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
   }, []);
 
   return (
-    <div className={styles.overlay}>
+    <div
+      className={styles.overlay}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
       <div className={styles.modal}>
         <div className={styles.header}>
           <button className={styles.close} onClick={onClose}>×</button>

@@ -37,19 +37,25 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSending, setIsSending] = useState(false);
 
-  const inputRefs = {
-    fullName: useRef<HTMLInputElement>(null),
-    company: useRef<HTMLInputElement>(null),
-    email: useRef<HTMLInputElement>(null),
-    cooperationType: useRef<HTMLInputElement>(null),
-    fundDirection: useRef<HTMLInputElement>(null),
-  };
-
+  // 🔥 КОЖЕН REF ОКРЕМО (ПРАВИЛЬНО)
+  const fullNameRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const cooperationTypeRef = useRef<HTMLInputElement>(null);
+  const fundDirectionRef = useRef<HTMLInputElement>(null);
   const proposalRef = useRef<HTMLTextAreaElement>(null);
 
+  // 🔥 Мапа для фокусування
   const getRefByField = (field: keyof FormData) => {
-    if (field === 'proposal') return proposalRef;
-    return inputRefs[field as keyof typeof inputRefs];
+    switch (field) {
+      case 'fullName': return fullNameRef;
+      case 'company': return companyRef;
+      case 'email': return emailRef;
+      case 'cooperationType': return cooperationTypeRef;
+      case 'fundDirection': return fundDirectionRef;
+      case 'proposal': return proposalRef;
+      default: return null;
+    }
   };
 
   const autoResize = (el: HTMLTextAreaElement) => {
@@ -93,26 +99,25 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
     return true;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!validate()) return;
 
     setIsSending(true);
 
-    try {
-      await emailjs.send(
-        'service_vh68qm5',
-        'template_cqhiyc4',
-        {
-          fullName: formData.fullName,
-          company: formData.company,
-          email: formData.email,
-          cooperationType: formData.cooperationType,
-          fundDirection: formData.fundDirection,
-          proposal: formData.proposal,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-
+    emailjs.send(
+      'service_vh68qm5',
+      'template_cqhiyc4',
+      {
+        fullName: formData.fullName,
+        company: formData.company,
+        email: formData.email,
+        cooperationType: formData.cooperationType,
+        fundDirection: formData.fundDirection,
+        proposal: formData.proposal,
+      },
+      'KGeilC1yaVW-Z__2Y' // твій public key
+    )
+    .then(() => {
       onClose();
       onSuccess();
 
@@ -126,12 +131,14 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
       });
 
       setErrors({});
-    } catch (error) {
+    })
+    .catch((error) => {
       alert('Помилка при надсиланні форми.');
-      console.error(error);
-    } finally {
+      console.error('Email sending error:', error);
+    })
+    .finally(() => {
       setIsSending(false);
-    }
+    });
   };
 
   const handleClear = () => {
@@ -157,9 +164,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
     <div
       className={styles.overlay}
       onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          onClose();
-        }
+        if (e.target === e.currentTarget) onClose();
       }}
     >
       <div className={styles.modal}>
@@ -173,11 +178,11 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
           </p>
         </div>
 
-        <form className={styles.form} onSubmit={e => e.preventDefault()}>
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <label className={styles.label}>
             Прізвище та ім’я *
             <input
-              ref={inputRefs.fullName}
+              ref={fullNameRef}
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
@@ -189,7 +194,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
           <label className={styles.label}>
             Найменування юридичної особи (компанії)
             <input
-              ref={inputRefs.company}
+              ref={companyRef}
               name="company"
               value={formData.company}
               onChange={handleChange}
@@ -201,7 +206,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
           <label className={styles.label}>
             Електронна пошта *
             <input
-              ref={inputRefs.email}
+              ref={emailRef}
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -213,7 +218,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
           <label className={styles.label}>
             Вид співпраці *
             <input
-              ref={inputRefs.cooperationType}
+              ref={cooperationTypeRef}
               name="cooperationType"
               value={formData.cooperationType}
               onChange={handleChange}
@@ -225,7 +230,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
           <label className={styles.label}>
             Напрям фонду
             <input
-              ref={inputRefs.fundDirection}
+              ref={fundDirectionRef}
               name="fundDirection"
               value={formData.fundDirection}
               onChange={handleChange}

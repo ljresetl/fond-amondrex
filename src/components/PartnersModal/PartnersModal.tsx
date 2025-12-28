@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 type Props = {
   onClose: () => void;
+  onSuccess: () => void; // 🔥 ДОДАНО
 };
 
 type FormData = {
@@ -23,7 +24,7 @@ const REQUIRED_FIELDS: (keyof FormData)[] = [
   'cooperationType',
 ];
 
-const PartnersModal: React.FC<Props> = ({ onClose }) => {
+const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     company: '',
@@ -35,9 +36,7 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSending, setIsSending] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
 
-  // Рефи для input
   const inputRefs = {
     fullName: useRef<HTMLInputElement>(null),
     company: useRef<HTMLInputElement>(null),
@@ -46,7 +45,6 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
     fundDirection: useRef<HTMLInputElement>(null),
   };
 
-  // Реф для textarea
   const proposalRef = useRef<HTMLTextAreaElement>(null);
 
   const getRefByField = (field: keyof FormData) => {
@@ -54,7 +52,6 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
     return inputRefs[field as keyof typeof inputRefs];
   };
 
-  // 🔥 Auto-resize textarea
   const autoResize = (el: HTMLTextAreaElement) => {
     el.style.height = 'auto';
     el.style.height = el.scrollHeight + 'px';
@@ -116,8 +113,13 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      setSuccessMessage('Форму успішно надіслано! Ми зв’яжемося з вами найближчим часом.');
+      // 🔥 1. Закриваємо модалку
+      onClose();
 
+      // 🔥 2. Показуємо success‑повідомлення на головній
+      onSuccess();
+
+      // 🔥 3. Очищаємо форму
       setFormData({
         fullName: '',
         company: '',
@@ -148,7 +150,6 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
     setErrors({});
   };
 
-  // 🔒 Заборона прокрутки сторінки під модалкою
   useEffect(() => {
     document.body.classList.add('modal-open');
     return () => {
@@ -168,10 +169,6 @@ const PartnersModal: React.FC<Props> = ({ onClose }) => {
             Ми сконтактуємо протягом кількох робочих днів.
           </p>
         </div>
-
-        {successMessage && (
-          <div className={styles.successMessage}>{successMessage}</div>
-        )}
 
         <form className={styles.form} onSubmit={e => e.preventDefault()}>
           <label className={styles.label}>

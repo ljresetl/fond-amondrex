@@ -1,20 +1,28 @@
 .header {
   width: 100%;
-  /* border-bottom: 1px solid #e0e0e0; */
   background-color: #c5d3ff;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+/* 📱 Мобільна версія (0–767px) */
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   max-width: 343px;
+}
+
+.rightButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 /* кнопки з іконками */
@@ -40,4 +48,87 @@
 .iconBtn img {
   width: 24px;
   height: 24px;
+}
+
+.nav {
+  display: none;
+}
+
+/* 📲 Планшет (768–834px) */
+@media (min-width: 768px) and (max-width: 834px) {
+  .container {
+    padding: 0 24px;
+    max-width: 768px;
+    width: 100%;
+    gap: 38px;
+  }
+
+  .iconBtn {
+    display: none;
+  }
+  .nav {
+    display: block;
+  }
+
+  .rightButtons {
+    flex-direction: row-reverse;
+  }
+
+  .list {
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #090e0f;
+  }
+
+  .moreWrapper {
+    position: relative;
+  }
+  .moreBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 8px;
+    padding: 0;
+  }
+  .dropdown {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    padding: 8px 0;
+    list-style: none;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 10;
+  }
+  .dropdown li {
+    padding: 6px 16px;
+  }
+  .dropdown li a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    display: block;
+  }
+  .dropdown li:hover {
+    background: #f0f0f0;
+  }
+
+  .chevron {
+    font-size: 18px;
+    color: #090e0f;
+    vertical-align: middle;
+  }
 }

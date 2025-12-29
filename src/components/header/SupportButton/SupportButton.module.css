@@ -21,3 +21,14 @@
 .supportBtn:hover {
   background: #ffca28;
 }
+
+@media (min-width: 768px) and (max-width: 834px) {
+  .supportBtn {
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 93px;
+    padding: 10px 14px;
+    width: 134px;
+    height: 46px;
+  }
+}

@@ -5,7 +5,7 @@ import translations from '../../translations/hero.json';
 
 type Props = {
   lang: 'UA' | 'EN';
-  openVolunteerModal: () => void; // ← отримуємо з App.tsx
+  openVolunteerModal: () => void;
 };
 
 const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
@@ -16,13 +16,44 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
       <div className={styles.container}>
 
         <div className={styles.content}>
-          <img
-            src="/hero-photo.png"
-            srcSet="/hero-photo.png 1x, /hero-photo@2x.png 2x"
-            alt="Hero"
-            className={styles.heroImage}
-          />
-  
+
+          {/* Адаптивне зображення для телефону / планшету */}
+          <picture>
+
+            {/* Планшет Retina */}
+            <source
+              srcSet="/hero-tablet@2x.png"
+              media="(min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), 
+                     (min-width: 768px) and (min-resolution: 192dpi)"
+            />
+
+            {/* Планшет звичайний */}
+            <source
+              srcSet="/hero-tablet.png"
+              media="(min-width: 768px)"
+            />
+
+            {/* Телефон Retina */}
+            <source
+              srcSet="/hero-photo@2x.png"
+              media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), 
+                     (max-width: 767px) and (min-resolution: 192dpi)"
+            />
+
+            {/* Телефон звичайний */}
+            <source
+              srcSet="/hero-photo.png"
+              media="(max-width: 767px)"
+            />
+
+            {/* Фолбек */}
+            <img
+              src="/hero-photo.png"
+              alt="Hero"
+              className={styles.heroImage}
+            />
+          </picture>
+
           <div className={styles.text}>
             <p className={styles.subtitle}>{t.subtitle}</p>
             <h1 className={styles.title}>{t.title}</h1>
@@ -36,7 +67,7 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
 
           <button
             className={styles.secondaryBtn}
-            onClick={openVolunteerModal} // ← відкриваємо модалку з App.tsx
+            onClick={openVolunteerModal}
           >
             {t.volunteerBtn}
           </button>

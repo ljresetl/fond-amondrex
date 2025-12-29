@@ -15,16 +15,18 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
     <section className={styles.hero}>
       <div className={styles.container}>
 
-        <img
-          src="/hero-photo.png"
-          srcSet="/hero-photo.png 1x, /hero-photo@2x.png 2x"
-          alt="Hero"
-          className={styles.heroImage}
-        />
-
-        <div className={styles.text}>
-          <p className={styles.subtitle}>{t.subtitle}</p>
-          <h1 className={styles.title}>{t.title}</h1>
+        <div className={styles.content}>
+          <img
+            src="/hero-photo.png"
+            srcSet="/hero-photo.png 1x, /hero-photo@2x.png 2x"
+            alt="Hero"
+            className={styles.heroImage}
+          />
+  
+          <div className={styles.text}>
+            <p className={styles.subtitle}>{t.subtitle}</p>
+            <h1 className={styles.title}>{t.title}</h1>
+          </div>
         </div>
 
         <div className={styles.buttons}>

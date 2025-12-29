@@ -1,31 +1,29 @@
 .hero {
-  width: 100%;
+  /* width: 100%; */
   background-color: #15004c;
   padding: 24px 0px;
 }
 
 .container {
-  width: 100%;
-  /* max-width: 800px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
   text-align: center;
+  max-width: 343px;
   width: 100%;
-  width: 343px;
   padding: 0 16px;
   margin: 0 auto;
 }
 
 /* Фото */
 .heroImage {
-  width: 100%;
+  /* width: 100%; */
   max-width: 600px;
   height: auto;
-  aspect-ratio: 343 / 241;
-  object-fit: cover;
-  border-radius: 16px;
+  /* aspect-ratio: 343 / 241; */
+  /* object-fit: cover; */
+  /* border-radius: 16px; */
 }
 
 /* Текст */
@@ -105,4 +103,77 @@
   text-align: center;
   color: #090e0f;
   width: 100%;
+}
+
+/* 📲 Планшет (768–834px) */
+@media (min-width: 768px) and (max-width: 834px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 24px;
+    min-width: 720px;
+    width: 100%;
+    gap: 38px;
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .heroImage {
+    flex: 1; /* ← однакова ширина */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .text {
+    flex: 1; /* ← однакова ширина */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0;
+  }
+  .title {
+    font-weight: 900;
+    font-size: 46px;
+    color: #f9dd5a;
+    margin: 0;
+  }
+
+  .subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    color: #f9dd5a;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: flex-start; /* ← прибиває кнопки вліво */
+  }
+
+  .primaryBtn {
+    border-radius: 58px;
+    padding: 20px 24px;
+    width: 100%;
+    max-width: 251px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .secondaryBtn {
+    border-radius: 58px;
+    padding: 20px 24px;
+    width: 100%;
+    max-width: 251px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+  }
 }

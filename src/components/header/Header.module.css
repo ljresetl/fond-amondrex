@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* min-width: 343px; */
   width: 100%;
   max-width: 343px;
 }
@@ -54,11 +55,11 @@
   display: none;
 }
 
-/* 📲 Планшет (768–834px) */
-@media (min-width: 768px) and (max-width: 834px) {
+/* 📲 Планшет (786–834px) */
+@media (min-width: 786px) and (max-width: 834px) {
   .container {
     padding: 0 24px;
-    max-width: 720px;
+    max-width: 738px;
     width: 100%;
     gap: 38px;
   }
@@ -81,6 +82,17 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #090e0f;
+  }
+
+  .list a {
+    font-family: "Open Sans", sans-serif;
     list-style: none;
     padding: 0;
     margin: 0;

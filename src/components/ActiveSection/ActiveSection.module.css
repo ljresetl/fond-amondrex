@@ -9,6 +9,10 @@
   margin: 0 auto;
   padding: 0 16px;
   font-family: "Montserrat", sans-serif;
+  @media (min-width: 786px) and (max-width: 834px) {
+    min-width: 738px;
+    padding: 0 24px;
+  }
 }
 
 .heading {
@@ -25,6 +29,11 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 30px;
+  @media (min-width: 786px) and (max-width: 834px) {
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
 .statCard {
@@ -32,6 +41,10 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
+  @media (min-width: 786px) and (max-width: 834px) {
+    flex: none;
+    width: 160px;
+  }
 }
 
 .statValue {
@@ -40,6 +53,9 @@
   text-align: center;
   color: #090e0f;
   margin-bottom: 9px;
+  @media (min-width: 786px) and (max-width: 834px) {
+    font-size: 38px;
+  }
 }
 
 .statLabel {
@@ -48,15 +64,27 @@
   text-align: center;
   color: #090e0f;
   font-family: "Open Sans", sans-serif;
+  @media (min-width: 786px) and (max-width: 834px) {
+    font-size: 16px;
+  }
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  @media (min-width: 786px) and (max-width: 834px) {
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
 }
 
 .photo {
   border-radius: 7px;
   object-fit: cover; /* щоб картинка не спотворювалась */
+  @media (min-width: 786px) and (max-width: 834px) {
+    width: 166px;
+    height: 314px;
+  }
 }

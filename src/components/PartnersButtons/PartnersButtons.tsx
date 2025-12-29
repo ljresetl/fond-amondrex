@@ -19,16 +19,18 @@ export const PartnersButtons: React.FC<Props> = ({ lang, onSuccess }) => {
           {t.title}
         </h2>
 
-        <button
-          className={styles.becomePartner}
-          onClick={() => setShowModal(true)}
-        >
-          {t.becomePartner}
-        </button>
-
-        <button className={styles.allPartners}>
-          {t.allPartners}
-        </button>
+        <div className={styles.buttons}>
+          <button
+            className={styles.becomePartner}
+            onClick={() => setShowModal(true)}
+          >
+            {t.becomePartner}
+          </button>
+  
+          <button className={styles.allPartners}>
+            {t.allPartners}
+          </button>
+        </div>
       </div>
 
       {showModal && (

@@ -54,31 +54,61 @@ export const ActiveSection: React.FC<Props> = ({ lang }) => {
           якщо хочеш повний переклад.
         */}
         <div className={styles.gallery}>
-          <img
-            src="/img1.png"
-            srcSet="/img1.png 1x, /img1@2x.png 2x"
-            alt="Єдність"
-            className={styles.photo}
-          />
-          <img
-            src="/img2.png"
-            srcSet="/img2.png 1x, /img2@2x.png 2x"
-            alt="Боєць з прапором"
-            className={styles.photo}
-          />
-          <img
-            src="/img3.png"
-            srcSet="/img3.png 1x, /img3@2x.png 2x"
-            alt="Ангел"
-            className={styles.photo}
-          />
-          <img
-            src="/img4.png"
-            srcSet="/img4.png 1x, /img4@2x.png 2x"
-            alt="Камуфляж"
-            className={styles.photo}
-          />
-        </div>
+
+  <picture>
+    {/* Планшет Retina */}
+    <source
+      srcSet="/img1-tablet@2x.png"
+      media="(min-width: 768px) and (min-resolution: 192dpi)"
+    />
+
+    {/* Планшет */}
+    <source
+      srcSet="/img1-tablet.png"
+      media="(min-width: 768px)"
+    />
+
+    {/* Мобільний Retina */}
+    <source
+      srcSet="/img1@2x.png"
+      media="(max-width: 767px) and (min-resolution: 192dpi)"
+    />
+
+    {/* Мобільний */}
+    <source
+      srcSet="/img1.png"
+      media="(max-width: 767px)"
+    />
+
+    <img src="/img1.png" alt="Єдність" className={styles.photo} />
+  </picture>
+
+  <picture>
+    <source srcSet="/img2-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" />
+    <source srcSet="/img2-tablet.png" media="(min-width: 768px)" />
+    <source srcSet="/img2@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" />
+    <source srcSet="/img2.png" media="(max-width: 767px)" />
+    <img src="/img2.png" alt="Боєць з прапором" className={styles.photo} />
+  </picture>
+
+  <picture>
+    <source srcSet="/img3-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" />
+    <source srcSet="/img3-tablet.png" media="(min-width: 768px)" />
+    <source srcSet="/img3@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" />
+    <source srcSet="/img3.png" media="(max-width: 767px)" />
+    <img src="/img3.png" alt="Ангел" className={styles.photo} />
+  </picture>
+
+  <picture>
+    <source srcSet="/img4-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" />
+    <source srcSet="/img4-tablet.png" media="(min-width: 768px)" />
+    <source srcSet="/img4@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" />
+    <source srcSet="/img4.png" media="(max-width: 767px)" />
+    <img src="/img4.png" alt="Камуфляж" className={styles.photo} />
+  </picture>
+
+</div>
+
 
       </div>
     </div>

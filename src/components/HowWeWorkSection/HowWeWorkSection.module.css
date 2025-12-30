@@ -12,6 +12,11 @@
   gap: 24px;
   display: flex;
   flex-direction: column;
+  @media (min-width: 786px) {
+    min-width: 738px;
+    padding: 0 24px;
+    gap: 40px;
+  }
 }
 
 .heading {
@@ -20,6 +25,19 @@
   line-height: 1.2;
   letter-spacing: 0.03em;
   color: #15004c;
+}
+@media (min-width: 786px) {
+  .content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .texts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
 .text {
@@ -47,4 +65,38 @@
   color: #090e0f;
   font-weight: 700;
   font-size: 24px;
+}
+
+/* Перше фото — завжди видно */
+.foto_main {
+  display: block;
+}
+
+/* Друге фото — приховане на мобільному */
+.foto_tabletOnly {
+  display: none;
+}
+
+/* 📱 Мобільні розміри для обох фото */
+.foto_main img,
+.foto_tabletOnly img {
+  width: 343px;
+  height: 428px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* На планшеті — показуємо друге фото + змінюємо розміри */
+@media (min-width: 786px) {
+  .foto_tabletOnly {
+    display: block;
+  }
+
+  .foto_main img,
+  .foto_tabletOnly img {
+    width: 385px;
+    height: 411px;
+    border-radius: 16px;
+    object-fit: cover;
+  }
 }

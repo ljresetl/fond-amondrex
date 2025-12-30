@@ -1,58 +1,44 @@
 import React from 'react';
 import styles from './HowWeWorkSection.module.css';
 
-// Імпортуємо переклади для секції "Як ми працюємо".
-// JSON містить тексти для UA та EN.
 import translations from '../../translations/howWeWork.json';
 
-// Тип пропсів — компонент отримує лише поточну мову
 type Props = {
   lang: 'UA' | 'EN';
 };
 
 const HowWeWorkSection: React.FC<Props> = ({ lang }) => {
-  // Отримуємо перекладені тексти для поточної мови
   const t = translations[lang];
 
   return (
     <section className={styles.HowWeWorkSection}>
       <div className={styles.container}>
 
-        {/* Заголовок секції — перекладений */}
         <h2 id="how-we-work" className={styles.heading}>{t.title}</h2>
 
-        {/* 
-          Головне зображення секції.
-          srcSet дозволяє використовувати Retina-версію (2x).
-        */}
-        <img
-          src="/how1.png"
-          srcSet="/how1.png 1x, /how1@2x.png 2x"
-          alt="Процес роботи фонду"
-          className={styles.photo}
-        />
+        <div className={styles.content}>
 
-        {/* 
-          Основні текстові блоки.
-          Кожен абзац перекладений через JSON.
-        */}
-        <p className={styles.text}>{t.p1}</p>
-        <p className={styles.text}>{t.p2}</p>
-        <p className={styles.text}>{t.p3}</p>
-        <p className={styles.text}>{t.p4}</p>
-        <p className={styles.text}>{t.p5}</p>
+        <div className={styles.photos}>
+            {/* Фото — адаптивне */}
+            <div className={styles.photos}> {/* Перше фото — видно завжди */} <picture className={styles.foto_main}> <source srcSet="/how1-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" /> <source srcSet="/how1-tablet.png" media="(min-width: 768px)" /> <source srcSet="/how1@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" /> <source srcSet="/how1.png" media="(max-width: 767px)" /> <img src="/how1.png" alt="Процес роботи фонду" className={styles.photo} /> </picture> {/* Друге фото — тільки на планшеті */} <picture className={styles.foto_tabletOnly}> <source srcSet="/values2-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" /> <source srcSet="/values2-tablet.png" media="(min-width: 768px)" /> <img src="/values2.png" alt="Військові та цивільні біля авто" className={styles.photo} /> </picture> </div>
+        </div>
 
-        {/* 
-          Список ключових пунктів.
-          li1 та li2 — перекладені.
-        */}
-        <ul className={styles.list}>
-          <li>{t.li1}</li>
-          <li>{t.li2}</li>
-        </ul>
+          <div className={styles.texts}>
+            <p className={styles.text}>{t.p1}</p>
+            <p className={styles.text}>{t.p2}</p>
+            <p className={styles.text}>{t.p3}</p>
+            <p className={styles.text}>{t.p4}</p>
+            <p className={styles.text}>{t.p5}</p>
 
-        {/* Завершальний жирний текст — також перекладений */}
-        <p className={styles.text_bold}>{t.bold}</p>
+            <ul className={styles.list}>
+              <li>{t.li1}</li>
+              <li>{t.li2}</li>
+            </ul>
+
+            <p className={styles.text_bold}>{t.bold}</p>
+          </div>
+
+        </div>
       </div>
     </section>
   );

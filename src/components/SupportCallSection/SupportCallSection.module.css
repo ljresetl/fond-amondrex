@@ -13,6 +13,11 @@
   margin: 0 auto;
   padding: 0 16px;
   gap: 24px;
+  @media (min-width: 786px) {
+    min-width: 738px;
+    padding: 0 24px;
+    gap: 32px;
+  }
 }
 
 .heading {
@@ -21,6 +26,9 @@
   line-height: 1.2;
   letter-spacing: 0.03em;
   color: #15004c;
+  @media (min-width: 786px) {
+    text-align: center;
+  }
 }
 
 .text {

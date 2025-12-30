@@ -21,26 +21,26 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
         <picture>
           {/* Планшет Retina */}
           <source
-            srcSet="/vision-one-tablet@2x.png"
+            srcSet="/vision-one-tablet@2x.avif"
             media="(min-width: 768px) and (min-resolution: 192dpi)"
           />
           {/* Планшет */}
           <source
-            srcSet="/vision-one-tablet.png"
+            srcSet="/vision-one-tablet.avif"
             media="(min-width: 768px)"
           />
           {/* Мобільний Retina */}
           <source
-            srcSet="/vision-one@2x.png"
+            srcSet="/vision-one@2x.avif"
             media="(max-width: 767px) and (min-resolution: 192dpi)"
           />
           {/* Мобільний */}
           <source
-            srcSet="/vision-one.png"
+            srcSet="/vision-one.avif"
             media="(max-width: 767px)"
           />
           <img
-            src="/vision-one.png"
+            src="/vision-one.avif"
             alt="Волонтерка пакує коробки"
             className={styles.photo}
           />
@@ -61,26 +61,26 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
         <picture>
           {/* Планшет Retina */}
           <source
-            srcSet="/vision-two-tablet@2x.png"
+            srcSet="/vision-two-tablet@2x.avif"
             media="(min-width: 768px) and (min-resolution: 192dpi)"
           />
           {/* Планшет */}
           <source
-            srcSet="/vision-two-tablet.png"
+            srcSet="/vision-two-tablet.avif"
             media="(min-width: 768px)"
           />
           {/* Мобільний Retina */}
           <source
-            srcSet="/vision-two@2x.png"
+            srcSet="/vision-two@2x.avif"
             media="(max-width: 767px) and (min-resolution: 192dpi)"
           />
           {/* Мобільний */}
           <source
-            srcSet="/vision-two.png"
+            srcSet="/vision-two.avif"
             media="(max-width: 767px)"
           />
           <img
-            src="/vision-two.png"
+            src="/vision-two.avif"
             alt="Підняття прапора біля зруйнованої будівлі"
             className={styles.photo}
           />

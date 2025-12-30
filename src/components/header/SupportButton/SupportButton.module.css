@@ -22,7 +22,7 @@
   background: #ffca28;
 }
 
-@media (min-width: 768px) and (max-width: 834px) {
+@media (min-width: 768px) {
   .supportBtn {
     font-size: 14px;
     line-height: 1.5;

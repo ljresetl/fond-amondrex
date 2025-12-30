@@ -1,47 +1,85 @@
 import React from 'react';
 import styles from './ValuesSection.module.css';
 
-// Імпортуємо переклади для секції "Цінності".
-// JSON містить тексти для UA та EN.
 import translations from '../../translations/values.json';
 
-// Тип пропсів — компонент отримує лише поточну мову
 type Props = {
   lang: 'UA' | 'EN';
 };
 
 const ValuesSection: React.FC<Props> = ({ lang }) => {
-  // Отримуємо перекладені тексти для поточної мови
   const t = translations[lang];
 
   return (
     <section className={styles.ValuesSection}>
       <div className={styles.container}>
 
-        {/* Заголовок секції — перекладений */}
         <h2 id="values" className={styles.heading}>{t.title}</h2>
 
-        {/* 
-          Перше зображення секції.
-          srcSet дозволяє використовувати Retina-версію (2x).
-        */}
-        <img
-          src="/values1.png"
-          srcSet="/values1.png 1x, /values1@2x.png 2x"
-          alt="Військові перед прапором"
-          className={styles.photo}
-        />
+        <div className={styles.content}>
 
-        {/* Основний текст секції — перекладений */}
-        <p className={styles.text}>{t.text}</p>
+          {/* Фото 1 — адаптивне */}
+          <picture>
+            {/* Планшет Retina */}
+            <source
+              srcSet="/values1-tablet@2x.png"
+              media="(min-width: 768px) and (min-resolution: 192dpi)"
+            />
+            {/* Планшет */}
+            <source
+              srcSet="/values1-tablet.png"
+              media="(min-width: 768px)"
+            />
+            {/* Мобільний Retina */}
+            <source
+              srcSet="/values1@2x.png"
+              media="(max-width: 767px) and (min-resolution: 192dpi)"
+            />
+            {/* Мобільний */}
+            <source
+              srcSet="/values1.png"
+              media="(max-width: 767px)"
+            />
+            <img
+              src="/values1.png"
+              alt="Військові перед прапором"
+              className={styles.photo}
+            />
+          </picture>
 
-        {/* Друге зображення секції */}
-        <img
-          src="/values2.png"
-          srcSet="/values2.png 1x, /values2@2x.png 2x"
-          alt="Військові та цивільні біля авто"
-          className={styles.photo}
-        />
+          {/* Текст */}
+          <p className={styles.text}>{t.text}</p>
+
+          {/* Фото 2 — адаптивне + приховане на планшеті */}
+          <picture className={styles.hideOnTablet}>
+            {/* Планшет Retina */}
+            <source
+              srcSet="/values2-tablet@2x.png"
+              media="(min-width: 768px) and (min-resolution: 192dpi)"
+            />
+            {/* Планшет */}
+            <source
+              srcSet="/values2-tablet.png"
+              media="(min-width: 768px)"
+            />
+            {/* Мобільний Retina */}
+            <source
+              srcSet="/values2@2x.png"
+              media="(max-width: 767px) and (min-resolution: 192dpi)"
+            />
+            {/* Мобільний */}
+            <source
+              srcSet="/values2.png"
+              media="(max-width: 767px)"
+            />
+            <img
+              src="/values2.png"
+              alt="Військові та цивільні біля авто"
+              className={styles.photo}
+            />
+          </picture>
+
+        </div>
 
       </div>
     </section>

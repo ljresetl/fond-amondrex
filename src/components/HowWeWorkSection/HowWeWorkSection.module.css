@@ -30,7 +30,7 @@
   .content {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    gap: 24px;
   }
 
   .texts {
@@ -94,7 +94,7 @@
 
   .foto_main img,
   .foto_tabletOnly img {
-    width: 385px;
+    width: 355px;
     height: 411px;
     border-radius: 16px;
     object-fit: cover;

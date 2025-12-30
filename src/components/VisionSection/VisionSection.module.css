@@ -20,7 +20,7 @@
   .container {
     min-width: 738px;
     display: grid;
-    grid-template-columns: 1fr 1.7fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: "title title" "img1 text" "img2 text";
     gap: 24px;
   }
@@ -76,8 +76,9 @@
   width: 100%;
   border-radius: 8px;
   @media (min-width: 786px) {
-    width: 265px;
+    width: 356px;
     height: 233px;
     display: block;
+    object-fit: cover;
   }
 }

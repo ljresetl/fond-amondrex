@@ -105,7 +105,7 @@
 }
 
 /* 📲 Планшет (786–834px) */
-@media (min-width: 786px) and (max-width: 834px) {
+@media (min-width: 786px) {
   .container {
     flex-direction: row;
     flex-wrap: wrap;

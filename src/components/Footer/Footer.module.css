@@ -11,6 +11,10 @@
   margin: 0 auto;
   padding: 0 16px;
   gap: 24px;
+  @media (min-width: 786px) {
+    min-width: 738px;
+    padding: 0 24px;
+  }
 }
 
 .left_all {
@@ -40,6 +44,17 @@
   font-family: "Open Sans", sans-serif;
 }
 
+/* Планшет — 2 колонки по 3 пункти */
+@media (min-width: 786px) {
+  .nav {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-auto-rows: auto;
+    column-gap: 24px; /* відстань між колонками */
+    row-gap: 8px; /* відстань між рядками */
+  }
+}
+
 .navItem a {
   color: #e5f9ff;
   text-decoration: none;
@@ -58,6 +73,15 @@
   gap: 16px;
 }
 
+@media (min-width: 786px) {
+  .left_all {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* опускає навігацію вниз */
+    height: 100%; /* щоб блок розтягнувся */
+  }
+}
+
 .right {
   display: flex;
   flex-direction: column;
@@ -65,6 +89,9 @@
   text-align: right;
   gap: 16px;
   margin-top: 106px;
+  @media (min-width: 786px) {
+    margin-top: 24px;
+  }
 }
 
 .right a {

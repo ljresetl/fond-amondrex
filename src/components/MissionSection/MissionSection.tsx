@@ -28,54 +28,50 @@ export const MissionSection: React.FC<Props> = ({ lang }) => {
 
           {/* m1 */}
           <picture>
-            {/* Планшет Retina */}
             <source
-              srcSet="/m1-tablet@2x.png"
+              srcSet="/m1-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"
             />
-            {/* Планшет */}
             <source
-              srcSet="/m1-tablet.png"
+              srcSet="/m1-tablet.avif"
               media="(min-width: 768px)"
             />
-            {/* Мобільний Retina */}
             <source
-              srcSet="/m1@2x.png"
+              srcSet="/m1@2x.avif"
               media="(max-width: 767px) and (min-resolution: 192dpi)"
             />
-            {/* Мобільний */}
             <source
-              srcSet="/m1.png"
+              srcSet="/m1.avif"
               media="(max-width: 767px)"
             />
-            <img src="/m1.png" alt="Drone and equipment" className={styles.photo} />
+            <img src="/m1.avif" alt="Drone and equipment" className={styles.photo} />
           </picture>
 
           {/* m2 */}
           <picture>
-            <source srcSet="/m2-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" />
-            <source srcSet="/m2-tablet.png" media="(min-width: 768px)" />
-            <source srcSet="/m2@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" />
-            <source srcSet="/m2.png" media="(max-width: 767px)" />
-            <img src="/m2.png" alt="Soldier in medical facility" className={styles.photo} />
+            <source srcSet="/m2-tablet@2x.avif" media="(min-width: 768px) and (min-resolution: 192dpi)" />
+            <source srcSet="/m2-tablet.avif" media="(min-width: 768px)" />
+            <source srcSet="/m2@2x.avif" media="(max-width: 767px) and (min-resolution: 192dpi)" />
+            <source srcSet="/m2.avif" media="(max-width: 767px)" />
+            <img src="/m2.avif" alt="Soldier in medical facility" className={styles.photo} />
           </picture>
 
           {/* m3 */}
           <picture>
-            <source srcSet="/m3-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" />
-            <source srcSet="/m3-tablet.png" media="(min-width: 768px)" />
-            <source srcSet="/m3@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" />
-            <source srcSet="/m3.png" media="(max-width: 767px)" />
-            <img src="/m3.png" alt="Drone operator" className={styles.photo} />
+            <source srcSet="/m3-tablet@2x.avif" media="(min-width: 768px) and (min-resolution: 192dpi)" />
+            <source srcSet="/m3-tablet.avif" media="(min-width: 768px)" />
+            <source srcSet="/m3@2x.avif" media="(max-width: 767px) and (min-resolution: 192dpi)" />
+            <source srcSet="/m3.avif" media="(max-width: 767px)" />
+            <img src="/m3.avif" alt="Drone operator" className={styles.photo} />
           </picture>
 
           {/* m4 */}
           <picture>
-            <source srcSet="/m4-tablet@2x.png" media="(min-width: 768px) and (min-resolution: 192dpi)" />
-            <source srcSet="/m4-tablet.png" media="(min-width: 768px)" />
-            <source srcSet="/m4@2x.png" media="(max-width: 767px) and (min-resolution: 192dpi)" />
-            <source srcSet="/m4.png" media="(max-width: 767px)" />
-            <img src="/m4.png" alt="Prosthetics" className={styles.photo} />
+            <source srcSet="/m4-tablet@2x.avif" media="(min-width: 768px) and (min-resolution: 192dpi)" />
+            <source srcSet="/m4-tablet.avif" media="(min-width: 768px)" />
+            <source srcSet="/m4@2x.avif" media="(max-width: 767px) and (min-resolution: 192dpi)" />
+            <source srcSet="/m4.avif" media="(max-width: 767px)" />
+            <img src="/m4.avif" alt="Prosthetics" className={styles.photo} />
           </picture>
 
         </div>

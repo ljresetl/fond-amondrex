@@ -22,33 +22,33 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
 
             {/* Планшет Retina */}
             <source
-              srcSet="/hero-tablet@2x.png"
+              srcSet="/hero-tablet@2x.avif"
               media="(min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), 
                      (min-width: 768px) and (min-resolution: 192dpi)"
             />
 
             {/* Планшет звичайний */}
             <source
-              srcSet="/hero-tablet.png"
+              srcSet="/hero-tablet.avif"
               media="(min-width: 768px)"
             />
 
             {/* Телефон Retina */}
             <source
-              srcSet="/hero-photo@2x.png"
+              srcSet="/hero-photo@2x.avif"
               media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), 
                      (max-width: 767px) and (min-resolution: 192dpi)"
             />
 
             {/* Телефон звичайний */}
             <source
-              srcSet="/hero-photo.png"
+              srcSet="/hero-photo.avif"
               media="(max-width: 767px)"
             />
 
             {/* Фолбек */}
             <img
-              src="/hero-photo.png"
+              src="/hero-photo.avif"
               alt="Hero"
               className={styles.heroImage}
             />

@@ -22,26 +22,26 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
           <picture>
             {/* Планшет Retina */}
             <source
-              srcSet="/values1-tablet@2x.png"
+              srcSet="/values1-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"
             />
             {/* Планшет */}
             <source
-              srcSet="/values1-tablet.png"
+              srcSet="/values1-tablet.avif"
               media="(min-width: 768px)"
             />
             {/* Мобільний Retina */}
             <source
-              srcSet="/values1@2x.png"
+              srcSet="/values1@2x.avif"
               media="(max-width: 767px) and (min-resolution: 192dpi)"
             />
             {/* Мобільний */}
             <source
-              srcSet="/values1.png"
+              srcSet="/values1.avif"
               media="(max-width: 767px)"
             />
             <img
-              src="/values1.png"
+              src="/values1.avif"
               alt="Військові перед прапором"
               className={styles.photo}
             />
@@ -54,26 +54,26 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
           <picture className={styles.hideOnTablet}>
             {/* Планшет Retina */}
             <source
-              srcSet="/values2-tablet@2x.png"
+              srcSet="/values2-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"
             />
             {/* Планшет */}
             <source
-              srcSet="/values2-tablet.png"
+              srcSet="/values2-tablet.avif"
               media="(min-width: 768px)"
             />
             {/* Мобільний Retina */}
             <source
-              srcSet="/values2@2x.png"
+              srcSet="/values2@2x.avif"
               media="(max-width: 767px) and (min-resolution: 192dpi)"
             />
             {/* Мобільний */}
             <source
-              srcSet="/values2.png"
+              srcSet="/values2.avif"
               media="(max-width: 767px)"
             />
             <img
-              src="/values2.png"
+              src="/values2.avif"
               alt="Військові та цивільні біля авто"
               className={styles.photo}
             />

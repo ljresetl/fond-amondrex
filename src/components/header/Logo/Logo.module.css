@@ -19,3 +19,10 @@
     padding: 24px 0px;
   }
 }
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  .logoContainer {
+    padding: 30px 0px;
+  }
+}

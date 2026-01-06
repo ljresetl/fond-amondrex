@@ -176,3 +176,35 @@
     margin: 0;
   }
 }
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  .hero {
+    padding: 24px 0px 96px 0px;
+  }
+  .container {
+    max-width: 1296px;
+    padding: 0 72px;
+    gap: 111px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 76px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+  }
+  .primaryBtn,
+  .secondaryBtn {
+    max-width: 416px;
+    height: 56px;
+  }
+}

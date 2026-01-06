@@ -8,7 +8,6 @@ import menuIcon from '/MobilneMenu.svg';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
-
 type Props = {
   lang: 'UA' | 'EN';
   setLang: (lang: 'UA' | 'EN') => void;
@@ -35,9 +34,7 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
   const mainItems = items.slice(0, 3);
   const dropdownItems = items.slice(3);
 
-  // -----------------------------
-  // 1) Закриття dropdown при кліку поза ним
-  // -----------------------------
+  // Закриття dropdown при кліку поза ним
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -57,9 +54,6 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
     };
   }, [expanded]);
 
-  // -----------------------------
-  // 2) Закриття dropdown при кліку на пункт меню
-  // -----------------------------
   const handleDropdownClick = () => {
     setExpanded(false);
   };
@@ -70,27 +64,36 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
 
         <Logo />
 
-        {/* Навігація — планшет + десктоп */}
+        {/* Навігація */}
         <nav className={styles.nav}>
           <ul className={styles.list}>
+
+            {/* 3 пункти — завжди */}
             {mainItems.map(item => (
               <li key={item.href}>
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
 
-            {/* Кнопка відкриття підменю */}
+            {/* Додаткові 3 пункти — тільки на десктопі */}
+            {dropdownItems.map(item => (
+              <li key={item.href} className={styles.desktopOnly}>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+
+            {/* Кнопка "ще" — тільки планшет */}
             <li className={styles.moreWrapper} ref={dropdownRef}>
               <button
                 className={styles.moreBtn}
                 onClick={() => setExpanded(prev => !prev)}
               >
-               {expanded ? <MdKeyboardArrowUp className={styles.chevron} /> : <MdKeyboardArrowDown className={styles.chevron} />}
-
-
+                {expanded
+                  ? <MdKeyboardArrowUp className={styles.chevron} />
+                  : <MdKeyboardArrowDown className={styles.chevron} />
+                }
               </button>
 
-              {/* Підменю */}
               {expanded && (
                 <ul className={styles.dropdown}>
                   {dropdownItems.map(item => (
@@ -103,13 +106,14 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
                 </ul>
               )}
             </li>
+
           </ul>
         </nav>
 
-       <div className={styles.rightButtons}>
+        <div className={styles.rightButtons}>
           <SupportButton lang={lang} />
           <LanguageSwitcher onChange={setLang} />
-       </div>
+        </div>
 
         {/* Бургер — тільки мобільний */}
         <button

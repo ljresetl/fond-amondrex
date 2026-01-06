@@ -21,6 +21,14 @@
   }
 }
 
+@media (min-width: 1296px) {
+  .container {
+    max-width: 1296px;
+    padding: 0 72px;
+    gap: 56px;
+  }
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -48,6 +56,14 @@
 @media (min-width: 786px) {
   .heading {
     font-size: 38px;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (min-width: 1296px) {
+  .heading {
+    font-size: 64px;
     line-height: 1.3;
     letter-spacing: 0.02em;
   }

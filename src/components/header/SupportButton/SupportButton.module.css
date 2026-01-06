@@ -32,3 +32,11 @@
     height: 46px;
   }
 }
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  .supportBtn {
+    width: 195px;
+    height: 56px;
+  }
+}

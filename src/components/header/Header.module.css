@@ -143,4 +143,42 @@
     color: #090e0f;
     vertical-align: middle;
   }
+
+  /* Додаткові пункти — ховаємо на планшеті */
+  .desktopOnly {
+    display: none;
+  } /* Планшет — показуємо дропдаун */
+  .moreWrapper {
+    display: block;
+  }
+}
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  .container {
+    max-width: 1296px;
+    padding: 0 72px;
+    gap: 38px;
+  }
+
+  .moreWrapper {
+    display: none;
+  }
+
+  /* Показуємо всі 6 пунктів */
+  .desktopOnly {
+    display: block;
+  } /* Ховаємо кнопку "ще" */
+  .moreWrapper {
+    display: none;
+  } /* Всі пункти в рядок */
+  .list {
+    display: flex;
+    /* margin-left: 100px; */
+    gap: 32px;
+  }
+
+  .list a {
+    font-size: 16px;
+  }
 }

@@ -17,8 +17,20 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
 
         <div className={styles.content}>
 
-          {/* Адаптивне зображення для телефону / планшету */}
+          {/* Адаптивне зображення для телефону / планшету / десктопу */}
           <picture>
+
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/hero-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/hero-desktop.png"
+              media="(min-width: 1296px)"
+            />
 
             {/* Планшет Retina */}
             <source

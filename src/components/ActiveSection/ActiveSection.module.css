@@ -13,6 +13,10 @@
     min-width: 738px;
     padding: 0 24px;
   }
+  @media (min-width: 1296px) {
+    max-width: 1296px;
+    padding: 0 72px;
+  }
 }
 
 .heading {
@@ -34,6 +38,9 @@
     align-items: center;
     gap: 12px;
   }
+  @media (min-width: 1296px) {
+    margin-bottom: 56px;
+  }
 }
 
 .statCard {
@@ -44,6 +51,9 @@
   @media (min-width: 786px) {
     flex: none;
     width: 160px;
+  }
+  @media (min-width: 1296px) {
+    width: 275px;
   }
 }
 
@@ -56,6 +66,11 @@
   @media (min-width: 786px) {
     font-size: 38px;
   }
+  @media (min-width: 1296px) {
+    font-weight: 600;
+    font-size: 64px;
+    margin-bottom: 20px;
+  }
 }
 
 .statLabel {
@@ -66,6 +81,9 @@
   font-family: "Open Sans", sans-serif;
   @media (min-width: 786px) {
     font-size: 16px;
+  }
+  @media (min-width: 1296px) {
+    font-size: 24px;
   }
 }
 
@@ -78,6 +96,10 @@
     justify-content: center;
     flex-wrap: nowrap;
   }
+  @media (min-width: 1296px) {
+    justify-content: space-between;
+    gap: 12px;
+  }
 }
 
 .photo {
@@ -86,5 +108,9 @@
   @media (min-width: 786px) {
     width: 166px;
     height: 314px;
+  }
+  @media (min-width: 1296px) {
+    width: 308px;
+    height: 540px;
   }
 }

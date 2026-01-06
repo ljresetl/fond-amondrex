@@ -45,6 +45,17 @@ export const ActiveSection: React.FC<Props> = ({ lang }) => {
         <div className={styles.gallery}>
 
           <picture>
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/img1-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/img1-desktop.png"
+              media="(min-width: 1296px)"
+            />
+
             <source
               srcSet="/img1-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"
@@ -65,6 +76,17 @@ export const ActiveSection: React.FC<Props> = ({ lang }) => {
           </picture>
 
           <picture>
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/img2-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/img2-desktop.png"
+              media="(min-width: 1296px)"
+            />
+
             <source
               srcSet="/img2-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"
@@ -85,6 +107,17 @@ export const ActiveSection: React.FC<Props> = ({ lang }) => {
           </picture>
 
           <picture>
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/img3-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/img3-desktop.png"
+              media="(min-width: 1296px)"
+            />
+
             <source
               srcSet="/img3-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"
@@ -105,6 +138,17 @@ export const ActiveSection: React.FC<Props> = ({ lang }) => {
           </picture>
 
           <picture>
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/img4-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/img4-desktop.png"
+              media="(min-width: 1296px)"
+            />
+
             <source
               srcSet="/img4-tablet@2x.avif"
               media="(min-width: 768px) and (min-resolution: 192dpi)"

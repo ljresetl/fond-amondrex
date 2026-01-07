@@ -17,6 +17,15 @@
     padding: 0 24px;
     gap: 24px;
   }
+  @media (min-width: 1296px) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 48px;
+    row-gap: 32px;
+    max-width: 1296px;
+    padding: 0 72px;
+  }
 }
 
 .heading {
@@ -30,6 +39,12 @@
     line-height: 1.3;
     letter-spacing: 0.02em;
   }
+
+  @media (min-width: 1296px) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    font-size: 64px;
+  }
 }
 
 .text {
@@ -37,6 +52,11 @@
   font-size: 16px;
   line-height: 1.75;
   color: #090e0f;
+  @media (min-width: 1296px) {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    max-width: 600px;
+  }
 }
 
 .list {
@@ -47,6 +67,11 @@
   padding-left: 20px;
   @media (min-width: 786px) {
     padding-left: 30px;
+  }
+  @media (min-width: 1296px) {
+    grid-column: 2 / 3;
+    grid-row: 3;
+    max-width: 600px;
   }
 }
 
@@ -60,6 +85,15 @@
     gap: 26px;
     flex-wrap: nowrap;
   }
+
+  @media (min-width: 1296px) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4; /* займає дві висоти: під текстом і списком */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 26px;
+  }
 }
 
 .photo {
@@ -70,5 +104,11 @@
   @media (min-width: 786px) {
     width: 165px;
     height: 314px;
+  }
+  @media (min-width: 1296px) {
+    width: 168px;
+    height: 315px;
+    object-fit: cover;
+    flex-shrink: 0;
   }
 }

@@ -12,13 +12,24 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
 
   return (
     <section className={styles.VisionSection}>
+      
       <div className={styles.container}>
-
-        {/* Заголовок всередині контейнера */}
+        {/* Заголовок */}
         <h2 id="vision" className={styles.heading}>{t.title}</h2>
 
         {/* Фото 1 — адаптивне */}
         <picture>
+          {/* 🖥 Десктоп Retina */}
+          <source
+            srcSet="/vision-one-desktop@2x.png"
+            media="(min-width: 1296px) and (min-resolution: 192dpi)"
+          />
+          {/* 🖥 Десктоп */}
+          <source
+            srcSet="/vision-one-desktop.png"
+            media="(min-width: 1296px)"
+          />
+
           {/* Планшет Retina */}
           <source
             srcSet="/vision-one-tablet@2x.avif"
@@ -29,6 +40,7 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
             srcSet="/vision-one-tablet.avif"
             media="(min-width: 768px)"
           />
+
           {/* Мобільний Retina */}
           <source
             srcSet="/vision-one@2x.avif"
@@ -39,6 +51,7 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
             srcSet="/vision-one.avif"
             media="(max-width: 767px)"
           />
+
           <img
             src="/vision-one.avif"
             alt="Волонтерка пакує коробки"
@@ -59,6 +72,17 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
 
         {/* Фото 2 — адаптивне */}
         <picture>
+          {/* 🖥 Десктоп Retina */}
+          <source
+            srcSet="/vision-two-desktop@2x.png"
+            media="(min-width: 1296px) and (min-resolution: 192dpi)"
+          />
+          {/* 🖥 Десктоп */}
+          <source
+            srcSet="/vision-two-desktop.png"
+            media="(min-width: 1296px)"
+          />
+
           {/* Планшет Retina */}
           <source
             srcSet="/vision-two-tablet@2x.avif"
@@ -69,6 +93,7 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
             srcSet="/vision-two-tablet.avif"
             media="(min-width: 768px)"
           />
+
           {/* Мобільний Retina */}
           <source
             srcSet="/vision-two@2x.avif"
@@ -79,6 +104,7 @@ const VisionSection: React.FC<Props> = ({ lang }) => {
             srcSet="/vision-two.avif"
             media="(max-width: 767px)"
           />
+
           <img
             src="/vision-two.avif"
             alt="Підняття прапора біля зруйнованої будівлі"

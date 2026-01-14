@@ -20,6 +20,17 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
 
           {/* Фото 1 — адаптивне */}
           <picture>
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/values1-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/values1-desktop.png"
+              media="(min-width: 1296px)"
+            />
+
             {/* Планшет Retina */}
             <source
               srcSet="/values1-tablet@2x.avif"
@@ -30,6 +41,7 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
               srcSet="/values1-tablet.avif"
               media="(min-width: 768px)"
             />
+
             {/* Мобільний Retina */}
             <source
               srcSet="/values1@2x.avif"
@@ -40,6 +52,7 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
               srcSet="/values1.avif"
               media="(max-width: 767px)"
             />
+
             <img
               src="/values1.avif"
               alt="Військові перед прапором"
@@ -52,6 +65,17 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
 
           {/* Фото 2 — адаптивне + приховане на планшеті */}
           <picture className={styles.hideOnTablet}>
+            {/* 🖥 Десктоп Retina */}
+            <source
+              srcSet="/values2-desktop@2x.png"
+              media="(min-width: 1296px) and (min-resolution: 192dpi)"
+            />
+            {/* 🖥 Десктоп */}
+            <source
+              srcSet="/values2-desktop.png"
+              media="(min-width: 1296px)"
+            />
+
             {/* Планшет Retina */}
             <source
               srcSet="/values2-tablet@2x.avif"
@@ -62,6 +86,7 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
               srcSet="/values2-tablet.avif"
               media="(min-width: 768px)"
             />
+
             {/* Мобільний Retina */}
             <source
               srcSet="/values2@2x.avif"
@@ -72,6 +97,7 @@ const ValuesSection: React.FC<Props> = ({ lang }) => {
               srcSet="/values2.avif"
               media="(max-width: 767px)"
             />
+
             <img
               src="/values2.avif"
               alt="Військові та цивільні біля авто"

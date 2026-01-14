@@ -3,6 +3,7 @@
   padding: 24px 0px;
 }
 
+/* 📱 Мобільний */
 .container {
   width: 100%;
   max-width: 343px;
@@ -11,10 +12,6 @@
   margin: 0 auto;
   padding: 0 16px;
   gap: 24px;
-  @media (min-width: 786px) {
-    min-width: 738px;
-    padding: 0 24px;
-  }
 }
 
 .left_all {
@@ -44,17 +41,6 @@
   font-family: "Open Sans", sans-serif;
 }
 
-/* Планшет — 2 колонки по 3 пункти */
-@media (min-width: 786px) {
-  .nav {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-auto-rows: auto;
-    column-gap: 24px; /* відстань між колонками */
-    row-gap: 8px; /* відстань між рядками */
-  }
-}
-
 .navItem a {
   color: #e5f9ff;
   text-decoration: none;
@@ -64,7 +50,6 @@
   display: none;
 }
 
-/* права частина */
 .right_all {
   display: flex;
   flex-direction: column;
@@ -73,25 +58,14 @@
   gap: 16px;
 }
 
-@media (min-width: 786px) {
-  .left_all {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* опускає навігацію вниз */
-    height: 100%; /* щоб блок розтягнувся */
-  }
-}
-
 .right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
-  gap: 16px;
+  gap: 8px;
+  justify-content: space-between;
   margin-top: 106px;
-  @media (min-width: 786px) {
-    margin-top: 24px;
-  }
 }
 
 .right a {
@@ -114,9 +88,76 @@
   padding-top: 18px;
 }
 
-.right {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-content: space-between;
+/* 📲 Планшет (від 786px) */
+@media (min-width: 786px) {
+  .container {
+    min-width: 738px;
+    padding: 0 24px;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-auto-rows: auto;
+    column-gap: 24px;
+    row-gap: 8px;
+  }
+
+  .left_all {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .right {
+    margin-top: 24px;
+  }
+}
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  .container {
+    max-width: 1296px;
+    padding: 0 72px; /* 🔥 Головне: робимо вертикальний flex, щоб .right можна було опустити вниз */
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: #e5f9ff;
+  }
+  .left_all {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .nav {
+    grid-template-columns: repeat(6, auto);
+    column-gap: 26px;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: row; /* в рядок */
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: 26px;
+  }
+
+  .right_all {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 36px;
+  }
+
+  .socials {
+    padding: 0;
+    gap: 26px;
+  }
 }

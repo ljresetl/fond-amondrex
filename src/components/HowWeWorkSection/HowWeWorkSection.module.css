@@ -4,6 +4,7 @@
   padding: 24px 0px;
 }
 
+/* 📱 Мобільний */
 .container {
   width: 100%;
   max-width: 343px;
@@ -12,11 +13,6 @@
   gap: 24px;
   display: flex;
   flex-direction: column;
-  @media (min-width: 786px) {
-    min-width: 738px;
-    padding: 0 24px;
-    gap: 40px;
-  }
 }
 
 .heading {
@@ -25,19 +21,6 @@
   line-height: 1.2;
   letter-spacing: 0.03em;
   color: #15004c;
-}
-@media (min-width: 786px) {
-  .content {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-  }
-
-  .texts {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
 }
 
 .text {
@@ -60,24 +43,13 @@
 }
 
 .text_bold {
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.75;
   color: #090e0f;
   font-weight: 700;
-  font-size: 24px;
 }
 
-/* Перше фото — завжди видно */
-.foto_main {
-  display: block;
-}
-
-/* Друге фото — приховане на мобільному */
-.foto_tabletOnly {
-  display: none;
-}
-
-/* 📱 Мобільні розміри для обох фото */
+/* Фото — мобільні розміри */
 .foto_main img,
 .foto_tabletOnly img {
   width: 343px;
@@ -86,8 +58,31 @@
   object-fit: cover;
 }
 
-/* На планшеті — показуємо друге фото + змінюємо розміри */
+/* Друге фото — приховане на мобільному */
+.foto_tabletOnly {
+  display: none;
+}
+
+/* 📲 Планшет (від 786px) */
 @media (min-width: 786px) {
+  .container {
+    min-width: 738px;
+    padding: 0 24px;
+    gap: 40px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .texts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
   .foto_tabletOnly {
     display: block;
   }
@@ -96,7 +91,59 @@
   .foto_tabletOnly img {
     width: 355px;
     height: 411px;
-    border-radius: 16px;
+  }
+}
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  /* Контейнер стає grid */
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ліва колонка — фото, права — текст */
+    grid-template-rows: auto auto; /* заголовок + контент */
+    column-gap: 48px;
+    row-gap: 48px;
+    max-width: 1296px;
+    padding: 0 72px;
+  }
+
+  /* Заголовок на всю ширину */
+  .heading {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    text-align: left;
+  }
+
+  /* Контентна частина */
+  .content {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* фото | текст */
+    column-gap: 48px;
+  }
+
+  /* Фото 1 — ліворуч */
+  .foto_main {
+    grid-column: 1 / 2;
+  }
+
+  .foto_main img {
+    width: 100%;
+    height: 558px;
     object-fit: cover;
+  }
+
+  /* Фото 2 — приховане на десктопі */
+  .foto_tabletOnly {
+    display: none !important;
+  }
+
+  /* Текст — праворуч */
+  .texts {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
   }
 }

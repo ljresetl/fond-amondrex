@@ -4,6 +4,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
+/* 📱 Мобільний */
 .container {
   width: 100%;
   max-width: 343px;
@@ -13,11 +14,6 @@
   margin: 0 auto;
   padding: 0 16px;
   gap: 24px;
-  @media (min-width: 786px) {
-    min-width: 738px;
-    padding: 0 24px;
-    gap: 32px;
-  }
 }
 
 .heading {
@@ -26,9 +22,6 @@
   line-height: 1.2;
   letter-spacing: 0.03em;
   color: #15004c;
-  @media (min-width: 786px) {
-    text-align: center;
-  }
 }
 
 .text {
@@ -47,4 +40,25 @@
   text-transform: uppercase;
   text-align: center;
   color: #090e0f;
+}
+
+/* 📲 Планшет (від 786px) */
+@media (min-width: 786px) {
+  .container {
+    min-width: 738px;
+    padding: 0 24px;
+    gap: 32px;
+  }
+
+  .heading {
+    text-align: center;
+  }
+}
+
+/* 💻 Десктоп (від 1296px) */
+@media (min-width: 1296px) {
+  .container {
+    max-width: 1296px;
+    padding: 0 72px;
+  }
 }

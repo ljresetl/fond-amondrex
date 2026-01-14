@@ -18,27 +18,75 @@ const HowWeWorkSection: React.FC<Props> = ({ lang }) => {
 
         <div className={styles.content}>
 
-        <div className={styles.photos}>
+          <div className={styles.photos}>
             {/* Фото — адаптивне */}
-            <div className={styles.photos}> {/* Перше фото — видно завжди */}
+            <div className={styles.photos}>
+              
+              {/* Перше фото — видно завжди */}
               <picture className={styles.foto_main}>
-                <source srcSet="/how1-tablet@2x.avif" media="(min-width: 768px) and (min-resolution: 192dpi)" />
-                <source srcSet="/how1-tablet.avif" media="(min-width: 768px)" />
-                <source srcSet="/how1@2x.avif" media="(max-width: 767px) and (min-resolution: 192dpi)" />
-                <source srcSet="/how1.avif" media="(max-width: 767px)" />
-                <img src="/how1.avif" alt="Процес роботи фонду"
-                  className={styles.photo} /> </picture>
+
+                {/* 🖥 Десктоп Retina */}
+                <source
+                  srcSet="/how1-desktop@2x.png"
+                  media="(min-width: 1296px) and (min-resolution: 192dpi)"
+                />
+
+                {/* 🖥 Десктоп */}
+                <source
+                  srcSet="/how1-desktop.png"
+                  media="(min-width: 1296px)"
+                />
+
+                {/* Планшет Retina */}
+                <source
+                  srcSet="/how1-tablet@2x.avif"
+                  media="(min-width: 768px) and (min-resolution: 192dpi)"
+                />
+
+                {/* Планшет */}
+                <source
+                  srcSet="/how1-tablet.avif"
+                  media="(min-width: 768px)"
+                />
+
+                {/* Мобільний Retina */}
+                <source
+                  srcSet="/how1@2x.avif"
+                  media="(max-width: 767px) and (min-resolution: 192dpi)"
+                />
+
+                {/* Мобільний */}
+                <source
+                  srcSet="/how1.avif"
+                  media="(max-width: 767px)"
+                />
+
+                <img
+                  src="/how1.avif"
+                  alt="Процес роботи фонду"
+                  className={styles.photo}
+                />
+              </picture>
+
               {/* Друге фото — тільки на планшеті */}
               <picture className={styles.foto_tabletOnly}>
-                <source srcSet="/values2-tablet@2x.avif"
-                  media="(min-width: 768px) and (min-resolution: 192dpi)" />
-                <source srcSet="/values2-tablet.avif"
-                  media="(min-width: 768px)" />
-                <img src="/values2.avif" alt="Військові та цивільні біля авто"
-                  className={styles.photo} />
+                <source
+                  srcSet="/values2-tablet@2x.avif"
+                  media="(min-width: 768px) and (min-resolution: 192dpi)"
+                />
+                <source
+                  srcSet="/values2-tablet.avif"
+                  media="(min-width: 768px)"
+                />
+                <img
+                  src="/values2.avif"
+                  alt="Військові та цивільні біля авто"
+                  className={styles.photo}
+                />
               </picture>
+
             </div>
-        </div>
+          </div>
 
           <div className={styles.texts}>
             <p className={styles.text}>{t.p1}</p>

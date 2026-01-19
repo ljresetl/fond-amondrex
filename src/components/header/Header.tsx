@@ -8,6 +8,9 @@ import menuIcon from '/MobilneMenu.svg';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
+// 🔥 Додаємо модалку
+import SupportModal from './SupportButton/SupportModal';
+
 type Props = {
   lang: 'UA' | 'EN';
   setLang: (lang: 'UA' | 'EN') => void;
@@ -16,6 +19,9 @@ type Props = {
 const Header: React.FC<Props> = ({ lang, setLang }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [expanded, setExpanded] = React.useState(false);
+
+  // 🔥 Додаємо стан модалки
+  const [isSupportOpen, setIsSupportOpen] = React.useState(false);
 
   const dropdownRef = useRef<HTMLLIElement | null>(null);
 
@@ -111,7 +117,8 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
         </nav>
 
         <div className={styles.rightButtons}>
-          <SupportButton lang={lang} />
+          {/* 🔥 Додаємо відкриття модалки */}
+          <SupportButton lang={lang} onClick={() => setIsSupportOpen(true)} />
           <LanguageSwitcher onChange={setLang} />
         </div>
 
@@ -132,6 +139,11 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
           lang={lang}
           setLang={setLang}
         />
+      )}
+
+      {/* 🔥 Рендеримо модалку */}
+      {isSupportOpen && (
+        <SupportModal onClose={() => setIsSupportOpen(false)} />
       )}
     </header>
   );

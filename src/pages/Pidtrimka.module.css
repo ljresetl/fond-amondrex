@@ -33,7 +33,10 @@
 
 /* Card */
 .card {
-  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #c5d3ff;
   border-radius: 14px;
   padding: 18px;
   max-width: 90%;
@@ -56,11 +59,6 @@
   border-bottom-color: #c5d3ff;
   transition: 0.2s;
 }
-
-/* .tabActive {
-  color: #000;
-  border-bottom-color: #60a5fa;
-} */
 
 /* Inputs */
 .amountRow {

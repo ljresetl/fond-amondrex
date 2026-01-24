@@ -212,7 +212,8 @@ export default function Pidtrimka() {
       </div>
 
       {/* Блок 3 — Crypto */}
-      <div className={styles.section}>
+      <div className={`${styles.section} ${styles.cryptoSection}`}>
+
         <h3 className={styles.sectionTitle}>Crypto</h3>
 
         {[
@@ -224,13 +225,15 @@ export default function Pidtrimka() {
         ].map(([label, value]) => (
           <div key={label} className={styles.cryptoItem}>
             <p>{label}</p>
-            <p className={styles.cryptoValue}>{value}</p>
-            <button
-              className={styles.copyButton}
-              onClick={() => navigator.clipboard.writeText(value)}
-            >
-              Скопіювати
-            </button>
+            <div className={styles.copyRow}>
+              <p className={styles.cryptoValue}>{value}</p>
+              <button
+                className={styles.copyButton}
+                onClick={() => navigator.clipboard.writeText(value)}
+              >
+                Скопіювати
+              </button>
+            </div>
           </div>
         ))}
       </div>

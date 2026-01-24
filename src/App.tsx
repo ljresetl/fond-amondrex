@@ -87,7 +87,8 @@ const App: React.FC = () => {
           }
         />
 
-        <Route path="/pidtrimka" element={<Pidtrimka />} />
+        {/* ОНОВЛЕНИЙ МАРШРУТ */}
+    <Route path="/pidtrimka/:type" element={<Pidtrimka />} />
       </Routes>
     </BrowserRouter>
   );

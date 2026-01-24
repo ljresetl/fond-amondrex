@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Header from "../components/header/Header";
 import Footer from "../components/Footer/Footer";
@@ -18,10 +18,11 @@ export default function Pidtrimka() {
   const [currency, setCurrency] = useState<Currency>("EUR");
   const [isAbroad, setIsAbroad] = useState(false);
 
-  const [searchParams] = useSearchParams();
-  const selectedDirection =
-    (searchParams.get("type") as "army" | "humanitarian" | "foundation") ||
-    "army";
+const { type } = useParams();
+
+const selectedDirection =
+  (type as "army" | "humanitarian" | "foundation") || "army";
+
 
   const quickAmounts: Record<Currency, number[]> = {
     EUR: [20, 100, 300],

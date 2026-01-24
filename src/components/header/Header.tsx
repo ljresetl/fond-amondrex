@@ -63,7 +63,7 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
 
   const handleSupportSelect = (direction: string) => {
     setIsSupportOpen(false);
-    navigate(`/pidtrimka?type=${direction}`);
+    navigate(`/pidtrimka/${direction}`);
   };
 
   return (

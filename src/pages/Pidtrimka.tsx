@@ -8,6 +8,7 @@ import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
 import { supportLocal, supportAbroad } from "./supportContent";
 import styles from "./Pidtrimka.module.css";
 import SupportButton from "../components/header/SupportButton/SupportButton";
+// import avatar from '../../../../public/logo2.png';
 
 type Currency = "EUR" | "USD" | "UAH";
 
@@ -109,8 +110,8 @@ export default function Pidtrimka() {
 
             {/* Профіль */}
             <div className={styles.profile}>
-              <img src="/serhiy-prytula.jpg" alt="Сергій Притула" />
-              <span className={styles.profileName}>Сергій Притула</span>
+              <img src="/logo2.png" alt="Фонд Амондрекс" />
+              <span className={styles.profileName}>Фонд Амондрекс</span>
             </div>
 
             {/* Кнопка */}

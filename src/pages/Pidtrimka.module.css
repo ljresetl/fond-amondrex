@@ -1,5 +1,5 @@
 /* =========================
-   MOBILE FIRST (default)
+   MOBILE FIRST (0–785px)
    ========================= */
 
 .page {
@@ -14,24 +14,20 @@
   margin-bottom: 24px;
 }
 
-/* Layout: mobile = 1 column */
+/* Layout */
 .layout {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  align-items: flex-start; /* ← вирівнює по верхньому краю */
 }
 
-/* Left column (mobile: normal flow) */
-.left {
-  width: 100%;
-}
-
-/* Right column (mobile: normal flow) */
+.left,
 .right {
   width: 100%;
 }
 
-/* Card */
+/* Left card */
 .card {
   display: flex;
   flex-direction: column;
@@ -39,7 +35,7 @@
   border: 1px solid #c5d3ff;
   border-radius: 14px;
   padding: 18px;
-  max-width: 90%;
+  max-width: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
@@ -54,7 +50,7 @@
   padding: 10px 14px;
   font-weight: 600;
   cursor: pointer;
-  color: #6b7280;
+  color: #2b2b2d;
   border-bottom: 2px solid transparent;
   border-bottom-color: #c5d3ff;
   transition: 0.2s;
@@ -80,6 +76,13 @@
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 15px;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
 }
 
 /* Quick buttons */
@@ -127,16 +130,90 @@
   width: 100%;
 }
 
-/* Checkbox */
-.checkboxRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-  font-size: 15px;
+/* =========================
+   RIGHT COLUMN SECTIONS
+   ========================= */
+
+.section {
+  border: 1px solid #c5d3ff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: white;
 }
 
-/* Right text block */
+.sectionTitle {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+/* Switch */
+.switchRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 12px; */
+}
+
+.switchSection {
+  max-width: 420px;
+  border-radius: 50px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.bankSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 28px;
+  transition: 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background-color: #60a5fa;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Text blocks */
 .textBlock {
   display: flex;
   flex-direction: column;
@@ -145,11 +222,83 @@
 }
 
 .textLine {
-  font-size: 14px;
+  font-size: 20px;
   color: #374151;
   line-height: 1.45;
   white-space: pre-wrap;
-  word-break: break-word; /* перенос довгих рядків */
+  word-break: break-word;
+  margin: 0;
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #d5d823;
+  font-weight: 600;
+  cursor: pointer;
+  /* text-decoration: underline; */
+  font-size: 20px;
+}
+.linkButton:hover {
+  color: #a4c417;
+}
+
+/* Lists */
+.list {
+  /* padding-left: 20px; */
+  /* margin-bottom: 12px; */
+  list-style: none;
+  padding-left: 0;
+}
+
+.bankDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 50%;
+  border: 1px solid #c5d3ff; /* ← малює рамку */
+  border-radius: 12px; /* ← акуратні закруглення */
+  padding: 12px; /* ← щоб контент не прилипав */
+  background: #fff; /* ← якщо хочеш білий фон */
+}
+.bankDetailsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; /* щоб на мобільному не ламалось */
+}
+.iban {
+  font-size: 18px;
+  font-weight: 600;
+  word-break: break-all;
+  margin: 0;
+}
+
+.copyRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  /* margin-top: 8px; */
+}
+
+/* .iban {
+  font-weight: 700;
+  margin: 8px 0;
+} */
+
+/* Crypto */
+.cryptoItem {
+  margin-bottom: 16px;
+}
+
+.cryptoValue {
+  font-size: 14px;
+  word-break: break-all;
+  margin: 4px 0 8px;
 }
 
 /* Copy button */
@@ -173,10 +322,10 @@
 }
 
 /* =========================
-   TABLET (≥768px)
+   TABLET (≥786px)
    ========================= */
 
-@media (min-width: 768px) {
+@media (min-width: 786px) {
   .pageTitle {
     font-size: 30px;
   }
@@ -190,13 +339,14 @@
     width: 40%;
     position: sticky;
     top: 120px;
-    max-height: 400px; /* обмеження висоти */
-    overflow-y: auto; /* скрол якщо контент більший */
+    max-height: 420px;
+    overflow-y: auto;
   }
 
   .right {
     width: 60%;
-    top: 120px; /* права частина sticky */
+    position: relative;
+    /* top: 120px; */
   }
 
   .card {
@@ -207,21 +357,16 @@
     font-size: 18px;
   }
 
-  .mainButton {
-    font-size: 17px;
-    padding: 14px;
-  }
-
   .amountRow {
     flex-direction: row;
   }
 }
 
 /* =========================
-   DESKTOP (≥1024px)
+   DESKTOP (≥1296px)
    ========================= */
 
-@media (min-width: 1024px) {
+@media (min-width: 1296px) {
   .pageTitle {
     font-size: 32px;
   }

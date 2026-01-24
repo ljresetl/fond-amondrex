@@ -7,7 +7,7 @@
   padding: 24px;
   width: 144px;
   height: 36px;
-  background: #f9dd5a;
+  background-color: #f9dd5a;
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -19,7 +19,7 @@
 }
 
 .supportBtn:hover {
-  background: #ffca28;
+  background-color: #ffca28;
 }
 
 @media (min-width: 768px) {

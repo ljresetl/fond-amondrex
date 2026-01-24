@@ -8,8 +8,8 @@ import menuIcon from '/MobilneMenu.svg';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
-// 🔥 Додаємо модалку
 import SupportModal from './SupportButton/SupportModal';
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   lang: 'UA' | 'EN';
@@ -19,22 +19,19 @@ type Props = {
 const Header: React.FC<Props> = ({ lang, setLang }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [expanded, setExpanded] = React.useState(false);
-
-  // 🔥 Додаємо стан модалки
   const [isSupportOpen, setIsSupportOpen] = React.useState(false);
 
+  const navigate = useNavigate();
   const dropdownRef = useRef<HTMLLIElement | null>(null);
 
-  const toggleMenu = () => setIsMenuOpen(prev => !prev);
-
-  // Повний список пунктів
+  // Пункти меню — тепер ведуть на головну з параметром scrollTo
   const items = [
-    { href: "#partners", label: "Стати партнером" },
-    { href: "#collections", label: "Активні збори" },
-    { href: "#mission", label: "Наша місія" },
-    { href: "#vision", label: "Наше бачення" },
-    { href: "#values", label: "Цінності" },
-    { href: "#how-we-work", label: "Як ми працюємо?" }
+    { href: "/?scrollTo=partners", label: "Стати партнером" },
+    { href: "/?scrollTo=collections", label: "Активні збори" },
+    { href: "/?scrollTo=mission", label: "Наша місія" },
+    { href: "/?scrollTo=vision", label: "Наше бачення" },
+    { href: "/?scrollTo=values", label: "Цінності" },
+    { href: "/?scrollTo=how-we-work", label: "Як ми працюємо?" }
   ];
 
   const mainItems = items.slice(0, 3);
@@ -64,6 +61,11 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
     setExpanded(false);
   };
 
+  const handleSupportSelect = (direction: string) => {
+    setIsSupportOpen(false);
+    navigate(`/pidtrimka?type=${direction}`);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -74,21 +76,19 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
         <nav className={styles.nav}>
           <ul className={styles.list}>
 
-            {/* 3 пункти — завжди */}
             {mainItems.map(item => (
               <li key={item.href}>
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
 
-            {/* Додаткові 3 пункти — тільки на десктопі */}
             {dropdownItems.map(item => (
               <li key={item.href} className={styles.desktopOnly}>
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
 
-            {/* Кнопка "ще" — тільки планшет */}
+            {/* Кнопка "ще" — планшет */}
             <li className={styles.moreWrapper} ref={dropdownRef}>
               <button
                 className={styles.moreBtn}
@@ -117,19 +117,12 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
         </nav>
 
         <div className={styles.rightButtons}>
-          {/* 🔥 Додаємо відкриття модалки */}
           <SupportButton lang={lang} onClick={() => setIsSupportOpen(true)} />
           <LanguageSwitcher onChange={setLang} />
         </div>
 
-        {/* Бургер — тільки мобільний */}
-        <button
-          className={styles.iconBtn}
-          type="button"
-          aria-label="Open menu"
-          onClick={toggleMenu}
-        >
-          <img src={menuIcon} alt="" aria-hidden="true" className={styles.icon} />
+        <button className={styles.iconBtn} onClick={() => setIsMenuOpen(true)}>
+          <img src={menuIcon} alt="" className={styles.icon} />
         </button>
       </div>
 
@@ -141,9 +134,11 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
         />
       )}
 
-      {/* 🔥 Рендеримо модалку */}
       {isSupportOpen && (
-        <SupportModal onClose={() => setIsSupportOpen(false)} />
+        <SupportModal
+          onClose={() => setIsSupportOpen(false)}
+          onSelect={handleSupportSelect}
+        />
       )}
     </header>
   );

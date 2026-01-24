@@ -1,0 +1,237 @@
+/* =========================
+   MOBILE FIRST (default)
+   ========================= */
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Layout: mobile = 1 column */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Left column (mobile: normal flow) */
+.left {
+  width: 100%;
+}
+
+/* Right column (mobile: normal flow) */
+.right {
+  width: 100%;
+}
+
+/* Card */
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  max-width: 90%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #6b7280;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.tabActive {
+  color: #000;
+  border-bottom-color: #60a5fa;
+}
+
+/* Inputs */
+.amountRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup input,
+.inputGroup select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* Quick buttons */
+.quickButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quickBtn {
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quickBtn:hover {
+  background: #f3f4f6;
+}
+
+/* Profile */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.profile img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.profileName {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Main button */
+.fullWidthButton {
+  width: 100%;
+}
+
+/* Checkbox */
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+/* Right text block */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.textLine {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word; /* перенос довгих рядків */
+}
+
+/* Copy button */
+.copyButton {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.copyButton:hover {
+  background: #f3f4f6;
+}
+
+.copySuccess {
+  color: #16a34a;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* =========================
+   TABLET (≥768px)
+   ========================= */
+
+@media (min-width: 768px) {
+  .pageTitle {
+    font-size: 30px;
+  }
+
+  .layout {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .left {
+    width: 40%;
+    position: sticky;
+    top: 120px;
+    max-height: 400px; /* обмеження висоти */
+    overflow-y: auto; /* скрол якщо контент більший */
+  }
+
+  .right {
+    width: 60%;
+    top: 120px; /* права частина sticky */
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .profileName {
+    font-size: 18px;
+  }
+
+  .mainButton {
+    font-size: 17px;
+    padding: 14px;
+  }
+
+  .amountRow {
+    flex-direction: row;
+  }
+}
+
+/* =========================
+   DESKTOP (≥1024px)
+   ========================= */
+
+@media (min-width: 1024px) {
+  .pageTitle {
+    font-size: 32px;
+  }
+
+  .layout {
+    gap: 50px;
+  }
+
+  .card {
+    padding: 26px;
+  }
+}

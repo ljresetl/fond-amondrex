@@ -55,6 +55,12 @@
   display: none;
 }
 
+.list a,
+.list a:hover,
+.list a:focus {
+  text-decoration: none;
+}
+
 /* 📲 Планшет (786–834px) */
 @media (min-width: 786px) {
   .container {

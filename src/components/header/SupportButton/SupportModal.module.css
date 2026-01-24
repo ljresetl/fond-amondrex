@@ -9,26 +9,16 @@
 }
 
 .modal {
-  background: #ffffff;
+  background: #fff;
   padding: 32px;
   border-radius: 16px;
-  width: 90%; /* завжди 90% */
-  width: 320px; /* мінімальна ширина */
+  width: 90%;
+  height: 70vh; /* 🔥 Висота 70% екрану */
+  max-width: 960px;
   font-family: "Montserrat", sans-serif;
   position: relative;
   animation: fadeIn 0.25s ease;
-  @media (min-width: 786px) {
-    width: 70vw;
-    max-width: 70vw;
-  }
-}
-
-/* 💻 Десктоп — 50% ширини */
-@media (min-width: 1296px) {
-  .modal {
-    width: 50vw;
-    max-width: 50vw;
-  }
+  overflow-y: auto; /* 🔥 Скрол всередині */
 }
 
 @keyframes fadeIn {
@@ -53,54 +43,65 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   text-align: center;
   color: #15004c;
 }
 
-.block {
-  margin-bottom: 16px;
+/* 🔥 МОБІЛЬНИЙ — 1 колонка */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
-.label {
-  margin: 0;
-  font-size: 14px;
+/* 🔥 ПЛАНШЕТ І ДЕСКТОП — 3 колонки */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: background 0.2s ease; /* плавна анімація */
+}
+
+/* 🔥 Ховер-ефект — світло-зелений фон */
+.section:hover {
+  background-color: #c4d3ff;
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.heading {
+  font-size: 18px;
   font-weight: 600;
+  margin-bottom: 12px;
   color: #15004c;
 }
 
-.value {
-  margin: 4px 0 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #000;
-}
-
-.inputBlock {
-  margin-top: 24px;
+.tags {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-.sendBtn {
-  margin-top: 24px;
-  width: 100%;
-  padding: 12px;
-  background: #15004c;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 16px;
+.tags span {
+  background: #eaeaea;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }

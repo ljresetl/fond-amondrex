@@ -123,17 +123,15 @@ export default function Pidtrimka() {
       Показується тільки один блок
      ========================= */}
   {isAbroad && (
-    <div className={styles.section}>
+    <div className={`${styles.section} ${styles.abroadSection}`}>
+
+      <h3 className={styles.sectionAbroadTitle}> 🌍 Якщо ви хочете переказати фонду кошти у валюті — робіть це на валютні рахунки, ми зможемо закупляти з цих рахунків за кордоном без комісії при обміні. Більша частина того що закупає фонд оплачується з валютних рахунків.</h3>
       <div className={styles.textBlock}>
 
-        <p className={styles.textLine}>
-          🌍 Якщо ви хочете переказати фонду кошти у валюті — робіть це на валютні рахунки, ми зможемо закупляти з цих рахунків за кордоном без комісії при обміні. Більша частина того що закупає фонд оплачується з валютних рахунків.
-        </p>
-
-        <p className={styles.textLine}>SWIFT</p>
+        <p className={styles.textLineS}>SWIFT</p>
 
         <p className={styles.textLine}>
-          Якщо ви плануєте благодійний внесок від імені юридичної особи та бажаєте поспілкуватись з командою партнерств, заповніть форму за посиланням, щоб ми сконтактували з вами.
+          Якщо ви плануєте благодійний внесок від імені юридичної особи та бажаєте поспілкуватись з командою партнерств, заповніть форму {" "} <button type="button" className={styles.linkButton} onClick={() => setIsPartnersModalOpen(true)} > за посиланням </button>, щоб ми сконтактували з вами.
         </p>
 
         <p className={styles.textLine}>Beneficiary: Serhiy Prytula Humanitarian Foundation</p>
@@ -143,31 +141,36 @@ export default function Pidtrimka() {
         <p className={styles.textLine}>SWIFT code: UGASUAUK</p>
 
         <ul className={styles.list}>
-          <li>Charitable donation for urgent medical equipment</li>
-          <li>Charitable donation for heating centers equipment</li>
-          <li>Charitable donation for urgent humanitarian aid for civilians</li>
+          <li> - Charitable donation for urgent medical equipment</li>
+          <li> - Charitable donation for heating centers equipment</li>
+          <li> - Charitable donation for urgent humanitarian aid for civilians</li>
         </ul>
+<div className={styles.bankDetails}>
+  
+          <p className={styles.textLine}>
+            USD / EUR / PLN / GBP / CZK / CAD / CNY / CHF / JPY
+          </p>
 
-        <p className={styles.textLine}>
-          USD / EUR / PLN / GBP / CZK / CAD / CNY / CHF / JPY
+          <div className={styles.bankDetailsRow}>
+            <p className={styles.iban}>UA253220010000026002700011132</p>
+    
+            <button
+              className={styles.copyButton}
+              onClick={() =>
+                navigator.clipboard.writeText("UA253220010000026002700011132")
+              }
+            >
+              Скопіювати
+            </button>
+          </div>
+</div>
+
+        
+
+                </div>
+                <p className={styles.textLineD}>
+          Грошові кошти, зібрані Фондом Амондрекс збираються задля гуманітарної допомоги цивільним на деокупованих та прифронтових територіях. Сплачуючи благодійний внесок через інструмент Монобанк або у випадку оплати за реквізитами Фонд Амондрекс ви даєте згоду на це, а також погоджуєтесь на те, що сума пожертвування не підлягає поверненню.
         </p>
-
-        <p className={styles.iban}>UA153204780000026004924942305</p>
-
-        <button
-          className={styles.copyButton}
-          onClick={() =>
-            navigator.clipboard.writeText("UA153204780000026004924942305")
-          }
-        >
-          Скопіювати
-        </button>
-
-        <p className={styles.textLine}>
-          Грошові кошти, зібрані Фондом Сергія Притули збираються задля гуманітарної допомоги цивільним на деокупованих та прифронтових територіях. Сплачуючи благодійний внесок через інструмент LiqPay або у випадку оплати за реквізитами БО Фонд Сергія Притули ви даєте згоду на це, а також погоджуєтесь на те, що сума пожертвування не підлягає поверненню.
-        </p>
-
-      </div>
     </div>
   )}
 
@@ -209,19 +212,43 @@ export default function Pidtrimka() {
             </button>
           </div>
 </div>
+                </div>
+                     {/* Блок 3 — Переказ на карту */}
+      <div className={`${styles.section} ${styles.bankSection}`}>
+        <h3 className={styles.sectionTitle}>Переказ на карту</h3>
+
+        <p className={styles.textLine}>Одержувач - Благодійний Фонд Амондрекс</p>
+        <p className={styles.textLine}>IBAN UA253220010000026002700011132</p>
+
+        <p className={styles.textLine}>ЄДРПОУ 46088898</p>
+  <p className={styles.textLine}>Призначення платежу Благодійний безповоротний внесок</p>
+
+<div className={styles.bankDetails}>
+                    <div className={styles.copyRow}>
+                      <p className={styles.cardPay}>5408 8100 4218 4266</p>
+            <button
+              className={styles.copyButton}
+              onClick={() =>
+                navigator.clipboard.writeText("5408810042184266")
+              }
+            >
+              Скопіювати
+            </button>
+          </div>
+</div>
       </div>
 
-      {/* Блок 3 — Crypto */}
+      {/* Блок 4 — Crypto */}
       <div className={`${styles.section} ${styles.cryptoSection}`}>
 
         <h3 className={styles.sectionTitle}>Crypto</h3>
 
         {[
-          ["Bitcoin (BTC)", "bc1qg8rthfq0yd462n7g2jyjv0v4wd0jx0au3cw6rx"],
-          ["Ethereum ETH (ERC-20)", "0xd4F3f1adE6824363e08199E1a25333D1C122Ba90"],
-          ["Tether USDT (TRC20)", "THs7222Zt1p2Sr8dSfCnXoz3Ew6av7M5gm"],
-          ["Monero (XMR)", "87peiEboSyrBw9ENwNZvoa19tRVEZYbUdCCAm5NaMa2AZ15Ne78VYrD6RQFQU6QVQ6NWtnpdwhXrMKU6y2LB8NKmJX3usEb"],
-          ["Solana (SOL)", "4hqWAhGpv1Bkum4HjKjMo5JyTUo8AP7BFoCzEhgqLxyy"]
+          ["Bitcoin (BTC)", "1LJaFL2Yw4CD5yxFq8rtiF9NWGhPcvDhDY"],
+          ["Ethereum ETH (ERC-20)", "0x973218f04ea4204fab32082ede9f2372abdba286"],
+          ["Tether USDT (TRC20)", "TP6TKcDAavW5K49WQJ5Jf1WNKoqpQBJogu"],
+          // ["Monero (XMR)", "87peiEboSyrBw9ENwNZvoa19tRVEZYbUdCCAm5NaMa2AZ15Ne78VYrD6RQFQU6QVQ6NWtnpdwhXrMKU6y2LB8NKmJX3usEb"],
+          ["Solana (SOL)", "AFxaLYv1efipBXCoKHzzjyoarmA2opJpKiD7hUJRCMaG"]
         ].map(([label, value]) => (
           <div key={label} className={styles.cryptoItem}>
             <p>{label}</p>

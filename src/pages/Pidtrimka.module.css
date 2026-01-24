@@ -144,8 +144,45 @@
   border: 1px solid #c5d3ff;
   border-radius: 12px;
   padding: 16px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
   background: white;
+}
+
+.textBlock {
+  border: 1px solid #c5d3ff;
+  border-radius: 12px;
+  padding: 16px;
+  /* margin-bottom: 24px; */
+  background: white;
+}
+
+.abroadSection {
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.textLineS {
+  font-size: 48px;
+  color: #374151;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.textLineD {
+  font-size: 20px;
+  color: #374151;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  /* margin-top: 20px; */
+}
+
+.cardPay {
+  color: #3b82f6;
 }
 
 .sectionTitle {
@@ -153,6 +190,25 @@
   font-weight: 700;
   margin: 0;
   margin-bottom: 12px;
+}
+
+.bankDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 50%;
+  border: 1px solid #c5d3ff; /* ← малює рамку */
+  border-radius: 12px; /* ← акуратні закруглення */
+  padding: 12px; /* ← щоб контент не прилипав */
+  background: #fff; /* ← якщо хочеш білий фон */
+}
+
+.bankDetailsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap; /* щоб на мобільному не ламалось */
 }
 
 /* Switch */
@@ -166,6 +222,7 @@
 .switchSection {
   max-width: 420px;
   border-radius: 50px;
+  margin-bottom: 20px;
 }
 
 .switch {
@@ -224,7 +281,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .textLine {
@@ -366,7 +423,7 @@
     width: 40%;
     position: sticky;
     top: 120px;
-    max-height: 420px;
+    max-height: calc(100vh - 140px); /* або 420px */
     overflow-y: auto;
   }
 

@@ -38,16 +38,7 @@ const SupportModal: React.FC<Props> = ({ lang, onClose, onSelect }) => {
             </div>
           </div>
 
-          {/* HUMANITARIAN */}
-          <div className={styles.section} onClick={() => onSelect("humanitarian")}>
-            <div className={styles.icon}>📦</div>
-            <h3 className={styles.heading}>{t.humanitarian.title}</h3>
-            <div className={styles.tags}>
-              {t.humanitarian.tags.map((tag: string, i: number) => (
-                <span key={i}>{tag}</span>
-              ))}
-            </div>
-          </div>
+          {/* FAMILIES */} <div className={styles.section} onClick={() => onSelect("families")}> <div className={styles.icon}>👨‍👩‍👧‍👦</div> <h3 className={styles.heading}>{t.families.title}</h3> <div className={styles.tags}> {t.families.tags.map((tag: string, i: number) => ( <span key={i}>{tag}</span> ))} </div> </div>
 
           {/* FOUNDATION */}
           <div className={styles.section} onClick={() => onSelect("foundation")}>

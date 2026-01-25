@@ -14,6 +14,7 @@
   padding: 0 16px;
   gap: 24px;
   font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
 }
 
 .heading {
@@ -60,6 +61,10 @@
       "img1 text"
       "img2 text";
     gap: 24px;
+  }
+
+  .text {
+    margin: 0;
   }
 
   .heading {

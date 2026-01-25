@@ -19,7 +19,7 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
   const [currency, setCurrency] = useState<Currency>("EUR");
   const [isAbroad, setIsAbroad] = useState(false);
   const { type } = useParams();
-  const selectedDirection = (type as "army" | "humanitarian" | "foundation") || "army";
+  const selectedDirection = (type as "army" | "families" | "foundation") || "army";
   const quickAmounts: Record<Currency, number[]>
     = { EUR: [20, 100, 300], USD: [20, 100, 300], UAH: [200, 500, 1000], };
   return (
@@ -30,7 +30,7 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
 
           <h1 className={styles.pageTitle}>
             {selectedDirection === "army" && "Підтримати армію"}
-            {selectedDirection === "humanitarian" && "Підтримати гуманітарний напрям"}
+            {selectedDirection === "families" && "Підтримати сім'ї військових"}
             {selectedDirection === "foundation" && "Підтримати діяльність фонду"}
           </h1>
 

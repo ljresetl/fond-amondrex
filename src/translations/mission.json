@@ -4,7 +4,8 @@
     "p1": "Місія Фонду «Амондрекс» — надійно і системно забезпечувати ЗСУ та наших захисників тим, без чого ефективна оборона неможлива. Ми діємо у декількох ключових напрямах:",
     "li1": "Закупівля та доставка сучасного обладнання, дронів, медичної допомоги.",
     "li2": "Реабілітація поранених та допомога після боїв.",
-    "li3": "Ініціативи для зміцнення обороноздатності та єдності суспільства."
+    "li3": "Ініціативи для зміцнення обороноздатності та єдності суспільства.",
+    "li4": "Допомога сім'ям військових."
   },
 
   "EN": {
@@ -12,6 +13,7 @@
     "p1": "The mission of the Amondrex Foundation is to reliably and systematically provide the Armed Forces of Ukraine and our defenders with everything essential for effective defense. We operate across several key areas:",
     "li1": "Procurement and delivery of modern equipment, drones, and medical supplies.",
     "li2": "Rehabilitation of the wounded and assistance after combat.",
-    "li3": "Initiatives to strengthen defense capability and social unity."
+    "li3": "Initiatives to strengthen defense capability and social unity.",
+    "li4": "Support for military families."
   }
 }

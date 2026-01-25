@@ -3,14 +3,14 @@
     "home": "Головна",
     "default": "Підтримка",
     "foundation": "Підтримати операційну діяльність фонду",
-    "humanitarian": "Підтримати гуманітарний напрям",
+    "families": "Підтримка сімей військових",
     "army": "Підтримати армію"
   },
   "EN": {
     "home": "Home",
     "default": "Support",
     "foundation": "Support Foundation Operations",
-    "humanitarian": "Support Humanitarian Direction",
+    "families": "Support Military Families",
     "army": "Support the Army"
   }
 }

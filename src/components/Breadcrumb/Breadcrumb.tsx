@@ -11,7 +11,7 @@ const Breadcrumb: React.FC<Props> = ({ type, lang }) => {
   const t = translations[lang];
 
   const label =
-    t[type as "foundation" | "humanitarian" | "army"] || t.default;
+    t[type as "foundation" | "families" | "army"] || t.default;
 
   return (
     <div

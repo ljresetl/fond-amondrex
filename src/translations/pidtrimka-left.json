@@ -1,0 +1,14 @@
+{
+  "UA": {
+    "tab": "Внесок для підтримки",
+    "amount": "Сума",
+    "currency": "Валюта",
+    "foundationName": "Фонд Амондрекс"
+  },
+  "EN": {
+    "tab": "Contribution for Support",
+    "amount": "Amount",
+    "currency": "Currency",
+    "foundationName": "Amondrex Foundation"
+  }
+}

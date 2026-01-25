@@ -1,0 +1,115 @@
+{
+  "UA": {
+    "switch": {
+      "inUkraine": "Я знаходжусь в Україні",
+      "abroad": "Я знаходжусь за кордоном"
+    },
+
+    "abroad": {
+      "title": "🌍 Якщо ви хочете переказати фонду кошти у валюті — робіть це на валютні рахунки, ми зможемо закупляти з цих рахунків за кордоном без комісії при обміні. Більша частина того що закупає фонд оплачується з валютних рахунків.",
+      "swift": "SWIFT",
+      "legal": "Якщо ви плануєте благодійний внесок від імені юридичної особи та бажаєте поспілкуватись з командою партнерств, заповніть форму",
+      "legalLink": "за посиланням",
+      "beneficiary": "Beneficiary: Serhiy Prytula Humanitarian Foundation",
+      "beneficiaryAddress": "Beneficiary Address: 48 Shevchenka Tarasa avenue, lit. «A», office №23, Kyiv, 01032, Ukraine",
+      "bank": "Beneficiary bank: Public JSB «UKRGASBANK»",
+      "bankAddress": "Bank Address: 1 Yerevanska street, Kyiv, 03087, Ukraine",
+      "swiftCode": "SWIFT code: UGASUAUK",
+      "donationPurposes": [
+        "Charitable donation for urgent medical equipment",
+        "Charitable donation for heating centers equipment",
+        "Charitable donation for urgent humanitarian aid for civilians"
+      ],
+      "currencies": "USD / EUR / PLN / GBP / CZK / CAD / CNY / CHF / JPY",
+      "copy": "Скопіювати",
+      "disclaimer": "Грошові кошти, зібрані Фондом Амондрекс збираються задля гуманітарної допомоги цивільним на деокупованих та прифронтових територіях. Сплачуючи благодійний внесок через інструмент Монобанк або у випадку оплати за реквізитами Фонд Амондрекс ви даєте згоду на це, а також погоджуєтесь на те, що сума пожертвування не підлягає поверненню."
+    },
+
+    "bank": {
+      "title": "Банківський переказ по Україні",
+      "legal": "Якщо ви плануєте благодійний внесок від імені юридичної особи та бажаєте поспілкуватись з командою партнерств, заповніть форму",
+      "legalLink": "за посиланням",
+      "foundation": "\"Благодійний Фонд Амондрекс\"",
+      "edrpou": "ЄДРПОУ 46088898",
+      "choosePurpose": "Оберіть одне із призначень платежу:",
+      "purposes": [
+        "Допомога медзакладам: благодійний безповоротний внесок",
+        "Пункти обігріву: благодійний безповоротний внесок",
+        "Нагальні потреби громад: благодійний безповоротний внесок"
+      ],
+      "uah": "UAH",
+      "copy": "Скопіювати"
+    },
+
+    "card": {
+      "title": "Переказ на карту",
+      "receiver": "Одержувач - Благодійний Фонд Амондрекс",
+      "iban": "IBAN UA253220010000026002700011132",
+      "edrpou": "ЄДРПОУ 46088898",
+      "purpose": "Призначення платежу Благодійний безповоротний внесок",
+      "copy": "Скопіювати"
+    },
+
+    "crypto": {
+      "title": "Crypto",
+      "copy": "Скопіювати"
+    }
+  },
+
+  "EN": {
+    "switch": {
+      "inUkraine": "I am in Ukraine",
+      "abroad": "I am abroad"
+    },
+
+    "abroad": {
+      "title": "🌍 If you want to donate in foreign currency — please use our FX accounts. This allows us to purchase abroad without exchange fees. Most of the foundation’s procurement is paid from FX accounts.",
+      "swift": "SWIFT",
+      "legal": "If you plan a corporate donation and want to contact our partnerships team, fill out the form",
+      "legalLink": "via the link",
+      "beneficiary": "Beneficiary: Serhiy Prytula Humanitarian Foundation",
+      "beneficiaryAddress": "Beneficiary Address: 48 Shevchenka Tarasa avenue, lit. «A», office №23, Kyiv, 01032, Ukraine",
+      "bank": "Beneficiary bank: Public JSB «UKRGASBANK»",
+      "bankAddress": "Bank Address: 1 Yerevanska street, Kyiv, 03087, Ukraine",
+      "swiftCode": "SWIFT code: UGASUAUK",
+      "donationPurposes": [
+        "Charitable donation for urgent medical equipment",
+        "Charitable donation for heating centers equipment",
+        "Charitable donation for urgent humanitarian aid for civilians"
+      ],
+      "currencies": "USD / EUR / PLN / GBP / CZK / CAD / CNY / CHF / JPY",
+      "copy": "Copy",
+      "disclaimer": "Funds collected by the Amondrex Foundation are used for humanitarian aid to civilians in de-occupied and frontline areas. By donating via Monobank or bank transfer, you agree that the donation is non-refundable."
+    },
+
+    "bank": {
+      "title": "Bank transfer within Ukraine",
+      "legal": "If you plan a corporate donation and want to contact our partnerships team, fill out the form",
+      "legalLink": "via the link",
+      "foundation": "\"Amondrex Charity Foundation\"",
+      "edrpou": "EDRPOU 46088898",
+      "choosePurpose": "Choose one of the payment purposes:",
+      "purposes": [
+        "Support for medical institutions: charitable non-refundable contribution",
+        "Heating centers: charitable non-refundable contribution",
+        "Urgent community needs: charitable non-refundable contribution"
+      ],
+      "uah": "UAH",
+      "copy": "Copy"
+    },
+
+    "card": {
+      "title": "Card transfer",
+      "receiver": "Recipient – Amondrex Charity Foundation",
+      "iban": "IBAN UA253220010000026002700011132",
+      "edrpou": "EDRPOU 46088898",
+      "purpose": "Payment purpose: Charitable non-refundable contribution",
+      "copy": "Copy"
+    },
+
+    "crypto": {
+      "title": "Crypto",
+      "copy": "Copy"
+    }
+  }
+}

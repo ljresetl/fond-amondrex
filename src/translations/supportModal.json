@@ -1,0 +1,32 @@
+{
+  "UA": {
+    "title": "Оберіть напрямок підтримки",
+    "army": {
+      "title": "Підтримати армію",
+      "tags": ["Транспорт", "Оптика", "Зв’язок", "Дрони", "БПЛА", "Тактична медицина", "FPV-дрони", "Трофейна броня", "Обладнання КШМ"]
+    },
+    "humanitarian": {
+      "title": "Підтримати гуманітарний напрям",
+      "tags": ["Медичні проекти", "Safe & Smart", "Проект NEST", "Швидке кризове реагування"]
+    },
+    "foundation": {
+      "title": "Підтримати діяльність фонду",
+      "tags": ["Розвиток фонду", "Адміністративна діяльність"]
+    }
+  },
+  "EN": {
+    "title": "Choose a support direction",
+    "army": {
+      "title": "Support the Army",
+      "tags": ["Transport", "Optics", "Communication", "Drones", "UAVs", "Tactical Medicine", "FPV Drones", "Trophy Armor", "Command Equipment"]
+    },
+    "humanitarian": {
+      "title": "Support Humanitarian Efforts",
+      "tags": ["Medical Projects", "Safe & Smart", "Project NEST", "Rapid Crisis Response"]
+    },
+    "foundation": {
+      "title": "Support the Foundation",
+      "tags": ["Foundation Development", "Administrative Activities"]
+    }
+  }
+}

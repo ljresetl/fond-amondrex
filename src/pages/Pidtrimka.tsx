@@ -128,11 +128,11 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
           .
         </p>
 
-        <p className={styles.textLine}>{tr.abroad.beneficiary}</p>
+        {/* <p className={styles.textLine}>{tr.abroad.beneficiary}</p>
         <p className={styles.textLine}>{tr.abroad.beneficiaryAddress}</p>
         <p className={styles.textLine}>{tr.abroad.bank}</p>
         <p className={styles.textLine}>{tr.abroad.bankAddress}</p>
-        <p className={styles.textLine}>{tr.abroad.swiftCode}</p>
+        <p className={styles.textLine}>{tr.abroad.swiftCode}</p> */}
 
         <ul className={styles.list}>
           {tr.abroad.donationPurposes.map((item, i) => (

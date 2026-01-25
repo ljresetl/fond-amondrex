@@ -16,9 +16,9 @@
       "bankAddress": "Bank Address: 1 Yerevanska street, Kyiv, 03087, Ukraine",
       "swiftCode": "SWIFT code: UGASUAUK",
       "donationPurposes": [
-        "Charitable donation for urgent medical equipment",
-        "Charitable donation for heating centers equipment",
-        "Charitable donation for urgent humanitarian aid for civilians"
+        "Благодійний внесок на термінове медичне обладнання",
+        "Благодійний внесок на обладнання для пунктів обігріву",
+        "Благодійний внесок на термінову гуманітарну допомогу для цивільних"
       ],
       "currencies": "USD / EUR / PLN / GBP / CZK / CAD / CNY / CHF / JPY",
       "copy": "Скопіювати",

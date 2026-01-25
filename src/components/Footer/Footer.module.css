@@ -12,6 +12,7 @@
   margin: 0 auto;
   padding: 0 16px;
   gap: 24px;
+  box-sizing: border-box;
 }
 
 .left_all {
@@ -65,7 +66,7 @@
   text-align: right;
   gap: 8px;
   justify-content: space-between;
-  margin-top: 106px;
+  margin-top: 92px;
 }
 
 .right a {
@@ -113,6 +114,10 @@
   .right {
     margin-top: 24px;
   }
+
+  .socials {
+    margin: 0;
+  }
 }
 
 /* 💻 Десктоп (від 1296px) */
@@ -122,7 +127,7 @@
     padding: 0 72px; /* 🔥 Головне: робимо вертикальний flex, щоб .right можна було опустити вниз */
     display: flex;
     flex-direction: row;
-    gap: 18px;
+    gap: 10px;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
@@ -133,32 +138,46 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     width: 100%;
   }
   .nav {
-    grid-template-columns: repeat(6, auto);
-    column-gap: 26px;
-    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    grid-template-columns: none; /* вимикаємо grid */
+  }
+
+  .navItem a {
+    white-space: nowrap;
   }
 
   .right {
     display: flex;
-    flex-direction: row; /* в рядок */
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: 0;
-    gap: 26px;
+    gap: 10px; /* 🔥 Забороняємо перенос */
+    white-space: nowrap; /* 🔥 Забороняємо стискання */
+    flex-shrink: 0;
   }
-
+  .right a {
+    white-space: nowrap; /* текст не переноситься */
+    flex-shrink: 0; /* елемент не стискається */
+  }
   .right_all {
-    justify-content: center;
-    align-items: center;
+    display: flex;
     flex-direction: row-reverse;
-    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 🔥 Забороняємо перенос у всьому блоці */
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .socials {
     padding: 0;
-    gap: 26px;
+    gap: 10px;
   }
 }

@@ -14,6 +14,7 @@
   padding: 0 16px;
   gap: 24px;
   font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
 }
 
 .heading {
@@ -27,13 +28,15 @@
 .content {
   display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
 .photo {
   display: block;
   border-radius: 16px;
-  width: 342px;
+  width: 100%;
   height: 454px;
+  object-fit: cover;
 }
 
 .text {
@@ -55,15 +58,14 @@
   padding-left: 20px;
 }
 
-.hideOnTablet {
-  /* мобільний — показуємо */
-}
-
-/* 📲 Планшет (від 786px) */
+/* 📲 Планшет (786px+) */
 @media (min-width: 786px) {
   .container {
-    min-width: 738px;
+    width: 100%;
+    max-width: 738px;
+    margin: 0 auto;
     padding: 0 24px;
+    box-sizing: border-box;
   }
 
   .content {
@@ -75,7 +77,6 @@
   .photo {
     width: 355px;
     height: 392px;
-    object-fit: cover;
   }
 
   .hideOnTablet {
@@ -89,71 +90,46 @@
   }
 }
 
-/* 💻 Десктоп (від 1296px) */
+/* 💻 Десктоп (1296px+) */
 @media (min-width: 1296px) {
-  /* Контейнер секції */
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* ліва колонка — фото 1, права — текст + фото 2 */
-    grid-template-rows: auto auto; /* ряд 1 — заголовок, ряд 2 — контент */
-    column-gap: 48px;
-    row-gap: 48px;
+    width: 100%;
     max-width: 1296px;
-    padding: 0 72px;
     margin: 0 auto;
+    padding: 0 72px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
   }
 
-  /* Заголовок на всю ширину */
   .heading {
-    grid-column: 1 / 3; /* займає обидві колонки */
-    grid-row: 1;
+    font-size: 64px;
     text-align: left;
   }
 
-  /* Контентна частина стає grid */
   .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* фото 1 — текст/фото 2 */
-    grid-template-rows: auto auto; /* текст над фото 2 */
-    column-gap: 48px;
-    row-gap: 24px;
-    grid-column: 1 / 3; /* контент під заголовком */
-    grid-row: 2;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
   }
 
-  /* Фото 1 — ліва колонка, займає 2 рядки */
-  .content picture:nth-of-type(1) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    width: 100%;
-    height: auto;
-  }
-
-  /* Текст — права колонка, верх */
-  .text {
-    grid-column: 2 / 3;
-    grid-row: 1;
-    margin-bottom: 0;
-  }
-
-  /* Фото 2 — права колонка, низ */
-  .content picture:nth-of-type(2) {
-    grid-column: 2 / 3;
-    grid-row: 2;
-    width: 100%;
-    height: auto;
-    margin-top: 84px;
-  }
-
-  /* Фото на десктопі */
   .photo {
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 415px;
+    /* height: auto; */
     object-fit: cover;
+    flex-shrink: 0;
   }
 
-  /* Показуємо друге фото (воно приховане на планшеті) */
+  .text {
+    max-width: 600px;
+  }
+
   .hideOnTablet {
+    /* width: 300px;
+    height: 415px; */
     display: block;
   }
 }

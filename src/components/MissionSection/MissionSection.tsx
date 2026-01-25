@@ -22,6 +22,7 @@ export const MissionSection: React.FC<Props> = ({ lang }) => {
           <li>{t.li1}</li>
           <li>{t.li2}</li>
           <li>{t.li3}</li>
+          <li>{t.li4}</li>
         </ul>
 
         <div className={styles.gallery}>

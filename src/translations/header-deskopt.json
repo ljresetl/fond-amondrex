@@ -1,0 +1,24 @@
+{
+  "UA": {
+    "menu": {
+      "becomePartner": "Стати партнером",
+      "activeCollections": "Активні збори",
+      "mission": "Наша місія",
+      "vision": "Наше бачення",
+      "values": "Цінності",
+      "howWeWork": "Як ми працюємо?"
+    },
+    "language": "UA"
+  },
+  "EN": {
+    "menu": {
+      "becomePartner": "Become a Partner",
+      "activeCollections": "Active Collections",
+      "mission": "Our Mission",
+      "vision": "Our Vision",
+      "values": "Values",
+      "howWeWork": "How We Work"
+    },
+    "language": "EN"
+  }
+}

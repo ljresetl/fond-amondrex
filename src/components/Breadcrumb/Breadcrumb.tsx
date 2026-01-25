@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import translations from "../../translations/breadcrumb.json";
 
 type Props = {
   type: string;
+  lang: "UA" | "EN";
 };
 
-const Breadcrumb: React.FC<Props> = ({ type }) => {
-  const labels: Record<string, string> = {
-    foundation: "Підтримати операційну діяльність фонду",
-    humanitarian: "Підтримати гуманітарний напрям",
-    army: "Підтримати армію"
-  };
+const Breadcrumb: React.FC<Props> = ({ type, lang }) => {
+  const t = translations[lang];
 
-  const label = labels[type] || "Підтримка";
+  const label =
+    t[type as "foundation" | "humanitarian" | "army"] || t.default;
 
   return (
     <div
@@ -34,7 +33,7 @@ const Breadcrumb: React.FC<Props> = ({ type }) => {
           alignItems: "center"
         }}
       >
-        Головна
+        {t.home}
       </Link>
 
       <MdKeyboardArrowRight size={18} color="#888" />

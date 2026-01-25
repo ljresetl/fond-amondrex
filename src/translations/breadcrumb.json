@@ -1,0 +1,16 @@
+{
+  "UA": {
+    "home": "Головна",
+    "default": "Підтримка",
+    "foundation": "Підтримати операційну діяльність фонду",
+    "humanitarian": "Підтримати гуманітарний напрям",
+    "army": "Підтримати армію"
+  },
+  "EN": {
+    "home": "Home",
+    "default": "Support",
+    "foundation": "Support Foundation Operations",
+    "humanitarian": "Support Humanitarian Direction",
+    "army": "Support the Army"
+  }
+}

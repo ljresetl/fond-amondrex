@@ -10,6 +10,8 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 import SupportModal from './SupportButton/SupportModal';
 import { useNavigate } from "react-router-dom";
+import desktopTranslations from '../../translations/header-deskopt.json';
+
 
 type Props = {
   lang: 'UA' | 'EN';
@@ -25,14 +27,7 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
   const dropdownRef = useRef<HTMLLIElement | null>(null);
 
   // Пункти меню — тепер ведуть на головну з параметром scrollTo
-  const items = [
-    { href: "/?scrollTo=partners", label: "Стати партнером" },
-    { href: "/?scrollTo=collections", label: "Активні збори" },
-    { href: "/?scrollTo=mission", label: "Наша місія" },
-    { href: "/?scrollTo=vision", label: "Наше бачення" },
-    { href: "/?scrollTo=values", label: "Цінності" },
-    { href: "/?scrollTo=how-we-work", label: "Як ми працюємо?" }
-  ];
+const t = desktopTranslations[lang].menu; const items = [ { href: "/?scrollTo=partners", label: t.becomePartner }, { href: "/?scrollTo=collections", label: t.activeCollections }, { href: "/?scrollTo=mission", label: t.mission }, { href: "/?scrollTo=vision", label: t.vision }, { href: "/?scrollTo=values", label: t.values }, { href: "/?scrollTo=how-we-work", label: t.howWeWork } ];
 
   const mainItems = items.slice(0, 3);
   const dropdownItems = items.slice(3);
@@ -137,6 +132,7 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
       {isSupportOpen && (
         <SupportModal
           onClose={() => setIsSupportOpen(false)}
+          lang={lang}
           onSelect={handleSupportSelect}
         />
       )}

@@ -53,44 +53,47 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <ScrollHandler />
+  <ScrollHandler />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header lang={lang} setLang={setLang} />
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <>
+          <Header lang={lang} setLang={setLang} />
 
-              <HeroBlock lang={lang} openVolunteerModal={() => setIsVolunteerModalOpen(true)} />
-              <PartnersButtons lang={lang} onSuccess={handleSuccess} />
+          <HeroBlock lang={lang} openVolunteerModal={() => setIsVolunteerModalOpen(true)} />
+          <PartnersButtons lang={lang} onSuccess={handleSuccess} />
 
-              <section id="partners"><ActiveSection lang={lang} /></section>
-              <section id="mission"><MissionSection lang={lang} /></section>
-              <section id="vision"><VisionSection lang={lang} /></section>
-              <section id="values"><ValuesSection lang={lang} /></section>
-              <section id="how-we-work"><HowWeWorkSection lang={lang} /></section>
+          <section id="partners"><ActiveSection lang={lang} /></section>
+          <section id="mission"><MissionSection lang={lang} /></section>
+          <section id="vision"><VisionSection lang={lang} /></section>
+          <section id="values"><ValuesSection lang={lang} /></section>
+          <section id="how-we-work"><HowWeWorkSection lang={lang} /></section>
 
-              <SupportCallSection lang={lang} />
-              <Footer lang={lang} />
+          <SupportCallSection lang={lang} />
+          <Footer lang={lang} />
 
-              {isVolunteerModalOpen && (
-                <VolunteerModal onClose={() => setIsVolunteerModalOpen(false)} onSuccess={handleSuccess} />
-              )}
+          {isVolunteerModalOpen && (
+            <VolunteerModal onClose={() => setIsVolunteerModalOpen(false)} onSuccess={handleSuccess} />
+          )}
 
-              {isPartnersModalOpen && (
-                <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={handleSuccess} />
-              )}
+          {isPartnersModalOpen && (
+            <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={handleSuccess} />
+          )}
 
-              {successMessage && <div className="success-banner">{successMessage}</div>}
-            </>
-          }
-        />
+          {successMessage && <div className="success-banner">{successMessage}</div>}
+        </>
+      }
+    />
 
-        {/* ОНОВЛЕНИЙ МАРШРУТ */}
-    <Route path="/pidtrimka/:type" element={<Pidtrimka />} />
-      </Routes>
-    </BrowserRouter>
+    <Route
+      path="/pidtrimka/:type"
+      element={<Pidtrimka lang={lang} setLang={setLang} />}
+    />
+  </Routes>
+</BrowserRouter>
+
   );
 };
 

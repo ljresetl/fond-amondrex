@@ -1,50 +1,59 @@
 import React from 'react';
 import styles from './SupportCallSection.module.css';
 
-// Кнопка підтримки — текст залежить від мови
 import SupportButton from '../header/SupportButton/SupportButton';
+import SupportModal from '../header/SupportButton/SupportModal';
 
-// Переклади для секції "Підтримати"
-// JSON містить тексти для UA та EN
 import translations from '../../translations/supportCall.json';
+import { useNavigate } from "react-router-dom";
 
-// Тип пропсів — компонент отримує лише поточну мову
 type Props = {
   lang: 'UA' | 'EN';
 };
 
 const SupportCallSection: React.FC<Props> = ({ lang }) => {
-  // Отримуємо перекладені тексти для поточної мови
   const t = translations[lang];
+
+  // Стан модалки
+  const [isSupportOpen, setIsSupportOpen] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  // Вибір напрямку → перехід на сторінку підтримки
+  const handleSupportSelect = (direction: string) => {
+    setIsSupportOpen(false);
+    navigate(`/pidtrimka/${direction}`);
+  };
 
   return (
     <section className={styles.SupportCallSection}>
       <div className={styles.container}>
 
-        {/* Заголовок секції — перекладений */}
         <h2 className={styles.heading}>{t.title}</h2>
 
-        {/* 
-          Основний текст секції.
-          Використовуємо <br /> для розбиття на рядки,
-          оскільки текст складається з трьох окремих частин.
-        */}
         <p className={styles.text}>
           {t.p1} <br />
           {t.p2} <br />
           {t.p3}
         </p>
 
-        {/* 
-          Велика кнопка підтримки.
-          Текст кнопки перекладається всередині SupportButton.
-        */}
-        <SupportButton 
+        {/* Кнопка відкриває модалку */}
+        <SupportButton
           lang={lang}
           className={styles.bigButton}
+          onClick={() => setIsSupportOpen(true)}
         />
 
       </div>
+
+      {/* Модалка напрямків підтримки */}
+      {isSupportOpen && (
+        <SupportModal
+          onClose={() => setIsSupportOpen(false)}
+          lang={lang}
+          onSelect={handleSupportSelect}
+        />
+      )}
     </section>
   );
 };

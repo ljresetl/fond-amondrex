@@ -85,3 +85,21 @@
 .bigButton {
   margin: 0 auto;
 }
+
+.list button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit; /* успадковує шрифт */
+  color: #0f0f0f; /* як у навігації */
+  text-align: left;
+  cursor: pointer;
+  line-height: 1.8;
+  letter-spacing: -0.02em;
+  display: block;
+  width: 100%;
+}
+.list button:hover {
+  opacity: 0.8;
+}

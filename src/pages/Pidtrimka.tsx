@@ -263,7 +263,8 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
 
 
           </div>
-          {isPartnersModalOpen && (<PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={() => console.log("Success")} />)}
+{isPartnersModalOpen && ( <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={() => console.log("Success")} lang={lang} /> )}
+
         </main>
 
         <Footer lang={lang} />

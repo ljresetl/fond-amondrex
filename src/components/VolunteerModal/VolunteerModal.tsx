@@ -71,16 +71,16 @@ const bannedEmailDomains = [
 ];
 
 const VolunteerModal: React.FC<Props> = ({ onClose, onSuccess, lang }) => {
-console.log("LANG:", lang);
-console.log("TRANSLATIONS:", translations);
-console.log("t:", translations[lang]);
+// console.log("LANG:", lang);
+// console.log("TRANSLATIONS:", translations);
+// console.log("t:", translations[lang]);
 
   // 🔥 Переклад — правильне місце
   const t = translations[lang];
-console.log("LANG:", lang);
-console.log("LANG UPPER:", lang?.toUpperCase());
-console.log("TRANSLATIONS:", translations);
-console.log("t:", t);
+// console.log("LANG:", lang);
+// console.log("LANG UPPER:", lang?.toUpperCase());
+// console.log("TRANSLATIONS:", translations);
+// console.log("t:", t);
 
   const [formData, setFormData] = useState<FormData>({
     type: '',

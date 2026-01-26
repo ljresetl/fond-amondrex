@@ -1,0 +1,140 @@
+{
+  "UA": {
+    "title": "Анкета волонтера у Фонд \"Амондрекс\"",
+    "description": "Ваша участь — це один крок до перемоги.",
+    "requiredNote": "Зірочка (*) вказує, що запитання обов'язкове.",
+
+    "typeLabel": "1. Формат участі",
+    "typePlaceholder": "Оберіть варіант",
+    "typePermanent": "Постійне волонтерство",
+    "typeReserve": "Резерв",
+
+    "fullName": "2. Прізвище та ім’я",
+    "birthDate": "3. Дата народження",
+    "birthPlaceholder": "ДД.ММ.РРРР",
+
+    "region": "4. Область",
+    "city": "5. Місто",
+
+    "phone": "6. Телефон",
+    "email": "7. Електронна пошта",
+    "workplace": "8. Місце роботи/навчання",
+    "languages": "9. Володіння іноземними мовами",
+    "transport": "10. Чи є у Вас автотранспорт та права?",
+    "experience": "11. Досвід волонтерської діяльності",
+    "publicSpeaking": "12. Досвід публічних виступів",
+    "seminarExperience": "13. Досвід проведення семінарів/тренінгів",
+    "seminarPlaceholder": "Ваша відповідь або 'Резерв'",
+
+    "interestAreas": "Сфери Вашого інтересу (можна обрати декілька):",
+
+    "interestList": [
+      "Підготовка до надзвичайних ситуацій",
+      "Перша допомога",
+      "Здоровий спосіб життя",
+      "Догляд за людьми похилого віку",
+      "Робота з дітьми",
+      "Психологічна підтримка",
+      "Освітні програми для молоді",
+      "Міжнародне гуманітарне право",
+      "Екологічний напрямок",
+      "Адміністративно-господарська робота",
+      "Розподіл гуманітарної допомоги",
+      "Фандрейзинг",
+      "Онлайн-волонтерство",
+      "Клуби Активного Довголіття",
+      "Інше"
+    ],
+
+    "monthlyHours": "15. Скільки годин на місяць Ви можете приділяти волонтерській діяльності?",
+    "availableDays": "16. Які дні найбільш зручні для Вашої волонтерської діяльності?",
+
+    "principlesAgreement": "17. Чи готові Ви дотримуватися Основоположних принципів Міжнародного Руху?",
+    "principlesOptions": [ "Так", "Ні", "Не знайомий(а)" ],
+
+    "comments": "18. Ваші коментарі та побажання",
+
+    "consent": "19. Згода на обробку персональних даних",
+    "consentText": "Я даю згоду на обробку персональних даних",
+    "consentError": "Потрібна згода",
+
+    "interestComment": "Коментар до сфери інтересів",
+
+    "placeholder": "Ваша відповідь",
+
+    "submit": "НАДІСЛАТИ",
+    "clear": "ОЧИСТИТИ ФОРМУ"
+  },
+
+  "EN": {
+    "title": "Volunteer Application Form for the Amondrex Foundation",
+    "description": "Your participation is one step closer to victory.",
+    "requiredNote": "An asterisk (*) indicates a required question.",
+
+    "typeLabel": "1. Participation format",
+    "typePlaceholder": "Choose an option",
+    "typePermanent": "Regular volunteering",
+    "typeReserve": "Reserve",
+
+    "fullName": "2. Full name",
+    "birthDate": "3. Date of birth",
+    "birthPlaceholder": "DD.MM.YYYY",
+
+    "region": "4. Region",
+    "city": "5. City",
+
+    "phone": "6. Phone number",
+    "email": "7. Email address",
+    "workplace": "8. Place of work/study",
+    "languages": "9. Foreign language proficiency",
+    "transport": "10. Do you have a vehicle and a driving license?",
+    "experience": "11. Volunteering experience",
+    "publicSpeaking": "12. Public speaking experience",
+    "seminarExperience": "13. Experience conducting seminars/trainings",
+    "seminarPlaceholder": "Your answer or 'Reserve'",
+
+    "interestAreas": "Your areas of interest (you may choose several):",
+
+    "interestList": [
+      "Emergency preparedness",
+      "First aid",
+      "Healthy lifestyle",
+      "Elderly care",
+      "Working with children",
+      "Psychological support",
+      "Educational programs for youth",
+      "International humanitarian law",
+      "Environmental direction",
+      "Administrative and operational work",
+      "Humanitarian aid distribution",
+      "Fundraising",
+      "Online volunteering",
+      "Active Longevity Clubs",
+      "Other"
+    ],
+
+    "monthlyHours": "15. How many hours per month can you dedicate to volunteering?",
+    "availableDays": "16. Which days are most convenient for your volunteering?",
+
+    "principlesAgreement": "17. Are you ready to follow the Fundamental Principles of the International Movement?",
+"principlesOptions": [
+  "Yes",
+  "No",
+  "Not familiar"
+],
+
+
+    "comments": "18. Your comments and suggestions",
+
+    "consent": "19. Consent to personal data processing",
+    "consentText": "I consent to the processing of personal data",
+    "consentError": "Consent is required",
+
+    "interestComment": "Comment on your areas of interest",
+
+    "placeholder": "Your answer",
+
+    "submit": "SUBMIT",
+    "clear": "CLEAR FORM"
+  }
+}

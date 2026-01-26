@@ -74,9 +74,7 @@ const App: React.FC = () => {
           <SupportCallSection lang={lang} />
           <Footer lang={lang} />
 
-          {isVolunteerModalOpen && (
-            <VolunteerModal onClose={() => setIsVolunteerModalOpen(false)} onSuccess={handleSuccess} />
-          )}
+          {isVolunteerModalOpen && ( <VolunteerModal onClose={() => setIsVolunteerModalOpen(false)} onSuccess={handleSuccess} lang={lang} /> )}
 
           {isPartnersModalOpen && (
             <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={handleSuccess} />

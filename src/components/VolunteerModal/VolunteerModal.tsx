@@ -10,17 +10,16 @@ import RegionInput from './RegionInput/RegionInput';
 import CityInput from "./CityInput/CityInput";
 import PhoneInput from "./PhoneInput/PhoneInput";
 import emailjs from '@emailjs/browser';
+import translations from '../../translations/volunteerForm.json';
 
-type Props = {
-  onClose: () => void;
-  onSuccess: () => void; // ← додано
+type Props = { 
+  onClose: () => void; 
+  onSuccess: () => void; 
+  lang: 'UA' | 'EN'; 
 };
 
-
-
-
 type FormData = {
-  type: 'Постійне волонтерство' | 'Резерв' | '';
+  type: string;
   fullName: string;
   birthDate: string;
   region: string;
@@ -37,7 +36,7 @@ type FormData = {
   interestComment: string;
   monthlyHours: string;
   availableDays: string;
-  principlesAgreement: 'Так' | 'Ні' | 'Не знайомий(а)' | '';
+  principlesAgreement: string;
   comments: string;
   consent: boolean;
 };
@@ -66,24 +65,22 @@ const REQUIRED_FIELDS: (keyof FormData)[] = [
 ];
 
 const bannedEmailDomains = [
-  "mail.ru",
-  "bk.ru",
-  "list.ru",
-  "inbox.ru",
-  "yandex.ru",
-  "ya.ru",
-  "rambler.ru",
-  "ro.ru",
-  "pochta.ru",
-  "myrambler.ru",
-  "internet.ru",
-  "hotmail.ru",
-  "outlook.ru",
-  "live.ru"
+  "mail.ru", "bk.ru", "list.ru", "inbox.ru", "yandex.ru", "ya.ru",
+  "rambler.ru", "ro.ru", "pochta.ru", "myrambler.ru", "internet.ru",
+  "hotmail.ru", "outlook.ru", "live.ru"
 ];
 
-const VolunteerModal: React.FC<Props> = ({ onClose, onSuccess }) => {
+const VolunteerModal: React.FC<Props> = ({ onClose, onSuccess, lang }) => {
+console.log("LANG:", lang);
+console.log("TRANSLATIONS:", translations);
+console.log("t:", translations[lang]);
 
+  // 🔥 Переклад — правильне місце
+  const t = translations[lang];
+console.log("LANG:", lang);
+console.log("LANG UPPER:", lang?.toUpperCase());
+console.log("TRANSLATIONS:", translations);
+console.log("t:", t);
 
   const [formData, setFormData] = useState<FormData>({
     type: '',
@@ -107,6 +104,7 @@ const VolunteerModal: React.FC<Props> = ({ onClose, onSuccess }) => {
     comments: '',
     consent: false,
   });
+
 
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -165,157 +163,112 @@ const VolunteerModal: React.FC<Props> = ({ onClose, onSuccess }) => {
   };
 
   const handleBirthDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value;
+    let value = e.target.value.replace(/\D/g, "");
 
-    value = value.replace(/\D/g, "");
-
-    if (value.length > 2) {
-      value = value.slice(0, 2) + "." + value.slice(2);
-    }
-
-    if (value.length > 5) {
-      value = value.slice(0, 5) + "." + value.slice(5);
-    }
-
-    if (value.length > 10) {
-      value = value.slice(0, 10);
-    }
+    if (value.length > 2) value = value.slice(0, 2) + "." + value.slice(2);
+    if (value.length > 5) value = value.slice(0, 5) + "." + value.slice(5);
+    if (value.length > 10) value = value.slice(0, 10);
 
     setFormData(prev => ({ ...prev, birthDate: value }));
     setErrors(prev => ({ ...prev, birthDate: false }));
   };
 
-const validate = (): boolean => {
-  const newErrors: FormErrors = {};
-  let valid = true;
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+    let valid = true;
 
-  // Required fields
-  REQUIRED_FIELDS.forEach(field => {
-    if (!formData[field].toString().trim()) {
-      newErrors[field] = true;
+    REQUIRED_FIELDS.forEach(field => {
+      if (!formData[field].toString().trim()) {
+        newErrors[field] = true;
+        valid = false;
+      }
+    });
+
+    const email = formData.email.trim();
+    const domain = email.split("@")[1]?.toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      newErrors.email = true;
       valid = false;
     }
-  });
 
-  // Email format
-  const email = formData.email.trim();
-  const domain = email.split("@")[1]?.toLowerCase();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (domain && bannedEmailDomains.includes(domain)) {
+      newErrors.email = true;
+      valid = false;
+    }
 
-  if (!emailRegex.test(email)) {
-    newErrors.email = true;
-    valid = false;
-  }
+    const phoneRegex = /^\+380\d{9}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = true;
+      valid = false;
+    }
 
-  // Russian domains
-  if (domain && bannedEmailDomains.includes(domain)) {
-    newErrors.email = true;
-    valid = false;
-  }
+    const birthDateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
+    if (!birthDateRegex.test(formData.birthDate)) {
+      newErrors.birthDate = true;
+      valid = false;
+    }
 
-  // Phone +380XXXXXXXXX
-  const phoneRegex = /^\+380\d{9}$/;
-  if (!phoneRegex.test(formData.phone)) {
-    newErrors.phone = true;
-    valid = false;
-  }
+    setErrors(newErrors);
 
-  // Birthdate DD.MM.YYYY
-  const birthDateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
-  if (!birthDateRegex.test(formData.birthDate)) {
-    newErrors.birthDate = true;
-    valid = false;
-  }
+    const firstError = Object.keys(newErrors)[0] as keyof FormData | undefined;
 
-  setErrors(newErrors);
+    if (firstError) {
+      const ref = getRefByField(firstError);
+      ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      ref?.current?.focus();
+      return false;
+    }
 
-  const firstError = Object.keys(newErrors)[0] as keyof FormData | undefined;
+    return valid;
+  };
 
-  if (firstError) {
-    const ref = getRefByField(firstError);
-    ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    ref?.current?.focus();
-    return false;
-  }
+  const handleSubmit = () => {
+    if (!validate()) return;
 
-  return valid;
-};
+    emailjs.send(
+      'service_u7frcyg',
+      'template_a0erbo2',
+      {
+        ...formData,
+        interestAreas: formData.interestAreas.join(', '),
+        consent: formData.consent ? 'Yes' : 'No'
+      },
+      'KGeilC1yaVW-Z__2Y'
+    );
 
+    onClose();
 
+    setTimeout(() => {
+      onSuccess();
+    }, 300);
 
-const handleSubmit = () => {
-  if (!validate()) return;
+    setFormData({
+      type: '',
+      fullName: '',
+      birthDate: '',
+      region: '',
+      city: '',
+      phone: '',
+      email: '',
+      workplace: '',
+      languages: '',
+      transport: '',
+      experience: '',
+      publicSpeaking: '',
+      seminarExperience: '',
+      interestAreas: [],
+      interestComment: '',
+      monthlyHours: '',
+      availableDays: '',
+      principlesAgreement: '',
+      comments: '',
+      consent: false,
+    });
 
-  // Відправка email через EmailJS
-  emailjs.send(
-    'service_u7frcyg',
-    'template_a0erbo2',
-    {
-      type: formData.type,
-      fullName: formData.fullName,
-      birthDate: formData.birthDate,
-      region: formData.region,
-      city: formData.city,
-      phone: formData.phone,
-      email: formData.email,
-      workplace: formData.workplace,
-      languages: formData.languages,
-      transport: formData.transport,
-      experience: formData.experience,
-      publicSpeaking: formData.publicSpeaking,
-      seminarExperience: formData.seminarExperience,
-      interestAreas: formData.interestAreas.join(', '),
-      interestComment: formData.interestComment,
-      monthlyHours: formData.monthlyHours,
-      availableDays: formData.availableDays,
-      principlesAgreement: formData.principlesAgreement,
-      comments: formData.comments,
-      consent: formData.consent ? 'Так' : 'Ні'
-    },
-    'KGeilC1yaVW-Z__2Y'
-  )
-  .then(() => {
-    console.log("Email sent successfully");
-  })
-  .catch((error) => {
-    console.error("Email sending error:", error);
-  });
-
-  // Закриваємо модалку
-  onClose();
-
-  // Показуємо повідомлення
-  setTimeout(() => {
-    onSuccess();
-  }, 300);
-
-  // Очищаємо форму
-  setFormData({
-    type: '',
-    fullName: '',
-    birthDate: '',
-    region: '',
-    city: '',
-    phone: '',
-    email: '',
-    workplace: '',
-    languages: '',
-    transport: '',
-    experience: '',
-    publicSpeaking: '',
-    seminarExperience: '',
-    interestAreas: [],
-    interestComment: '',
-    monthlyHours: '',
-    availableDays: '',
-    principlesAgreement: '',
-    comments: '',
-    consent: false,
-  });
-
-  setErrors({});
-};
-
+    setErrors({});
+  };
 
   const handleClear = () => {
     setFormData({
@@ -351,106 +304,118 @@ const handleSubmit = () => {
     };
   }, []);
 
-  // (Тут далі йде JSX форми — ти вже маєш його)
-
-
-    
-
   return (
   <div className={styles.overlay} onClick={onClose}>
     <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 
-      <div className={styles.header}>
-        <button className={styles.close} onClick={onClose}>×</button>
-        <h2 className={styles.title}>Анкета волонтера у Фонд "Амондрекс"</h2>
+<div className={styles.header}>
+  <button className={styles.close} onClick={onClose}>×</button>
 
-        <p className={styles.description}>
-          Ваша участь — це один крок до перемоги.<br />
-          <span className={styles.requiredNote}>
-            Зірочка (*) вказує, що запитання обов'язкове.
-          </span>
-        </p>
-      </div>
+  <h2 className={styles.title}>{t.title}</h2>
+
+  <p className={styles.description}>
+    {t.description}<br />
+    <span className={styles.requiredNote}>
+      {t.requiredNote}
+    </span>
+  </p>
+</div>
+
+
       <form
         className={styles.form}
         onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}
       >
 
         {/* 1 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            1. Формат участі <span className={styles.asterisk}>*</span>
-          </span>
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.typeLabel} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <select
-            ref={typeRef}
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-            className={errors.type ? styles.errorInput : styles.input}
-          >
-            <option value="">Оберіть варіант</option>
-            <option value="Постійне волонтерство">Постійне волонтерство</option>
-            <option value="Резерв">Резерв</option>
-          </select>
-        </label>
+  <select
+    ref={typeRef}
+    name="type"
+    value={formData.type}
+    onChange={handleChange}
+    className={errors.type ? styles.errorInput : styles.input}
+  >
+    <option value="">{t.typePlaceholder}</option>
+    <option value={t.typePermanent}>{t.typePermanent}</option>
+    <option value={t.typeReserve}>{t.typeReserve}</option>
+  </select>
+</label>
+
 
         {/* 2 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            2. Прізвище та ім’я <span className={styles.asterisk}>*</span>
-          </span>
-
-          <input
-            ref={fullNameRef}
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            className={errors.fullName ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
-
-        {/* 3 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            3. Дата народження <span className={styles.asterisk}>*</span>
-          </span>
-
-          <input
-            ref={birthDateRef}
-            name="birthDate"
-            value={formData.birthDate}
-            onChange={handleBirthDateChange}
-            className={errors.birthDate ? styles.errorInput : styles.input}
-            placeholder="ДД.ММ.РРРР"
-          />
-        </label>
-
-        {/* 4 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            4. Область <span className={styles.asterisk}>*</span>
-          </span>
-
-            <RegionInput value={formData.region}
-              onChange={(value) => setFormData(prev =>
-                ({ ...prev, region: value }))}
-              error={errors.region} />
-        </label>
-
-        {/* 5 */}
-          <label className={styles.label}>
-            <span className={styles.labelText}>
-              5. Місто <span className={styles.asterisk}>*</span> </span>
-            <CityInput value={formData.city}
-              onChange={(value: string)  => setFormData(prev => ({ ...prev, city: value }))} error={errors.city} />
-          </label>
-
-        {/* 6 */}
       <label className={styles.label}>
   <span className={styles.labelText}>
-    6. Телефон <span className={styles.asterisk}>*</span>
+    {t.fullName} <span className={styles.asterisk}>*</span>
+  </span>
+
+  <input
+    ref={fullNameRef}
+    name="fullName"
+    value={formData.fullName}
+    onChange={handleChange}
+    className={errors.fullName ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
+        {/* 3 */}
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.birthDate} <span className={styles.asterisk}>*</span>
+  </span>
+
+  <input
+    ref={birthDateRef}
+    name="birthDate"
+    value={formData.birthDate}
+    onChange={handleBirthDateChange}
+    className={errors.birthDate ? styles.errorInput : styles.input}
+    placeholder={t.birthPlaceholder}
+  />
+</label>
+
+
+        {/* 4 */}
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.region} <span className={styles.asterisk}>*</span>
+  </span>
+
+  <RegionInput
+    value={formData.region}
+    onChange={(value) =>
+      setFormData(prev => ({ ...prev, region: value }))
+    }
+    error={errors.region}
+  />
+</label>
+
+
+        {/* 5 */}
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.city} <span className={styles.asterisk}>*</span>
+  </span>
+
+  <CityInput
+    value={formData.city}
+    onChange={(value: string) =>
+      setFormData(prev => ({ ...prev, city: value }))
+    }
+    error={errors.city}
+  />
+</label>
+
+
+        {/* 6 */}
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.phone} <span className={styles.asterisk}>*</span>
   </span>
 
   <PhoneInput
@@ -463,291 +428,290 @@ const handleSubmit = () => {
 </label>
 
 
-        {/* 7 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            7. Електронна пошта <span className={styles.asterisk}>*</span>
-          </span>
 
-          <input
-            ref={emailRef}
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={errors.email ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+        {/* 7 */}
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.email} <span className={styles.asterisk}>*</span>
+  </span>
+
+  <input
+    ref={emailRef}
+    name="email"
+    value={formData.email}
+    onChange={handleChange}
+    className={errors.email ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 8 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            8. Місце роботи/навчання <span className={styles.asterisk}>*</span>
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.workplace} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={workplaceRef}
-            name="workplace"
-            value={formData.workplace}
-            onChange={handleChange}
-            className={errors.workplace ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={workplaceRef}
+    name="workplace"
+    value={formData.workplace}
+    onChange={handleChange}
+    className={errors.workplace ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 9 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            9. Володіння іноземними мовами <span className={styles.asterisk}>*</span>
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.languages} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={languagesRef}
-            name="languages"
-            value={formData.languages}
-            onChange={handleChange}
-            className={errors.languages ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={languagesRef}
+    name="languages"
+    value={formData.languages}
+    onChange={handleChange}
+    className={errors.languages ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 10 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            10. Чи є у Вас автотранспорт та права? <span className={styles.asterisk}>*</span>
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.transport} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={transportRef}
-            name="transport"
-            value={formData.transport}
-            onChange={handleChange}
-            className={errors.transport ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={transportRef}
+    name="transport"
+    value={formData.transport}
+    onChange={handleChange}
+    className={errors.transport ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 11 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            11. Досвід волонтерської діяльності <span className={styles.asterisk}>*</span>
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.experience} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={experienceRef}
-            name="experience"
-            value={formData.experience}
-            onChange={handleChange}
-            className={errors.experience ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={experienceRef}
+    name="experience"
+    value={formData.experience}
+    onChange={handleChange}
+    className={errors.experience ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 12 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            12. Досвід публічних виступів <span className={styles.asterisk}>*</span>
-          </span>
+      <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.publicSpeaking} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={publicSpeakingRef}
-            name="publicSpeaking"
-            value={formData.publicSpeaking}
-            onChange={handleChange}
-            className={errors.publicSpeaking ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={publicSpeakingRef}
+    name="publicSpeaking"
+    value={formData.publicSpeaking}
+    onChange={handleChange}
+    className={errors.publicSpeaking ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 13 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            13. Досвід проведення семінарів/тренінгів <span className={styles.asterisk}>*</span>
-          </span>
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.seminarExperience} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={seminarRef}
-            name="seminarExperience"
-            value={formData.seminarExperience}
-            onChange={handleChange}
-            className={errors.seminarExperience ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь або 'Резерв'"
-          />
-        </label>
+  <input
+    ref={seminarRef}
+    name="seminarExperience"
+    value={formData.seminarExperience}
+    onChange={handleChange}
+    className={errors.seminarExperience ? styles.errorInput : styles.input}
+    placeholder={t.seminarPlaceholder}
+  />
+</label>
+
 
         {/* Interest Areas */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            Сфери Вашого інтересу (можна обрати декілька):
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.interestAreas}
+  </span>
 
-          <div className={styles.checkboxGroup}>
-            {[
-              'Підготовка до надзвичайних ситуацій',
-              'Перша допомога',
-              'Здоровий спосіб життя',
-              'Догляд за людьми похилого віку',
-              'Робота з дітьми',
-              'Психологічна підтримка',
-              'Освітні програми для молоді',
-              'Міжнародне гуманітарне право',
-              'Екологічний напрямок',
-              'Адміністративно-господарська робота',
-              'Розподіл гуманітарної допомоги',
-              'Фандрейзинг',
-              'Онлайн-волонтерство',
-              'Клуби Активного Довголіття',
-              'Інше',
-            ].map((label) => (
-              <label key={label}>
-                <input
-                  type="checkbox"
-                  value={label}
-                  checked={formData.interestAreas.includes(label)}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    setFormData((prev) => ({
-                      ...prev,
-                      interestAreas: prev.interestAreas.includes(value)
-                        ? prev.interestAreas.filter((v) => v !== value)
-                        : [...prev.interestAreas, value],
-                    }));
-                  }}
-                />
-                {label}
-              </label>
-            ))}
-          </div>
-        </label>
+  <div className={styles.checkboxGroup}>
+    {t.interestList.map((label) => (
+      <label key={label}>
+        <input
+          type="checkbox"
+          value={label}
+          checked={formData.interestAreas.includes(label)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setFormData((prev) => ({
+              ...prev,
+              interestAreas: prev.interestAreas.includes(value)
+                ? prev.interestAreas.filter((v) => v !== value)
+                : [...prev.interestAreas, value],
+            }));
+          }}
+        />
+        {label}
+      </label>
+    ))}
+  </div>
+</label>
+
 
         {/* 15 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            15. Скільки годин на місяць Ви можете приділяти волонтерській діяльності? <span className={styles.asterisk}>*</span>
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.monthlyHours} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={monthlyHoursRef}
-            name="monthlyHours"
-            value={formData.monthlyHours}
-            onChange={handleChange}
-            className={errors.monthlyHours ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={monthlyHoursRef}
+    name="monthlyHours"
+    value={formData.monthlyHours}
+    onChange={handleChange}
+    className={errors.monthlyHours ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 16 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            16. Які дні найбільш зручні для Вашої волонтерської діяльності? <span className={styles.asterisk}>*</span>
-          </span>
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.availableDays} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={availableDaysRef}
-            name="availableDays"
-            value={formData.availableDays}
-            onChange={handleChange}
-            className={errors.availableDays ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={availableDaysRef}
+    name="availableDays"
+    value={formData.availableDays}
+    onChange={handleChange}
+    className={errors.availableDays ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 17 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            17. Чи готові Ви дотримуватися Основоположних принципів Міжнародного Руху? <span className={styles.asterisk}>*</span>
-          </span>
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.principlesAgreement} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <div className={styles.checkboxGroup}>
-            {['Так', 'Ні', 'Не знайомий(а)'].map((option) => (
-              <label key={option}>
-                <input
-                  type="radio"
-                  name="principlesAgreement"
-                  value={option}
-                  checked={formData.principlesAgreement === option}
-                  onChange={handleChange}
-                />
-                {option}
-              </label>
-            ))}
-          </div>
-        </label>
+  <div className={styles.checkboxGroup}>
+    {t.principlesOptions.map((option) => (
+      <label key={option}>
+        <input
+          type="radio"
+          name="principlesAgreement"
+          value={option}
+          checked={formData.principlesAgreement === option}
+          onChange={handleChange}
+        />
+        {option}
+      </label>
+    ))}
+  </div>
+</label>
+
 
         {/* 18 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            18. Ваші коментарі та побажання
-          </span>
+<label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.comments}
+  </span>
 
-          <input
-            ref={commentsRef}
-            name="comments"
-            value={formData.comments}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={commentsRef}
+    name="comments"
+    value={formData.comments}
+    onChange={handleChange}
+    className={styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         {/* 19 */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            19. Згода на обробку персональних даних <span className={styles.asterisk}>*</span>
-          </span>
+       <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.consent} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <div className={styles.checkboxGroup}>
-            <label>
-              <input
-                type="checkbox"
-                name="consent"
-                checked={formData.consent}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, consent: e.target.checked }))
-                }
-              />
-              Я даю згоду на обробку персональних даних
-            </label>
-          </div>
+  <div className={styles.checkboxGroup}>
+    <label>
+      <input
+        type="checkbox"
+        name="consent"
+        checked={formData.consent}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, consent: e.target.checked }))
+        }
+      />
+      {t.consentText}
+    </label>
+  </div>
 
-          {errors.consent && (
-            <div className={styles.errorInput}>Потрібна згода</div>
-          )}
-        </label>
+  {errors.consent && (
+    <div className={styles.errorInput}>{t.consentError}</div>
+  )}
+</label>
 
         {/* Interest comment */}
-        <label className={styles.label}>
-          <span className={styles.labelText}>
-            Коментар до сфери інтересів <span className={styles.asterisk}>*</span>
-          </span>
+      <label className={styles.label}>
+  <span className={styles.labelText}>
+    {t.interestComment} <span className={styles.asterisk}>*</span>
+  </span>
 
-          <input
-            ref={interestCommentRef}
-            name="interestComment"
-            value={formData.interestComment}
-            onChange={handleChange}
-            className={errors.interestComment ? styles.errorInput : styles.input}
-            placeholder="Ваша відповідь"
-          />
-        </label>
+  <input
+    ref={interestCommentRef}
+    name="interestComment"
+    value={formData.interestComment}
+    onChange={handleChange}
+    className={errors.interestComment ? styles.errorInput : styles.input}
+    placeholder={t.placeholder}
+  />
+</label>
+
 
         <div className={styles.buttons}>
-          <button
-            type="button"
-            className={styles.submit}
-            onClick={handleSubmit}
-          >
-            НАДІСЛАТИ
-          </button>
+  <button
+    type="button"
+    className={styles.submit}
+    onClick={handleSubmit}
+  >
+    {t.submit}
+  </button>
 
-          <button
-            type="button"
-            className={styles.clear}
-            onClick={handleClear}
-          >
-            ОЧИСТИТИ ФОРМУ
-          </button>
-        </div>
+  <button
+    type="button"
+    className={styles.clear}
+    onClick={handleClear}
+  >
+    {t.clear}
+  </button>
+</div>
+
 
       </form>
     </div>
@@ -756,3 +720,4 @@ const handleSubmit = () => {
 };
 
 export default VolunteerModal;
+

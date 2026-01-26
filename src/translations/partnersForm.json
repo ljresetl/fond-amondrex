@@ -1,0 +1,33 @@
+{
+  "UA": {
+    "title": "Запропонувати співпрацю",
+    "description": "Щоб запропонувати партнерство, будь ласка, заповніть форму нижче.\nМи сконтактуємо протягом кількох робочих днів.",
+    "fullName": "Прізвище та ім’я *",
+    "company": "Найменування юридичної особи (компанії)",
+    "email": "Електронна пошта *",
+    "cooperationType": "Вид співпраці *",
+    "fundDirection": "Напрям фонду",
+    "proposal": "Пропозиція",
+    "placeholder": "Ваша відповідь",
+    "submit": "НАДІСЛАТИ",
+    "sending": "Надсилання...",
+    "clear": "ОЧИСТИТИ ФОРМУ",
+    "errorSend": "Помилка при надсиланні форми."
+  },
+
+  "EN": {
+    "title": "Propose a Partnership",
+    "description": "To propose a partnership, please fill out the form below.\nWe will contact you within a few business days.",
+    "fullName": "Full Name *",
+    "company": "Company Name",
+    "email": "Email *",
+    "cooperationType": "Type of Cooperation *",
+    "fundDirection": "Fund Direction",
+    "proposal": "Proposal",
+    "placeholder": "Your answer",
+    "submit": "SUBMIT",
+    "sending": "Sending...",
+    "clear": "CLEAR FORM",
+    "errorSend": "Error sending the form."
+  }
+}

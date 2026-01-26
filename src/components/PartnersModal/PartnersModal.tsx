@@ -2,9 +2,12 @@ import styles from './PartnersModal.module.css';
 import emailjs from '@emailjs/browser';
 import React, { useState, useRef, useEffect } from 'react';
 
+import translations from '../../translations/partnersForm.json';
+
 type Props = {
   onClose: () => void;
   onSuccess: () => void;
+  lang: 'UA' | 'EN';
 };
 
 type FormData = {
@@ -24,7 +27,9 @@ const REQUIRED_FIELDS: (keyof FormData)[] = [
   'cooperationType',
 ];
 
-const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
+const PartnersModal: React.FC<Props> = ({ onClose, onSuccess, lang }) => {
+  const t = translations[lang];
+
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     company: '',
@@ -37,7 +42,6 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSending, setIsSending] = useState(false);
 
-  // 🔥 КОЖЕН REF ОКРЕМО (ПРАВИЛЬНО)
   const fullNameRef = useRef<HTMLInputElement>(null);
   const companyRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -45,7 +49,6 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
   const fundDirectionRef = useRef<HTMLInputElement>(null);
   const proposalRef = useRef<HTMLTextAreaElement>(null);
 
-  // 🔥 Мапа для фокусування
   const getRefByField = (field: keyof FormData) => {
     switch (field) {
       case 'fullName': return fullNameRef;
@@ -115,7 +118,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
         fundDirection: formData.fundDirection,
         proposal: formData.proposal,
       },
-      'KGeilC1yaVW-Z__2Y' // твій public key
+      'KGeilC1yaVW-Z__2Y'
     )
     .then(() => {
       onClose();
@@ -133,7 +136,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
       setErrors({});
     })
     .catch((error) => {
-      alert('Помилка при надсиланні форми.');
+      alert(t.errorSend);
       console.error('Email sending error:', error);
     })
     .finally(() => {
@@ -171,83 +174,88 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
         <div className={styles.header}>
           <button className={styles.close} onClick={onClose}>×</button>
 
-          <h2 className={styles.title}>Запропонувати співпрацю</h2>
+          <h2 className={styles.title}>{t.title}</h2>
+
           <p className={styles.description}>
-            Щоб запропонувати партнерство, будь ласка, заповніть форму нижче.<br />
-            Ми сконтактуємо протягом кількох робочих днів.
+            {t.description.split("\n").map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </p>
         </div>
 
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <label className={styles.label}>
-            Прізвище та ім’я *
+            {t.fullName}
             <input
               ref={fullNameRef}
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
               className={errors.fullName ? styles.errorInput : styles.input}
-              placeholder="Ваша відповідь"
+              placeholder={t.placeholder}
             />
           </label>
 
           <label className={styles.label}>
-            Найменування юридичної особи (компанії)
+            {t.company}
             <input
               ref={companyRef}
               name="company"
               value={formData.company}
               onChange={handleChange}
               className={styles.input}
-              placeholder="Ваша відповідь"
+              placeholder={t.placeholder}
             />
           </label>
 
           <label className={styles.label}>
-            Електронна пошта *
+            {t.email}
             <input
               ref={emailRef}
               name="email"
               value={formData.email}
               onChange={handleChange}
               className={errors.email ? styles.errorInput : styles.input}
-              placeholder="Ваша відповідь"
+              placeholder={t.placeholder}
             />
           </label>
 
           <label className={styles.label}>
-            Вид співпраці *
+            {t.cooperationType}
             <input
               ref={cooperationTypeRef}
               name="cooperationType"
               value={formData.cooperationType}
               onChange={handleChange}
               className={errors.cooperationType ? styles.errorInput : styles.input}
-              placeholder="Ваша відповідь"
+              placeholder={t.placeholder}
             />
           </label>
 
           <label className={styles.label}>
-            Напрям фонду
+            {t.fundDirection}
             <input
               ref={fundDirectionRef}
-              name="fundDirection"
+              name="fundition"
               value={formData.fundDirection}
               onChange={handleChange}
               className={styles.input}
-              placeholder="Ваша відповідь"
+              placeholder={t.placeholder}
             />
           </label>
 
           <label className={styles.label}>
-            Пропозиція
+            {t.proposal}
             <textarea
               ref={proposalRef}
               name="proposal"
               value={formData.proposal}
               onChange={handleChange}
               className={styles.textarea}
-              placeholder="Ваша відповідь"
+              placeholder={t.placeholder}
             />
           </label>
 
@@ -258,7 +266,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
               onClick={handleSubmit}
               disabled={isSending}
             >
-              {isSending ? 'Надсилання...' : 'НАДІСЛАТИ'}
+              {isSending ? t.sending : t.submit}
             </button>
 
             <button
@@ -266,7 +274,7 @@ const PartnersModal: React.FC<Props> = ({ onClose, onSuccess }) => {
               className={styles.clear}
               onClick={handleClear}
             >
-              ОЧИСТИТИ ФОРМУ
+              {t.clear}
             </button>
           </div>
         </form>

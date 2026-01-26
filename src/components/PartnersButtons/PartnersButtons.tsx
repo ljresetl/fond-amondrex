@@ -36,7 +36,8 @@ export const PartnersButtons: React.FC<Props> = ({ lang, onSuccess }) => {
       {showModal && (
         <PartnersModal
           onClose={() => setShowModal(false)}
-          onSuccess={onSuccess}   // ← ПЕРЕДАЄМО
+          onSuccess={onSuccess}
+          lang={lang}
         />
       )}
     </div>

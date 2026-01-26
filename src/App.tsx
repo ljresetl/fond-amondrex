@@ -77,7 +77,7 @@ const App: React.FC = () => {
           {isVolunteerModalOpen && ( <VolunteerModal onClose={() => setIsVolunteerModalOpen(false)} onSuccess={handleSuccess} lang={lang} /> )}
 
           {isPartnersModalOpen && (
-            <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={handleSuccess} />
+            <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={handleSuccess} lang={lang} />
           )}
 
           {successMessage && <div className="success-banner">{successMessage}</div>}

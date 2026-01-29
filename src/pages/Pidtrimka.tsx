@@ -41,7 +41,13 @@ const convertToUAH = (amount: number, currency: Currency) => {
 };
 
 // Обчислюємо суму в гривнях
-const convertedAmount = convertToUAH(Number(amount), currency);
+let convertedAmount = convertToUAH(Number(amount), currency);
+
+// Якщо сума некоректна або 0 — ставимо мінімум 1 грн
+if (!convertedAmount || convertedAmount <= 0) {
+  convertedAmount = 1;
+}
+
 
   return (
       <>
@@ -67,11 +73,21 @@ const convertedAmount = convertToUAH(Number(amount), currency);
   <div className={styles.amountRow}>
     <div className={styles.inputGroup}>
       <label>{t.amount}</label>
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
+<input
+  type="number"
+  value={amount}
+  onFocus={() => amount === "0" && setAmount("")}
+  onChange={(e) => {
+    const raw = e.target.value.replace(/^0+/, ""); // прибирає ведучі нулі
+    setAmount(raw === "" ? "0" : raw);
+  }}
+  min={1}
+  inputMode="numeric"
+  pattern="[0-9]*"
+  className={styles.input}
+/>
+
+
     </div>
 
     <div className={styles.inputGroup}>

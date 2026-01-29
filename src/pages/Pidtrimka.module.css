@@ -134,6 +134,7 @@
 /* Main button */
 .fullWidthButton {
   width: 100%;
+  text-decoration: none;
 }
 
 /* =========================

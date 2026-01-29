@@ -83,7 +83,15 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
     <span className={styles.profileName}>{t.foundationName}</span>
   </div>
 
+  <a
+  href="https://send.monobank.ua/jar/4HivR59zpP"
+  target="_blank"
+  rel="noopener noreferrer"
+  className={styles.fullWidthButton}
+>
   <SupportButton lang={lang} className={styles.fullWidthButton} />
+</a>
+
 </div>
 
 {/* Права частина */}

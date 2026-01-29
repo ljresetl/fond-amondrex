@@ -22,6 +22,27 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
   const selectedDirection = (type as "army" | "families" | "foundation") || "army";
   const quickAmounts: Record<Currency, number[]>
     = { EUR: [20, 100, 300], USD: [20, 100, 300], UAH: [200, 500, 1000], };
+  // Курси валют (можеш оновити коли треба)
+const EUR_RATE = 40;  // 1 EUR ≈ 40 UAH
+const USD_RATE = 37;  // 1 USD ≈ 37 UAH
+
+// Функція конвертації
+const convertToUAH = (amount: number, currency: Currency) => {
+  switch (currency) {
+    case "EUR":
+      return Math.round(amount * EUR_RATE);
+    case "USD":
+      return Math.round(amount * USD_RATE);
+    case "UAH":
+      return Math.round(amount);
+    default:
+      return Math.round(amount);
+  }
+};
+
+// Обчислюємо суму в гривнях
+const convertedAmount = convertToUAH(Number(amount), currency);
+
   return (
       <>
         <Header lang={lang} setLang={setLang} />
@@ -83,14 +104,15 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
     <span className={styles.profileName}>{t.foundationName}</span>
   </div>
 
-  <a
-  href="https://send.monobank.ua/jar/4HivR59zpP"
+<a
+  href={`https://send.monobank.ua/jar/4HivR59zpP?amount=${convertedAmount}&comment=Pidtrimka`}
   target="_blank"
   rel="noopener noreferrer"
   className={styles.fullWidthButton}
 >
   <SupportButton lang={lang} className={styles.fullWidthButton} />
 </a>
+
 
 </div>
 

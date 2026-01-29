@@ -1,5 +1,5 @@
-import { useState } from "react"; import { useParams }
-  from "react-router-dom";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer/Footer";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
@@ -8,58 +8,43 @@ import styles from "./Pidtrimka.module.css";
 import SupportButton from "../components/header/SupportButton/SupportButton";
 import translations from "../translations/pidtrimka-left.json";
 import rightTranslations from "../translations/pidtrimka-right.json";
-
-
 type Currency = "EUR" | "USD" | "UAH"; type Props = { lang: "UA" | "EN"; setLang: (lang: "UA" | "EN") => void; };
 const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
-  const t = translations[lang];
-  const tr = rightTranslations[lang];
-  const [isPartnersModalOpen, setIsPartnersModalOpen]
-    = useState(false); const [amount, setAmount] = useState("0");
+  const t = translations[lang]; const tr = rightTranslations[lang];
+  const [isPartnersModalOpen, setIsPartnersModalOpen] = useState(false);
+  const [amount, setAmount] = useState("0");
   const [currency, setCurrency] = useState<Currency>("EUR");
   const [isAbroad, setIsAbroad] = useState(false);
+  const [limitMessage, setLimitMessage] = useState("");
   const { type } = useParams();
   const selectedDirection = (type as "army" | "families" | "foundation") || "army";
-  const quickAmounts: Record<Currency, number[]>
-    = { EUR: [20, 100, 300], USD: [20, 100, 300], UAH: [200, 500, 1000], };
-  // Курси валют (можеш оновити коли треба)
-const EUR_RATE = 40;  // 1 EUR ≈ 40 UAH
-const USD_RATE = 37;  // 1 USD ≈ 37 UAH
-
-// Функція конвертації
-const convertToUAH = (amount: number, currency: Currency) => {
-  switch (currency) {
-    case "EUR":
-      return Math.round(amount * EUR_RATE);
-    case "USD":
-      return Math.round(amount * USD_RATE);
-    case "UAH":
-      return Math.round(amount);
-    default:
-      return Math.round(amount);
-  }
-};
-
-// Обчислюємо суму в гривнях
-let convertedAmount = convertToUAH(Number(amount), currency);
-
-// Якщо сума некоректна або 0 — ставимо мінімум 1 грн
-if (!convertedAmount || convertedAmount <= 0) {
-  convertedAmount = 1;
-}
-
-
-  return (
-      <>
+  const quickAmounts: Record<Currency, number[]> = { EUR: [20, 100, 300], USD: [20, 100, 300], UAH: [200, 500, 1000], };
+  const EUR_RATE = 40; const USD_RATE = 37;
+  const MAX_MONO_AMOUNT = 29999;
+  const convertToUAH = (amount: number, currency: Currency) =>
+  {
+    switch (currency) {
+      case "EUR": return Math.round(amount * EUR_RATE);
+      case "USD": return Math.round(amount * USD_RATE);
+      case "UAH": return Math.round(amount); default: return Math.round(amount);
+    }
+  }; const getMaxAllowedInCurrency = (currency: Currency): number =>
+  {
+    switch (currency) {
+      case "EUR": return Math.floor(MAX_MONO_AMOUNT / EUR_RATE);
+      case "USD": return Math.floor(MAX_MONO_AMOUNT / USD_RATE);
+      case "UAH": return MAX_MONO_AMOUNT; default: return MAX_MONO_AMOUNT;
+    }
+  }; let convertedAmount = convertToUAH(Number(amount), currency); if (!convertedAmount || convertedAmount < 10) { convertedAmount = 10; } return (
+ <>
         <Header lang={lang} setLang={setLang} />
         <main className={styles.page}>
           <Breadcrumb type={selectedDirection} lang={lang} />
 
-          <h1 className={styles.pageTitle}>
-            {selectedDirection === "army" && "Підтримати армію"}
-            {selectedDirection === "families" && "Підтримати сім'ї військових"}
-            {selectedDirection === "foundation" && "Підтримати діяльність фонду"}
-          </h1>
+        <h1 className={styles.pageTitle}>
+          {selectedDirection === "army" && t.title.army}
+          {selectedDirection === "families" && t.title.families}
+          {selectedDirection === "foundation" && t.title.foundation} </h1>
 
           <div className={styles.layout}>
 {/* Ліва частина */}
@@ -71,38 +56,82 @@ if (!convertedAmount || convertedAmount <= 0) {
   </div>
 
   <div className={styles.amountRow}>
+    {/* Сума */}
     <div className={styles.inputGroup}>
       <label>{t.amount}</label>
-<input
-  type="number"
-  value={amount}
-  onFocus={() => amount === "0" && setAmount("")}
-  onChange={(e) => {
-    const raw = e.target.value.replace(/^0+/, ""); // прибирає ведучі нулі
-    setAmount(raw === "" ? "0" : raw);
-  }}
-  min={1}
-  inputMode="numeric"
-  pattern="[0-9]*"
-  className={styles.input}
-/>
 
+      <input
+        type="number"
+        value={amount}
+        onFocus={() => amount === "0" && setAmount("")}
+onChange={(e) => {
+  const raw = e.target.value.replace(/^0+/, "");
+  const newAmount = raw === "" ? "0" : raw;
 
+  setAmount(newAmount);
+
+  const numericAmount = Number(newAmount);
+  const converted = convertToUAH(numericAmount, currency);
+
+  if (converted > MAX_MONO_AMOUNT) {
+    const maxInCurrency = getMaxAllowedInCurrency(currency);
+    const currencyLabel = t.currencyNames[currency];
+
+    const message = t.limitMessage
+      .replace("{max}", String(MAX_MONO_AMOUNT))
+      .replaceAll("{currency}", currencyLabel)
+      .replace("{converted}", String(maxInCurrency));
+
+    setLimitMessage(message);
+  } else {
+    setLimitMessage("");
+  }
+}}
+
+      />
     </div>
 
+    {/* Повідомлення про ліміт */}
+    {limitMessage && (
+      <div className={styles.limitWarning}>{limitMessage}</div>
+    )}
+
+    {/* Валюта */}
     <div className={styles.inputGroup}>
       <label>{t.currency}</label>
       <select
-        value={currency}
-        onChange={(e) => setCurrency(e.target.value as Currency)}
-      >
-        <option value="EUR">EUR</option>
-        <option value="USD">USD</option>
-        <option value="UAH">UAH</option>
-      </select>
+  value={currency}
+  onChange={(e) => {
+    const newCurrency = e.target.value as Currency;
+    setCurrency(newCurrency);
+
+    const numericAmount = Number(amount);
+    const converted = convertToUAH(numericAmount, newCurrency);
+
+    if (converted > MAX_MONO_AMOUNT) {
+      const maxInCurrency = getMaxAllowedInCurrency(newCurrency);
+      const currencyLabel = t.currencyNames[newCurrency];
+
+      const message = t.limitMessage
+        .replace("{max}", String(MAX_MONO_AMOUNT))
+        .replaceAll("{currency}", currencyLabel)
+        .replace("{converted}", String(maxInCurrency));
+
+      setLimitMessage(message);
+    } else {
+      setLimitMessage("");
+    }
+  }}
+>
+  <option value="EUR">EUR</option>
+  <option value="USD">USD</option>
+  <option value="UAH">UAH</option>
+</select>
+
     </div>
   </div>
 
+  {/* Швидкі кнопки */}
   <div className={styles.quickButtons}>
     {quickAmounts[currency].map((v) => (
       <button
@@ -115,22 +144,23 @@ if (!convertedAmount || convertedAmount <= 0) {
     ))}
   </div>
 
+  {/* Профіль */}
   <div className={styles.profile}>
     <img src="/logo2.png" alt={t.foundationName} />
     <span className={styles.profileName}>{t.foundationName}</span>
   </div>
 
-<a
-  href={`https://send.monobank.ua/jar/4HivR59zpP?amount=${convertedAmount}&comment=Pidtrimka`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className={styles.fullWidthButton}
->
-  <SupportButton lang={lang} className={styles.fullWidthButton} />
-</a>
-
-
+  {/* Кнопка підтримки */}
+  <a
+    href={`https://send.monobank.ua/jar/4HivR59zpP?amount=${convertedAmount}&comment=Pidtrimka`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={styles.fullWidthButton}
+  >
+    <SupportButton lang={lang} className={styles.fullWidthButton} />
+  </a>
 </div>
+
 
 {/* Права частина */}
 <div className={styles.right}>
@@ -315,6 +345,9 @@ if (!convertedAmount || convertedAmount <= 0) {
 
         <Footer lang={lang} />
       </>
-    );
-  }
+  );
+};
+
 export default Pidtrimka;
+
+

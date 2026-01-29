@@ -3,12 +3,35 @@
     "tab": "Внесок для підтримки",
     "amount": "Сума",
     "currency": "Валюта",
-    "foundationName": "Фонд Амондрекс"
+    "foundationName": "Фонд Амондрекс",
+    "title": {
+      "army": "Підтримати армію",
+      "families": "Підтримати сім'ї військових",
+      "foundation": "Підтримати діяльність фонду"
+    },
+    "currencyNames": {
+      "EUR": "євро",
+      "USD": "долари",
+      "UAH": "гривні"
+    },
+    "limitMessage": "Максимальна сума для онлайн-переказу — {max} грн. У {currency} це не більше {converted} {currency}."
   },
+
   "EN": {
     "tab": "Contribution for Support",
     "amount": "Amount",
     "currency": "Currency",
-    "foundationName": "Amondrex Foundation"
+    "foundationName": "Amondrex Foundation",
+    "title": {
+      "army": "Support the Army",
+      "families": "Support Military Families",
+      "foundation": "Support Foundation Operations"
+    },
+    "currencyNames": {
+      "EUR": "EUR",
+      "USD": "USD",
+      "UAH": "UAH"
+    },
+    "limitMessage": "Maximum amount for online transfer is {max} UAH. In {currency}, no more than {converted} {currency}."
   }
 }

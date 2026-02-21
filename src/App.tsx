@@ -11,8 +11,10 @@ import ValuesSection from './components/ValuesSection/ValuesSection';
 import HowWeWorkSection from './components/HowWeWorkSection/HowWeWorkSection';
 import SupportCallSection from './components/SupportCallSection/SupportCallSection';
 import Footer from './components/Footer/Footer';
+
 import VolunteerModal from './components/VolunteerModal/VolunteerModal';
 import PartnersModal from './components/PartnersModal/PartnersModal';
+import HelpModal from './components/HelpModal/HelpModal'; // ← ДОДАНО
 
 import Pidtrimka from './pages/Pidtrimka';
 
@@ -43,6 +45,7 @@ const App: React.FC = () => {
 
   const [isVolunteerModalOpen, setIsVolunteerModalOpen] = useState(false);
   const [isPartnersModalOpen, setIsPartnersModalOpen] = useState(false);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false); // ← ДОДАНО
 
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -53,45 +56,68 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-  <ScrollHandler />
+      <ScrollHandler />
 
-  <Routes>
-    <Route
-      path="/"
-      element={
-        <>
-          <Header lang={lang} setLang={setLang} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header lang={lang} setLang={setLang} />
 
-          <HeroBlock lang={lang} openVolunteerModal={() => setIsVolunteerModalOpen(true)} />
-          <PartnersButtons lang={lang} onSuccess={handleSuccess} />
+              <HeroBlock
+                lang={lang}
+                openVolunteerModal={() => setIsVolunteerModalOpen(true)}
+                openHelpModal={() => setIsHelpModalOpen(true)} // ← ДОДАНО
+              />
 
-          <section id="partners"><ActiveSection lang={lang} /></section>
-          <section id="mission"><MissionSection lang={lang} /></section>
-          <section id="vision"><VisionSection lang={lang} /></section>
-          <section id="values"><ValuesSection lang={lang} /></section>
-          <section id="how-we-work"><HowWeWorkSection lang={lang} /></section>
+              <PartnersButtons lang={lang} onSuccess={handleSuccess} />
 
-          <SupportCallSection lang={lang} />
-          <Footer lang={lang} />
+              <section id="partners"><ActiveSection lang={lang} /></section>
+              <section id="mission"><MissionSection lang={lang} /></section>
+              <section id="vision"><VisionSection lang={lang} /></section>
+              <section id="values"><ValuesSection lang={lang} /></section>
+              <section id="how-we-work"><HowWeWorkSection lang={lang} /></section>
 
-          {isVolunteerModalOpen && ( <VolunteerModal onClose={() => setIsVolunteerModalOpen(false)} onSuccess={handleSuccess} lang={lang} /> )}
+              <SupportCallSection lang={lang} />
+              <Footer lang={lang} />
 
-          {isPartnersModalOpen && (
-            <PartnersModal onClose={() => setIsPartnersModalOpen(false)} onSuccess={handleSuccess} lang={lang} />
-          )}
+              {isVolunteerModalOpen && (
+                <VolunteerModal
+                  onClose={() => setIsVolunteerModalOpen(false)}
+                  onSuccess={handleSuccess}
+                  lang={lang}
+                />
+              )}
 
-          {successMessage && <div className="success-banner">{successMessage}</div>}
-        </>
-      }
-    />
+              {isPartnersModalOpen && (
+                <PartnersModal
+                  onClose={() => setIsPartnersModalOpen(false)}
+                  onSuccess={handleSuccess}
+                  lang={lang}
+                />
+              )}
 
-    <Route
-      path="/pidtrimka/:type"
-      element={<Pidtrimka lang={lang} setLang={setLang} />}
-    />
-  </Routes>
-</BrowserRouter>
+              {isHelpModalOpen && (
+                <HelpModal
+                  lang={lang} 
+                  isOpen={isHelpModalOpen}
+                  onClose={() => setIsHelpModalOpen(false)}
+                  onSuccess={handleSuccess} 
+                />
+              )}
 
+              {successMessage && <div className="success-banner">{successMessage}</div>}
+            </>
+          }
+        />
+
+        <Route
+          path="/pidtrimka/:type"
+          element={<Pidtrimka lang={lang} setLang={setLang} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

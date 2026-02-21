@@ -6,9 +6,10 @@ import translations from '../../translations/hero.json';
 type Props = {
   lang: 'UA' | 'EN';
   openVolunteerModal: () => void;
+  openHelpModal: () => void; // ← ДОДАНО
 };
 
-const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
+const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal, openHelpModal }) => {
   const t = translations[lang];
 
   return (
@@ -16,49 +17,33 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
       <div className={styles.container}>
 
         <div className={styles.content}>
-
-          {/* Адаптивне зображення для телефону / планшету / десктопу */}
           <picture>
-
-            {/* 🖥 Десктоп Retina */}
             <source
               srcSet="/hero-desktop@2x.png"
               media="(min-width: 1296px) and (min-resolution: 192dpi)"
             />
-
-            {/* 🖥 Десктоп */}
             <source
               srcSet="/hero-desktop.png"
               media="(min-width: 1296px)"
             />
-
-            {/* Планшет Retina */}
             <source
               srcSet="/hero-tablet@2x.avif"
               media="(min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), 
                      (min-width: 768px) and (min-resolution: 192dpi)"
             />
-
-            {/* Планшет звичайний */}
             <source
               srcSet="/hero-tablet.avif"
               media="(min-width: 768px)"
             />
-
-            {/* Телефон Retina */}
             <source
               srcSet="/hero-photo@2x.avif"
               media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), 
                      (max-width: 767px) and (min-resolution: 192dpi)"
             />
-
-            {/* Телефон звичайний */}
             <source
               srcSet="/hero-photo.avif"
               media="(max-width: 767px)"
             />
-
-            {/* Фолбек */}
             <img
               src="/hero-photo.avif"
               alt="Hero"
@@ -73,10 +58,15 @@ const HeroBlock: React.FC<Props> = ({ lang, openVolunteerModal }) => {
         </div>
 
         <div className={styles.buttons}>
-          <button className={styles.primaryBtn}>
+          {/* Кнопка ОТРИМАТИ ДОПОМОГУ */}
+          <button
+            className={styles.primaryBtn}
+            onClick={openHelpModal} // ← ДОДАНО
+          >
             {t.helpBtn}
           </button>
 
+          {/* Кнопка СТАТИ ВОЛОНТЕРОМ */}
           <button
             className={styles.secondaryBtn}
             onClick={openVolunteerModal}

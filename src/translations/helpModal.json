@@ -1,0 +1,85 @@
+{
+  "UA": {
+    "title": "Отримати допомогу",
+    "helpType": "Тип допомоги",
+    "fullName": "ПІБ",
+    "birthDate": "Дата народження",
+    "phone": "Телефон",
+    "email": "Email",
+    "region": "Область",
+    "city": "Місто / село",
+    "address": "Адреса",
+    "category": "Категорія",
+    "situation": "Опишіть вашу ситуацію",
+    "neededHelp": "Яка саме допомога потрібна",
+
+    "select": "Оберіть тип",
+    "fullNamePlaceholder": "Ваше ім’я",
+    "phonePlaceholder": "+380...",
+    "emailPlaceholder": "example@gmail.com",
+    "situationPlaceholder": "Коротко опишіть, чому вам потрібна допомога",
+    "neededHelpPlaceholder": "Наприклад: продукти, одяг, медикаменти...",
+
+    "submit": "Надіслати заявку",
+
+    "helpTypes": {
+      "humanitarian": "Гуманітарна допомога",
+      "food": "Продукти",
+      "clothes": "Одяг",
+      "medicine": "Медичні засоби",
+      "military": "Допомога військовим",
+      "other": "Інше"
+    },
+
+    "categories": {
+      "idp": "ВПО",
+      "lowIncome": "Малозабезпечені",
+      "largeFamily": "Багатодітні",
+      "disabled": "Люди з інвалідністю",
+      "military": "Військові / сім’ї військових",
+      "other": "Інше"
+    }
+  },
+
+  "EN": {
+    "title": "Request help",
+    "helpType": "Type of help",
+    "fullName": "Full name",
+    "birthDate": "Birth date",
+    "phone": "Phone",
+    "email": "Email",
+    "region": "Region",
+    "city": "City / village",
+    "address": "Address",
+    "category": "Category",
+    "situation": "Describe your situation",
+    "neededHelp": "What help do you need",
+
+    "select": "Select",
+    "fullNamePlaceholder": "Your full name",
+    "phonePlaceholder": "+380...",
+    "emailPlaceholder": "example@gmail.com",
+    "situationPlaceholder": "Briefly describe why you need help",
+    "neededHelpPlaceholder": "For example: food, clothes, medicine...",
+
+    "submit": "Send request",
+
+    "helpTypes": {
+      "humanitarian": "Humanitarian aid",
+      "food": "Food",
+      "clothes": "Clothes",
+      "medicine": "Medical supplies",
+      "military": "Help for the military",
+      "other": "Other"
+    },
+
+    "categories": {
+      "idp": "IDP",
+      "lowIncome": "Low-income",
+      "largeFamily": "Large family",
+      "disabled": "People with disabilities",
+      "military": "Military / military families",
+      "other": "Other"
+    }
+  }
+}

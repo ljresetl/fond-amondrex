@@ -17,6 +17,7 @@ import PartnersModal from './components/PartnersModal/PartnersModal';
 import HelpModal from './components/HelpModal/HelpModal'; // ← ДОДАНО
 
 import Pidtrimka from './pages/Pidtrimka';
+import './App.css';
 
 const ScrollHandler = () => {
   const location = useLocation();

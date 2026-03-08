@@ -26,7 +26,7 @@ export const ActiveSection: React.FC<Props> = ({ lang }) => {
         <div className={styles.stats}>
           
           <div className={styles.statCard}>
-            <span className={styles.statValue}>0</span>
+            <span className={styles.statValue}>350.62₴</span>
             <span className={styles.statLabel}>{t.collected}</span>
           </div>
 

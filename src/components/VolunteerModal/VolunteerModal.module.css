@@ -1,266 +1,277 @@
-/* Фон модалки */
+/* ------------------------------ */
+/* OVERLAY — GLASS + FADE-IN      */
+/* ------------------------------ */
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.15); /* напівпрозорий білий */
-  backdrop-filter: blur(12px); /* розмиття фону */
-  -webkit-backdrop-filter: blur(12px); /* підтримка Safari */
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
+  inset: 0;
+  background: rgba(15, 15, 30, 0.45);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  animation: fadeIn 0.25s ease-out;
 }
 
-/* Контейнер */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------ */
+/* MODAL — MODERN CARD            */
+/* ------------------------------ */
 .modal {
-  background-color: #200b56;
-  padding: 16px;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  padding: 32px;
   width: 70%;
   max-width: 600px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  animation: slideUp 0.3s ease-out;
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ------------------------------ */
+/* HEADER                         */
+/* ------------------------------ */
 .header {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  background: #bff4ff;
-  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.18);
   padding: 24px;
-  max-width: 600px;
-  height: auto;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-/* Кнопка закриття */
-.close {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #b3e208;
-  cursor: pointer;
-}
-
-/* Заголовок */
 .title {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 1.3;
-  letter-spacing: 0.02em;
-  color: #15004c;
+  font-size: 28px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
-/* Опис */
+/* ------------------------------ */
+/* CLOSE BUTTON — CLEAN, CENTERED */
+/* ------------------------------ */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 24px;
+  height: 24px;
+
+  background: none;
+  border: none;
+
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.close:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+/* ------------------------------ */
+/* DESCRIPTION + TEXT             */
+/* ------------------------------ */
 .description {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 1.3;
-  color: #090e0f;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #e9eef5;
 }
 
 .requiredNote {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #ff0404;
+  font-size: 15px;
+  color: #ff6b6b;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-/* Повідомлення про успіх */
+/* ------------------------------ */
+/* SUCCESS MESSAGE                */
+/* ------------------------------ */
 .successMessage {
-  background: #e0f7e9;
-  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.15);
+  color: #a5e6b1;
   padding: 12px 16px;
   border-radius: 8px;
   margin-bottom: 20px;
   font-size: 14px;
   text-align: center;
-  border: 1px solid #b2dfdb;
+  border: 1px solid rgba(165, 230, 177, 0.4);
 }
 
-/* Форма */
+/* ------------------------------ */
+/* FORM                           */
+/* ------------------------------ */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 }
 
-/* Лейбли */
+/* FIELD BLOCK */
 .label {
-  background-color: #bff4ff;
-  border-radius: 32px;
-  padding: 24px;
-  max-width: 600px;
-  height: auto;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 20px;
+  border-radius: 16px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
-  gap: 64px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #090e0f;
+  gap: 12px;
+  color: #e9eef5;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .labelText {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #090e0f;
+  font-size: 15px;
+  font-weight: 500;
+  color: #dfe6f1;
 }
+
 .asterisk {
-  color: #ff0404;
-  margin-left: 4px;
+  color: #ff4d4d;
 }
 
-/* Інпути */
-.input {
-  width: 100%;
-  max-width: 100%;
-  height: 30px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  gap: 4px;
-  border: none;
-  border-bottom: 1px solid #769399;
-  background-color: transparent;
-  outline: none;
-}
-
-.input:focus {
-  border: none;
-  border-bottom: #1976d2 2px solid;
-  outline: none;
-}
-
-.input:hover {
-  border: none;
-  border-bottom: #1976d2 2px solid;
-  outline: none;
-}
-
-input::placeholder {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #769399;
-  font-family: "Roboto Condensed", sans-serif;
-  width: 90%;
-}
-
-/* Текстова область */
+/* ------------------------------ */
+/* INPUTS                         */
+/* ------------------------------ */
+.input,
 .textarea {
-  max-width: 552px;
-  height: 30px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  gap: 4px;
+  width: 100%;
   border: none;
-  border-bottom: 1px solid #769399;
-  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
   outline: none;
-  width: 90%;
-}
-
-.textarea::placeholder {
-  font-weight: 400;
+  padding: 8px 0;
   font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #769399;
-  font-family: "Roboto Condensed", sans-serif;
+  color: #fff;
+  transition: 0.2s;
 }
 
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.input:hover,
+.input:focus,
+.textarea:hover,
 .textarea:focus {
-  border-color: #1976d2;
+  border-bottom: 2px solid #8be9fd;
 }
 
-/* Помилка */
+/* ------------------------------ */
+/* SELECT — FIXED VISIBILITY      */
+/* ------------------------------ */
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  appearance: none;
+  transition: 0.2s;
+}
+
+select:hover,
+select:focus {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+select option {
+  color: #000;
+  background: #fff;
+}
+
+/* ------------------------------ */
+/* ERROR INPUT                    */
+/* ------------------------------ */
 .errorInput {
-  border-color: #e53935;
-  background: #ffeaea;
+  border-bottom: 2px solid #ff6b6b !important;
+  background-color: rgba(255, 0, 0, 0.08);
 }
 
-/* Кнопки */
+/* ------------------------------ */
+/* BUTTONS                        */
+/* ------------------------------ */
 .buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
   gap: 12px;
 }
 
-/* Надіслати */
-.submit {
-  background-color: #f9dd5a;
-  cursor: pointer;
-  transition: background 0.2s;
+.submit,
+.clear {
   border-radius: 100px;
-  padding: 20px 24px;
-  width: 288px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
+  padding: 18px 24px;
+  width: 48%;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: 0.25s;
+}
+
+.submit {
+  background: linear-gradient(135deg, #ffd43b, #ffea7a);
 }
 
 .submit:hover {
-  background-color: #f9dd5a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 222, 89, 0.35);
 }
 
-/* Очистити */
 .clear {
-  background-color: transparent;
-  cursor: pointer;
-  transition: background 0.2s;
-  border-radius: 100px;
-  padding: 20px 24px;
-  width: 288px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
-  background-color: #f9dd5a;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
 }
 
 .clear:hover {
-  background-color: #f9dd5a;
+  background: rgba(255, 255, 255, 0.28);
 }
 
+/* ------------------------------ */
+/* CHECKBOXES                     */
+/* ------------------------------ */
 .checkboxGroup {
   display: flex;
-  flex-direction: column; /* ставимо в стовпчик */
-  gap: 12px; /* відступ між чекбоксами */
-  width: 100%;
-  padding-top: 8px;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .checkboxGroup label {
@@ -269,8 +280,7 @@ input::placeholder {
   gap: 10px;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
-  color: #090e0f;
-  cursor: pointer;
+  color: #e9eef5;
 }
 
 .checkboxGroup input[type="checkbox"] {
@@ -279,9 +289,17 @@ input::placeholder {
   cursor: pointer;
 }
 
-/* Адаптивність */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #f9dd5a; /* твій жовтий */
+}
+
+/* ------------------------------ */
+/* MOBILE                         */
+/* ------------------------------ */
 @media (max-width: 480px) {
   .modal {
+    width: 92%;
     padding: 24px;
   }
 

@@ -1,96 +1,156 @@
+/* ------------------------------ */
+/* OVERLAY — GLASS + FADE-IN      */
+/* ------------------------------ */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(15, 15, 30, 0.45);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-}
-
-.modal {
-  background: #fff;
-  padding: 32px;
-  border-radius: 16px;
-  width: 90%;
-  height: 70vh; /* 🔥 Висота 70% екрану */
-  max-width: 960px;
-  font-family: "Montserrat", sans-serif;
-  position: relative;
-  animation: fadeIn 0.25s ease;
-  overflow-y: auto; /* 🔥 Скрол всередині */
+  z-index: 2000;
+  animation: fadeIn 0.25s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
+/* ------------------------------ */
+/* MODAL — GLASS CARD             */
+/* ------------------------------ */
+.modal {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  padding: 32px;
+  width: 90%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ------------------------------ */
+/* CLOSE BUTTON — CLEAN, SMALL    */
+/* ------------------------------ */
 .closeBtn {
   position: absolute;
   top: 12px;
   right: 12px;
+
+  width: 24px;
+  height: 24px;
+
   background: none;
   border: none;
-  font-size: 22px;
+
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 300;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
+.closeBtn:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+/* ------------------------------ */
+/* TITLE                          */
+/* ------------------------------ */
 .title {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 32px;
   text-align: center;
-  color: #15004c;
+  color: #ffffff;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
-/* 🔥 МОБІЛЬНИЙ — 1 колонка */
+/* ------------------------------ */
+/* GRID LAYOUT                    */
+/* ------------------------------ */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
 
-/* 🔥 ПЛАНШЕТ І ДЕСКТОП — 3 колонки */
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* ------------------------------ */
+/* SECTION CARD                   */
+/* ------------------------------ */
 .section {
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.12);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: background 0.2s ease; /* плавна анімація */
+  gap: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* 🔥 Ховер-ефект — світло-зелений фон */
 .section:hover {
-  background-color: #c4d3ff;
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-3px);
 }
 
+/* ------------------------------ */
+/* ICON                           */
+/* ------------------------------ */
 .icon {
-  font-size: 28px;
-  margin-bottom: 8px;
+  font-size: 32px;
+  margin-bottom: 4px;
 }
 
+/* ------------------------------ */
+/* HEADING                        */
+/* ------------------------------ */
 .heading {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 12px;
-  color: #15004c;
+  color: #ffffff;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
+/* ------------------------------ */
+/* TAGS                           */
+/* ------------------------------ */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -98,10 +158,11 @@
 }
 
 .tags span {
-  background: #eaeaea;
+  background: rgba(255, 255, 255, 0.18);
   padding: 6px 12px;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #ffffff;
+  backdrop-filter: blur(6px);
 }

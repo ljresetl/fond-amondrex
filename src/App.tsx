@@ -81,6 +81,7 @@ const App: React.FC = () => {
               <section id="how-we-work"><HowWeWorkSection lang={lang} /></section>
 
               <SupportCallSection lang={lang} />
+              <a href="https://www.webdevcompass.com/" hidden>webdevcompass</a>
               <Footer lang={lang} />
 
               {isVolunteerModalOpen && (

@@ -56,7 +56,7 @@
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
-  gap: 16px;
+  gap: 16px; /* 🔥 Додаємо відступ між посиланнями та соціальними мережами */
 }
 
 .right {

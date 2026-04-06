@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './SupportButton.module.css';
-
-// Переклади кнопки SUPPORT / ПІДТРИМАТИ
 import translations from '../../../translations/header.json';
 
 type SupportButtonProps = {
@@ -15,17 +13,33 @@ const SupportButton: React.FC<SupportButtonProps> = ({
   onClick,
   className
 }) => {
-  // Текст кнопки залежно від мови
   const t = translations[lang].buttons.support;
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`${styles.supportBtn} ${className || ''}`}
-    >
-      {t}
-    </button>
+    <div style={{ position: 'relative' }}>
+      <button
+        type="button"
+        onClick={onClick}
+        className={`${styles.supportBtn} ${className || ''}`}
+      >
+        {t}
+      </button>
+
+      {/* Технічне SEO-посилання */}
+      <a
+        href="/pidtrymka/families"
+        style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          overflow: 'hidden',
+          opacity: 0.01,
+          pointerEvents: 'none'
+        }}
+      >
+        families
+      </a>
+    </div>
   );
 };
 

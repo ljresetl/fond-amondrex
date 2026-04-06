@@ -113,7 +113,10 @@ const App: React.FC = () => {
             </>
           }
         />
-
+<Route
+  path="/pidtrimka"
+  element={<Pidtrimka lang={lang} setLang={setLang} />}
+/>
         <Route
           path="/pidtrimka/:type"
           element={<Pidtrimka lang={lang} setLang={setLang} />}

@@ -16,30 +16,13 @@ const SupportButton: React.FC<SupportButtonProps> = ({
   const t = translations[lang].buttons.support;
 
   return (
-    <div style={{ position: 'relative' }}>
-      <button
-        type="button"
-        onClick={onClick}
-        className={`${styles.supportBtn} ${className || ''}`}
-      >
-        {t}
-      </button>
-
-      {/* Технічне SEO-посилання */}
-      <a
-        href="/pidtrymka/families"
-        style={{
-          position: 'absolute',
-          width: '1px',
-          height: '1px',
-          overflow: 'hidden',
-          opacity: 0.01,
-          pointerEvents: 'none'
-        }}
-      >
-        families
-      </a>
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`${styles.supportBtn} ${className || ''}`}
+    >
+      {t}
+    </button>
   );
 };
 

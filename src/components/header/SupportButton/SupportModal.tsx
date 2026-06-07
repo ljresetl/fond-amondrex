@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./SupportModal.module.css";
 import translations from "../../../translations/supportModal.json";
 
@@ -28,7 +29,7 @@ const SupportModal: React.FC<Props> = ({ lang, onClose, onSelect }) => {
         <div className={styles.grid}>
 
           {/* ARMY */}
-          <div className={styles.section} onClick={() => onSelect("army")}>
+          <Link to="/pidtrimka/army" className={styles.section} onClick={() => onSelect("army")}>
             <div className={styles.icon}>🪖</div>
             <h3 className={styles.heading}>{t.army.title}</h3>
             <div className={styles.tags}>
@@ -36,12 +37,21 @@ const SupportModal: React.FC<Props> = ({ lang, onClose, onSelect }) => {
                 <span key={i}>{tag}</span>
               ))}
             </div>
-          </div>
+          </Link>
 
-          {/* FAMILIES */} <div className={styles.section} onClick={() => onSelect("families")}> <div className={styles.icon}>👨‍👩‍👧‍👦</div> <h3 className={styles.heading}>{t.families.title}</h3> <div className={styles.tags}> {t.families.tags.map((tag: string, i: number) => ( <span key={i}>{tag}</span> ))} </div> </div>
+          {/* FAMILIES */}
+          <Link to="/pidtrimka/families" className={styles.section} onClick={() => onSelect("families")}>
+            <div className={styles.icon}>👨‍👩‍👧‍👦</div>
+            <h3 className={styles.heading}>{t.families.title}</h3>
+            <div className={styles.tags}>
+              {t.families.tags.map((tag: string, i: number) => (
+                <span key={i}>{tag}</span>
+              ))}
+            </div>
+          </Link>
 
           {/* FOUNDATION */}
-          <div className={styles.section} onClick={() => onSelect("foundation")}>
+          <Link to="/pidtrimka/foundation" className={styles.section} onClick={() => onSelect("foundation")}>
             <div className={styles.icon}>💰</div>
             <h3 className={styles.heading}>{t.foundation.title}</h3>
             <div className={styles.tags}>
@@ -49,7 +59,7 @@ const SupportModal: React.FC<Props> = ({ lang, onClose, onSelect }) => {
                 <span key={i}>{tag}</span>
               ))}
             </div>
-          </div>
+          </Link>
 
         </div>
       </div>

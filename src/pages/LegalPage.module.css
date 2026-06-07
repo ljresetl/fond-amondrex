@@ -1,0 +1,70 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+  font-family: "Open Sans", sans-serif;
+  color: #1f1f33;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #15004c;
+  margin: 0 0 8px;
+}
+
+.updated {
+  font-size: 13px;
+  color: #6b6b80;
+  margin: 0 0 24px;
+}
+
+.intro {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #3a3a4d;
+  margin: 0 0 32px;
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.sectionHeading {
+  font-size: 19px;
+  font-weight: 700;
+  color: #15004c;
+  margin: 0 0 8px;
+}
+
+.sectionText {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #3a3a4d;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #15004c;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 786px) {
+  .page {
+    padding: 48px 24px 80px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+}

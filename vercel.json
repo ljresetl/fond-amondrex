@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/pidtrymka", "destination": "/pidtrimka", "permanent": true },
+    { "source": "/pidtrymka/:type", "destination": "/pidtrimka/:type", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]

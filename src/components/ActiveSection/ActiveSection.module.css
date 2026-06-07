@@ -74,6 +74,11 @@
   }
 }
 
+.currency {
+  font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+}
+
 .statLabel {
   font-weight: 400;
   font-size: 11px;

@@ -1,0 +1,36 @@
+{
+  "UA": {
+    "army": {
+      "seoTitle": "Підтримати армію — Благодійний фонд Amondrex",
+      "seoDescription": "Зробіть внесок на підтримку Збройних сил України через фонд Amondrex: спорядження, медикаменти та техніка для захисників на передовій.",
+      "intro": "Кожен внесок наближає перемогу. Фонд «Амондрекс» закуповує спорядження, медикаменти та техніку для бійців на передовій — швидко, прозоро та відповідно до реальних потреб підрозділів."
+    },
+    "families": {
+      "seoTitle": "Підтримати сім'ї військових — Благодійний фонд Amondrex",
+      "seoDescription": "Допоможіть родинам захисників і захисниць України: фонд Amondrex підтримує сім'ї військових матеріально та психологічно.",
+      "intro": "Поки захисники боронять країну, їхні родини потребують підтримки. Ваш внесок допомагає сім'ям військових впоратися з труднощами, отримати необхідну допомогу та відчути, що про них пам'ятають."
+    },
+    "foundation": {
+      "seoTitle": "Підтримати фонд Amondrex — Благодійний фонд Amondrex",
+      "seoDescription": "Підтримайте діяльність благодійного фонду Amondrex: ваш внесок допомагає нам системно працювати на перемогу та підтримку громади.",
+      "intro": "Підтримуючи роботу фонду, ви допомагаєте нам залишатися надійною ланкою між тими, хто може допомогти, і тими, хто потребує допомоги — системно, прозоро й щодня."
+    }
+  },
+  "EN": {
+    "army": {
+      "seoTitle": "Support the Army — Amondrex Charity Foundation",
+      "seoDescription": "Donate to support the Armed Forces of Ukraine through the Amondrex Foundation: gear, medical supplies and equipment for defenders on the front line.",
+      "intro": "Every contribution brings victory closer. The Amondrex Foundation procures gear, medical supplies and equipment for soldiers on the front line — quickly, transparently and based on the real needs of units."
+    },
+    "families": {
+      "seoTitle": "Support Military Families — Amondrex Charity Foundation",
+      "seoDescription": "Help the families of Ukraine's defenders: the Amondrex Foundation provides material and psychological support to military families.",
+      "intro": "While defenders protect the country, their families need support too. Your contribution helps military families cope with hardship, get the assistance they need, and feel that they are not forgotten."
+    },
+    "foundation": {
+      "seoTitle": "Support the Foundation — Amondrex Charity Foundation",
+      "seoDescription": "Support the work of the Amondrex Charity Foundation: your contribution helps us keep working systematically for victory and community support.",
+      "intro": "By supporting our work, you help us remain a reliable link between those who can help and those who need help — systematically, transparently and every day."
+    }
+  }
+}

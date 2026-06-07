@@ -9,7 +9,6 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 import SupportModal from './SupportButton/SupportModal';
-import { useNavigate } from "react-router-dom";
 import desktopTranslations from '../../translations/header-deskopt.json';
 
 
@@ -23,7 +22,6 @@ const Header: React.FC<Props> = ({ lang, setLang }) => {
   const [expanded, setExpanded] = React.useState(false);
   const [isSupportOpen, setIsSupportOpen] = React.useState(false);
 
-  const navigate = useNavigate();
   const dropdownRef = useRef<HTMLLIElement | null>(null);
 
   // Пункти меню — тепер ведуть на головну з параметром scrollTo
@@ -56,9 +54,8 @@ const t = desktopTranslations[lang].menu; const items = [ { href: "/?scrollTo=pa
     setExpanded(false);
   };
 
-  const handleSupportSelect = (direction: string) => {
+  const handleSupportSelect = () => {
     setIsSupportOpen(false);
-    navigate(`/pidtrimka/${direction}`);
   };
 
   return (

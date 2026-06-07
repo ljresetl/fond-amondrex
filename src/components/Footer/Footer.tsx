@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 import { SiTiktok, SiInstagram, SiThreads } from "react-icons/si";
@@ -96,13 +97,25 @@ const Footer: React.FC<Props> = ({ lang }) => {
 
           {/* Юридичні посилання */}
           <div className={styles.right}>
-            <a href="#">{t.terms}</a>
-            <a href="#">{t.privacy}</a>
-            <a href="#">{t.rights}</a>
+            <Link to="/terms">{t.terms}</Link>
+            <Link to="/privacy">{t.privacy}</Link>
+            <span className={styles.rights}>{t.rights}</span>
           </div>
         </div>
 
       </div>
+
+      {/* Розробник сайту */}
+      <p className={styles.credit}>
+        {t.credit}{' '}
+        <a
+          href="https://www.webdevcompass.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WebDev Compass
+        </a>
+      </p>
     </footer>
   );
 };

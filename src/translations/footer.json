@@ -9,7 +9,8 @@
     "how": "Як ми працюємо?",
     "terms": "Умови та положення",
     "privacy": "Політика конфіденційності",
-    "rights": "©2025 Amondrex. Всі права захищено"
+    "rights": "©2025 Amondrex. Всі права захищено",
+    "credit": "Сайт розробила компанія"
   },
 
   "EN": {
@@ -22,6 +23,7 @@
     "how": "How We Work",
     "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
-    "rights": "©2025 Amondrex. All rights reserved"
+    "rights": "©2025 Amondrex. All rights reserved",
+    "credit": "Website built by"
   }
 }

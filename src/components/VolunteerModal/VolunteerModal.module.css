@@ -195,7 +195,7 @@
 /* ------------------------------ */
 /* SELECT — FIXED VISIBILITY      */
 /* ------------------------------ */
-select {
+.form select {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
@@ -208,12 +208,12 @@ select {
   transition: 0.2s;
 }
 
-select:hover,
-select:focus {
+.form select:hover,
+.form select:focus {
   background: rgba(255, 255, 255, 0.22);
 }
 
-select option {
+.form select option {
   color: #000;
   background: #fff;
 }
@@ -289,8 +289,8 @@ select option {
   cursor: pointer;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+.form input[type="checkbox"],
+.form input[type="radio"] {
   accent-color: #f9dd5a; /* твій жовтий */
 }
 

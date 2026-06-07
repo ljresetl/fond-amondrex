@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import Header from './components/header/Header';
 import HeroBlock from './components/HeroBlock/HeroBlock';
@@ -17,6 +17,8 @@ import PartnersModal from './components/PartnersModal/PartnersModal';
 import HelpModal from './components/HelpModal/HelpModal'; // ← ДОДАНО
 
 import Pidtrimka from './pages/Pidtrimka';
+import LegalPage from './pages/LegalPage';
+import Seo from './hooks/Seo';
 import './App.css';
 
 const ScrollHandler = () => {
@@ -64,6 +66,12 @@ const App: React.FC = () => {
           path="/"
           element={
             <>
+              <Seo
+                title="Благодійний фонд Amondrex | Допомога військовим та цивільним"
+                description="Благодійний фонд Amondrex (Амондрекс) — допомагаємо ЗСУ, медикам та постраждалим цивільним. Зробіть свій внесок у перемогу та підтримку України."
+                path="/"
+              />
+
               <Header lang={lang} setLang={setLang} />
 
               <HeroBlock
@@ -81,7 +89,6 @@ const App: React.FC = () => {
               <section id="how-we-work"><HowWeWorkSection lang={lang} /></section>
 
               <SupportCallSection lang={lang} />
-              <a href="https://www.webdevcompass.com/" hidden>webdevcompass</a>
               <Footer lang={lang} />
 
               {isVolunteerModalOpen && (
@@ -118,10 +125,13 @@ const App: React.FC = () => {
   element={<Pidtrimka lang={lang} setLang={setLang} />}
 />
         <Route
-          
+
           path="/pidtrimka/:type"
           element={<Pidtrimka lang={lang} setLang={setLang} />}
         />
+        <Route path="/privacy" element={<LegalPage lang={lang} setLang={setLang} page="privacy" />} />
+        <Route path="/terms" element={<LegalPage lang={lang} setLang={setLang} page="terms" />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

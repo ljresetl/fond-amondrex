@@ -5,7 +5,6 @@ import SupportButton from '../header/SupportButton/SupportButton';
 import SupportModal from '../header/SupportButton/SupportModal';
 
 import translations from '../../translations/supportCall.json';
-import { useNavigate } from "react-router-dom";
 
 type Props = {
   lang: 'UA' | 'EN';
@@ -17,12 +16,8 @@ const SupportCallSection: React.FC<Props> = ({ lang }) => {
   // Стан модалки
   const [isSupportOpen, setIsSupportOpen] = React.useState(false);
 
-  const navigate = useNavigate();
-
-  // Вибір напрямку → перехід на сторінку підтримки
-  const handleSupportSelect = (direction: string) => {
+  const handleSupportSelect = () => {
     setIsSupportOpen(false);
-    navigate(`/pidtrimka/${direction}`);
   };
 
   return (

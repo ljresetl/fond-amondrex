@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer/Footer";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
@@ -8,6 +8,8 @@ import styles from "./Pidtrimka.module.css";
 import SupportButton from "../components/header/SupportButton/SupportButton";
 import translations from "../translations/pidtrimka-left.json";
 import rightTranslations from "../translations/pidtrimka-right.json";
+import seoTranslations from "../translations/pidtrimkaSeo.json";
+import Seo from "../hooks/Seo";
 type Currency = "EUR" | "USD" | "UAH"; type Props = { lang: "UA" | "EN"; setLang: (lang: "UA" | "EN") => void; };
 const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
   const t = translations[lang]; const tr = rightTranslations[lang];
@@ -35,8 +37,17 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
       case "USD": return Math.floor(MAX_MONO_AMOUNT / USD_RATE);
       case "UAH": return MAX_MONO_AMOUNT; default: return MAX_MONO_AMOUNT;
     }
-  }; let convertedAmount = convertToUAH(Number(amount), currency); if (!convertedAmount || convertedAmount < 10) { convertedAmount = 10; } return (
+  }; let convertedAmount = convertToUAH(Number(amount), currency); if (!convertedAmount || convertedAmount < 10) { convertedAmount = 10; }
+
+  const seo = seoTranslations[lang][selectedDirection];
+
+  return (
  <>
+        <Seo
+          title={seo.seoTitle}
+          description={seo.seoDescription}
+          path={type ? `/pidtrimka/${type}` : "/pidtrimka"}
+        />
         <Header lang={lang} setLang={setLang} />
         <main className={styles.page}>
           <Breadcrumb type={selectedDirection} lang={lang} />
@@ -45,6 +56,18 @@ const Pidtrimka: React.FC<Props> = ({ lang, setLang }) => {
           {selectedDirection === "army" && t.title.army}
           {selectedDirection === "families" && t.title.families}
           {selectedDirection === "foundation" && t.title.foundation} </h1>
+
+        <p className={styles.intro}>{seo.intro}</p>
+
+        <nav className={styles.relatedLinks} aria-label={lang === "UA" ? "Інші напрямки підтримки" : "Other support directions"}>
+          {(["army", "families", "foundation"] as const)
+            .filter((direction) => direction !== selectedDirection)
+            .map((direction) => (
+              <Link key={direction} to={`/pidtrimka/${direction}`} className={styles.relatedLink}>
+                {t.title[direction]}
+              </Link>
+            ))}
+        </nav>
 
           <div className={styles.layout}>
 {/* Ліва частина */}
@@ -151,14 +174,17 @@ onChange={(e) => {
   </div>
 
   {/* Кнопка підтримки */}
-  <a
-    href={`https://send.monobank.ua/jar/4HivR59zpP?amount=${convertedAmount}&comment=Pidtrimka`}
-    target="_blank"
-    rel="noopener noreferrer"
+  <SupportButton
+    lang={lang}
     className={styles.fullWidthButton}
-  >
-    <SupportButton lang={lang} className={styles.fullWidthButton} />
-  </a>
+    onClick={() =>
+      window.open(
+        `https://send.monobank.ua/jar/4HivR59zpP?amount=${convertedAmount}&comment=Pidtrimka`,
+        '_blank',
+        'noopener,noreferrer'
+      )
+    }
+  />
 </div>
 
 

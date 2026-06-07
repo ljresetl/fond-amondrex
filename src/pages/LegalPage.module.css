@@ -46,6 +46,16 @@
   white-space: pre-line;
 }
 
+.emailLink {
+  color: #15004c;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.emailLink:hover {
+  color: #2a1a8c;
+}
+
 .backLink {
   display: inline-block;
   margin-top: 16px;

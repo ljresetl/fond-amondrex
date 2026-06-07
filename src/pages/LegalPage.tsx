@@ -11,6 +11,25 @@ type Props = {
   page: "privacy" | "terms";
 };
 
+const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+
+/** Перетворює email-адреси у тексті на клікабельні mailto-посилання */
+const renderWithMailtoLinks = (text: string) => {
+  const parts = text.split(EMAIL_REGEX);
+  const emails = text.match(EMAIL_REGEX) ?? [];
+
+  return parts.flatMap((part, i) =>
+    emails[i]
+      ? [
+          part,
+          <a key={`${emails[i]}-${i}`} href={`mailto:${emails[i]}`} className={styles.emailLink}>
+            {emails[i]}
+          </a>,
+        ]
+      : [part]
+  );
+};
+
 const LegalPage: React.FC<Props> = ({ lang, setLang, page }) => {
   const t = legalTranslations[lang];
   const content = t[page];
@@ -29,7 +48,7 @@ const LegalPage: React.FC<Props> = ({ lang, setLang, page }) => {
         {content.sections.map((section) => (
           <section key={section.heading} className={styles.section}>
             <h2 className={styles.sectionHeading}>{section.heading}</h2>
-            <p className={styles.sectionText}>{section.text}</p>
+            <p className={styles.sectionText}>{renderWithMailtoLinks(section.text)}</p>
           </section>
         ))}
 
